@@ -1,0 +1,35 @@
+//Brand logo Image
+.login-form {
+    height: 768px;
+    width: 1175px;
+}
+
+.brand-logo {
+    width: 50px;
+}
+
+.greeting {
+    background: url('../../images/Login\ page\ image.png');
+    background-size: cover;
+    &__logo {
+        background: url('../../images/1Ru\ white\ image_cropped.png');
+        background-size: 50%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    &__gradient {
+        background: linear-gradient(212.28deg, rgba(20, 0, 255, 0.56) 11.82%, rgba(5, 195, 255, 0.8) 98.45%);
+        transform: matrix(1, 0, 0, -1, 0, 0);
+    }
+    &__text {
+        transform: matrix(1, 0, 0, -1, 0, 0);
+    }
+    .ok {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 41px;
+        /* identical to box height */
+        letter-spacing: 3px;
+    }
+}

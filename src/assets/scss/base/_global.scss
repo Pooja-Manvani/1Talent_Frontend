@@ -1,0 +1,15 @@
+// Global styles goes here
+html,
+body {
+    height: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.wrapper .form-control:focus {
+    box-shadow: none;
+    outline: none;
+}
