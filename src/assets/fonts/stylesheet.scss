@@ -1,151 +1,18 @@
 @font-face {
-    font-family: 'Futura';
-    src: url('FuturaBT-Light.woff2') format('woff2'), url('FuturaBT-Light.woff') format('woff');
-    font-weight: 300;
+    font-family: 'Futura Hv BT';
+    src: url('FuturaBT-Heavy.woff2') format('woff2'),
+        url('FuturaBT-Heavy.woff') format('woff');
+    font-weight: 900;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Futura';
-    src: url('Futura-Bold.woff2') format('woff2'), url('Futura-Bold.woff') format('woff');
+    font-family: 'Futura Md BT';
+    src: url('FuturaBT-Medium.woff2') format('woff2'),
+        url('FuturaBT-Medium.woff') format('woff');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
 }
 
-@font-face {
-    font-family: 'Futura';
-    src: url('FuturaBT-BoldCondensed.woff2') format('woff2'), url('FuturaBT-BoldCondensed.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Futura';
-    src: url('FuturaBT-ExtraBlack.woff2') format('woff2'), url('FuturaBT-ExtraBlack.woff') format('woff');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Futura';
-    src: url('FuturaBT-BoldItalic.woff2') format('woff2'), url('FuturaBT-BoldItalic.woff') format('woff');
-    font-weight: bold;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Futura';
-    src: url('FuturaBT-HeavyItalic.woff2') format('woff2'), url('FuturaBT-HeavyItalic.woff') format('woff');
-    font-weight: 900;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Futura';
-    src: url('FuturaBT-BookItalic.woff2') format('woff2'), url('FuturaBT-BookItalic.woff') format('woff');
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Futura';
-    src: url('FuturaBT-LightCondensed.woff2') format('woff2'), url('FuturaBT-LightCondensed.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Futura';
-    src: url('FuturaBT-Book.woff2') format('woff2'), url('FuturaBT-Book.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Futura';
-    src: url('FuturaBT-Heavy.woff2') format('woff2'), url('FuturaBT-Heavy.woff') format('woff');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Futura';
-    src: url('Futura-Bold.woff2') format('woff2'), url('Futura-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Futura';
-    src: url('Futura-CondensedLight.woff2') format('woff2'), url('Futura-CondensedLight.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Futura';
-    src: url('FuturaBT-LightItalic.woff2') format('woff2'), url('FuturaBT-LightItalic.woff') format('woff');
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Futura';
-    src: url('FuturaBT-MediumItalic.woff2') format('woff2'), url('FuturaBT-MediumItalic.woff') format('woff');
-    font-weight: 500;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Futura';
-    src: url('FuturaBT-Medium.woff2') format('woff2'), url('FuturaBT-Medium.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Futura';
-    src: url('FuturaBT-MediumCondensed.woff2') format('woff2'), url('FuturaBT-MediumCondensed.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Futura';
-    src: url('Futura-Black-Bold.woff2') format('woff2'), url('Futura-Black-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Futura';
-    src: url('FuturaBT-ExtraBlackCondItalic.woff2') format('woff2'), url('FuturaBT-ExtraBlackCondItalic.woff') format('woff');
-    font-weight: 900;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Futura';
-    src: url('FuturaBT-ExtraBlack.woff2') format('woff2'), url('FuturaBT-ExtraBlack.woff') format('woff');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
-}

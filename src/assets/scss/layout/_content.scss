@@ -1,11 +1,20 @@
 //Brand logo Image
-.login-form {
+.wrapper {
+    background-color: $white;
     height: 768px;
     width: 1175px;
 }
 
+.login-form {
+    padding: 0px 100px 0px 50px;
+}
+
 .brand-logo {
     width: 50px;
+}
+
+.input-icon {
+    font-size: $input-icon-size;
 }
 
 .greeting {
@@ -18,18 +27,28 @@
         background-repeat: no-repeat;
     }
     &__gradient {
-        background: linear-gradient(212.28deg, rgba(20, 0, 255, 0.56) 11.82%, rgba(5, 195, 255, 0.8) 98.45%);
-        transform: matrix(1, 0, 0, -1, 0, 0);
+        background: linear-gradient(-32.28deg, rgba(20, 0, 255, 0.56) 11.82%, rgba(5, 195, 255, 0.8) 98.45%);
     }
-    &__text {
-        transform: matrix(1, 0, 0, -1, 0, 0);
+    .brand-logo {
+        width: 50px;
     }
-    .ok {
+    .brand-title {
+        font-family: 'Futura Hv BT';
         font-style: normal;
         font-weight: 600;
-        font-size: 24px;
+        font-size: 30px;
         line-height: 41px;
         /* identical to box height */
         letter-spacing: 3px;
+        position: relative;
+        &::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: -8px;
+            height: 1.5px;
+            width: 34%;
+            background-color: $brand-line-color;
+        }
     }
 }
