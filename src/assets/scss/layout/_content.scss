@@ -3,10 +3,17 @@
     background-color: $white;
     height: 768px;
     width: 1175px;
+    @include media-breakpoint-down(md) {
+        height: 100%;
+    }
 }
 
 .login-form {
     padding: 0px 100px 0px 50px;
+    @include media-breakpoint-down(md) {
+        padding: 0px 100px;
+        width: 100%;
+    }
 }
 
 .brand-logo {
@@ -20,6 +27,9 @@
 .greeting {
     background: url('../../images/Login\ page\ image.png');
     background-size: cover;
+    @include media-breakpoint-down(md) {
+        width: 100%;
+    }
     &__logo {
         background: url('../../images/1Ru\ white\ image_cropped.png');
         background-size: 50%;
