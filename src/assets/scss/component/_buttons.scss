@@ -1,4 +1,8 @@
 // Button styles goes here
 .btn {
-    font-family: 'Futura Hv BT';
+    font-family: $btn-font-family;
+    color: $btn-link-color;
+    &:hover {
+        color: $btn-link-hover-color;
+    }
 }

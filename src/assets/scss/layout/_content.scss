@@ -2,17 +2,25 @@
 .wrapper {
     background-color: $white;
     height: 768px;
-    width: 1175px;
+    width: 1200px;
     @include media-breakpoint-down(md) {
         height: 100%;
     }
 }
 
 .login-form {
-    padding: 0px 100px 0px 50px;
+    // padding: 0 100px 0 50px;
+    @include media-breakpoint-up(md) {
+   
+    }
     @include media-breakpoint-down(md) {
-        padding: 0px 100px;
+        // padding: 0 100px;
         width: 100%;
+        transform: translateY(-50px);
+        background: white;
+        border-radius: 35px 35px 0px 0px;
+        padding: 40px;
+  
     }
 }
 
@@ -25,13 +33,13 @@
 }
 
 .greeting {
-    background: url('../../images/Login\ page\ image.png');
+    background: url("../../images/Login\ page\ image.png");
     background-size: cover;
     @include media-breakpoint-down(md) {
         width: 100%;
     }
     &__logo {
-        background: url('../../images/1Ru\ white\ image_cropped.png');
+        background: url("../../images/1Ru\ white\ image_cropped.png");
         background-size: 50%;
         background-position: center;
         background-repeat: no-repeat;
@@ -39,23 +47,26 @@
     &__gradient {
         background: linear-gradient(-32.28deg, rgba(20, 0, 255, 0.56) 11.82%, rgba(5, 195, 255, 0.8) 98.45%);
     }
+    &__text {
+        letter-spacing: 0.25rem;
+    }
     .brand-logo {
         width: 50px;
     }
     .brand-title {
-        font-family: 'Futura Hv BT';
+        font-family: "Futura Hv BT";
         font-style: normal;
-        font-weight: 600;
-        font-size: 30px;
-        line-height: 41px;
+        font-weight: $font-weight-bold;
+        font-size: $font-size-lg;
+        line-height: 2.5rem;
         /* identical to box height */
-        letter-spacing: 3px;
+        letter-spacing: 3px; ///////////////////////////////////////////////////////////////////////////////////////////////////
         position: relative;
         &::after {
-            content: '';
+            content: "";
             position: absolute;
             right: 0;
-            bottom: -8px;
+            bottom:-1rem;
             height: 1.5px;
             width: 34%;
             background-color: $brand-line-color;

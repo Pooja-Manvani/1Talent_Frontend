@@ -1,18 +1,15 @@
 @font-face {
-    font-family: 'Futura Hv BT';
-    src: url('FuturaBT-Heavy.woff2') format('woff2'),
-        url('FuturaBT-Heavy.woff') format('woff');
+    font-family: "Futura Hv BT";
+    src: url("FuturaBT-Heavy.woff2") format("woff2"), url("FuturaBT-Heavy.woff") format("woff");
     font-weight: 900;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Futura Md BT';
-    src: url('FuturaBT-Medium.woff2') format('woff2'),
-        url('FuturaBT-Medium.woff') format('woff');
+    font-family: "Futura Md BT";
+    src: url("FuturaBT-Medium.woff2") format("woff2"), url("FuturaBT-Medium.woff") format("woff");
     font-weight: 500;
     font-style: normal;
     font-display: swap;
 }
-
