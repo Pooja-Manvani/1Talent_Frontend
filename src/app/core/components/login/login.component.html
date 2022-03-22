@@ -2,57 +2,56 @@
 <main class="h-100 d-flex justify-content-center align-items-center">
     <div class="wrapper p-0 p-md-5 d-flex flex-column flex-md-row-reverse align-items-center">
         <!-- Start: Greeting layout -->
-        <div class=" greeting h-100 d-flex justify-content-center align-items-center ">
+        <div class=" greeting h-100 w-100 w-md-50 d-flex justify-content-center align-items-center">
             <div class="greeting__logo h-100 w-100">
-                <div class="greeting__gradient h-100 w-100 d-flex flex-column justify-content-center align-items-center ">
-                    <div class="greeting__text text-light p-5">
+                <div class="greeting__gradient h-100 w-100 d-flex flex-column justify-content-center align-items-center">
+                    <div class="greeting__text d-none d-md-block text-light p-5">
                         <h6>WELCOME TO</h6>
-                        <h2 class="brand-title ">1RU LEAVE MANAGEMENT</h2>
+                        <h2 class="brand-title">1RU LEAVE MANAGEMENT</h2>
                     </div>
                 </div>
             </div>
         </div>
         <!-- End: Greeting layout -->
-        <div class="login-form h-100 d-flex flex-grow-1 flex-column justify-content-center ">
+        <div class="login-form px-5 h-100 w-100 w-md-50 d-flex flex-grow-1 flex-column justify-content-center">
             <!--Start: Brand Logo Image -->
-            <div class="mb-5">
-                <figure class="brand-logo overflow-hidden">
+            <div class="mb-5 responsive-brand d-flex d-md-column align-items-center">
+                <figure class="brand-logo overflow-hidden me-3">
                     <img src="../../../../assets/images/1Ru balck logo.png" alt="brand-logo-image" />
                 </figure>
+                <h2 class="brand-title d-md-none">LEAVE MANAGEMENT</h2>
             </div>
             <!-- End: Brand Logo Image -->
-
             <!-- Start: Login form -->
-            <form>
+            <form [formGroup]="this.loginForm" (ngSubmit)="onSubmit()">
                 <div class="input-group flex-nowrap">
-                    <label for="username" class="d-flex"><span class="icon-Username-icon input-icon input-group-text border-0 pe-3"></span></label>
+                    <label for="username" class="d-flex"><span class="icon-username input-icon input-group-text border-0 pe-3"></span></label>
                     <div class="txt_field">
-                        <input type="text" id="username" required>
-                        <span></span>
+                        <input type="text" id="username" formControlName="username" required>
+                        <span class="underline"></span>
                         <label>USERNAME</label>
                     </div>
                     <!-- <input type="text" class="form-control txt_field border-top-0 border-start-0 border-end-0" placeholder="USERNAME" aria-label="Username" aria-describedby="basic-addon1"> -->
                 </div>
                 <div class="input-group flex-nowrap">
-                    <label for="password" class="d-flex"><span class="icon-Password-icon input-icon input-group-text border-0 pe-3"></span></label>
-                    <div class="txt_field">
-                        <input type="password" id="password" required>
-                        <span></span>
+                    <label for="password" class="d-flex"><span class="icon-password input-icon input-group-text border-0 pe-3"></span></label>
+                    <div class="txt_field" appPasswordMask [isEyeClosed]="this.isEyeClosed">
+                        <input type="password" id="password" formControlName="password" required>
+                        <span class="underline"></span>
+                        <span #eyeIcon id="eyeIcon" class="invisible icon icon-eye-close position-absolute top-50 translate-middle pe-5 fs-4" (click)="toggleEye()"></span>
                         <label>PASSWORD</label>
                     </div>
                     <!-- <input type=" password " class="form-control txt_field border-top-0 border-start-0 border-end-0 " placeholder="PASSWORD " aria-label="Password " aria-describedby="basic-addon1 "> -->
                 </div>
-                <div class="pb-5 pt-2 ">
-                    <a href="# " class="link-primary text-decoration-none d-flex justify-content-end ">Forget Password?</a>
+                <div class="pb-5 pt-2">
+                    <a href="# " class="link-primary text-decoration-none d-flex justify-content-end">Forget Password?</a>
                 </div>
                 <div>
-                    <button type="submit " class="btn btn-primary ">Login</button>
+                    <button type="submit" class="btn btn-primary">Login</button>
                 </div>
             </form>
             <!-- End: Login form -->
         </div>
-
-
     </div>
 </main>
 <!-- End: Main Section -->
