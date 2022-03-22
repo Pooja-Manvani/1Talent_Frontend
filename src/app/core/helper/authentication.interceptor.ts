@@ -7,12 +7,12 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { TokenService } from '../services/token.service';
+import { AuthService } from '../services/auth.service';
 
 @Injectable()
 export class AuthenticationInterceptor implements HttpInterceptor {
 
-  constructor(private tokenservice:TokenService) {}
+  constructor(private tokenservice:AuthService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<string>> {
     const tokenReq = request.clone({
