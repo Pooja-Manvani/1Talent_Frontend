@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   ) {
     this.isEyeClosed = "close";
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required]],
+      userName: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
   }
@@ -34,12 +34,14 @@ export class LoginComponent implements OnInit {
 
   public onSubmit(): void {
     let creds = {
-      username: this.loginForm.value.username,
-      password: SHA256(this.loginForm.value.password).toString()
+      userName: this.loginForm.value.username,
+      password: this.loginForm.value.password
     }
     this.authService.login(creds).subscribe((res) => {
       console.log(res);
       this.authService.setToken(res.token);
-    });
+    }, (error) => {
+      console.error("Error: ", error);
+    } );
   }
 }

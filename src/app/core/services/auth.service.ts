@@ -21,7 +21,7 @@ export class AuthService {
     return localStorage.setItem("token", token);
   }
 
-  login(creds: {username: string, password: string}) {
+  login(creds: {userName: string, password: string}) {
     console.log(creds);
     return this.http.post<any>(`${this.apiLink}/api/Login/AuthenticateUser`, creds);
   }

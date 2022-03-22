@@ -29,7 +29,7 @@
                     <label for="username" class="d-flex"><span
                             class="icon-username input-icon input-group-text border-0 pe-3"></span></label>
                     <div class="txt_field">
-                        <input type="text" id="username" formControlName="username" required>
+                        <input type="text" id="username" formControlName="userName" required>
                         <span class="underline"></span>
                         <label>USERNAME</label>
                     </div>
@@ -39,19 +39,18 @@
                     <label for="password" class="d-flex"><span
                             class="icon-password input-icon input-group-text border-0 pe-3"></span></label>
                     <div class="txt_field">
-                        <input type="{{this.isEyeClosed == 'close' ? 'password' : 'text'}}" id="password" formControlName="password" required>
+                        <input type="{{this.isEyeClosed == 'close' ? 'password' : 'text'}}" id="password"
+                            formControlName="password" required>
                         <span class="underline"></span>
                         <span #eyeIcon id="eyeIcon" *ngIf="this.loginForm.controls['password'].valid"
                             class="icon position-absolute top-50 translate-middle pe-5 fs-4"
-                            ngClass="{{'icon-eye-' + this.isEyeClosed}}"
-                            (click)="toggleEye()"></span>
+                            ngClass="{{'icon-eye-' + this.isEyeClosed}}" (click)="toggleEye()"></span>
                         <label>PASSWORD</label>
                     </div>
                     <!-- <input type=" password " class="form-control txt_field border-top-0 border-start-0 border-end-0 " placeholder="PASSWORD " aria-label="Password " aria-describedby="basic-addon1 "> -->
                 </div>
                 <div class="pb-5 pt-2">
-                    <a href="# " class="link-primary text-decoration-none d-flex justify-content-end">Forget
-                        Password?</a>
+                    <a class="link-primary text-decoration-none d-flex justify-content-end" routerLink="/forgot-password">Forget Password?</a>
                 </div>
                 <div>
                     <button type="submit" class="btn btn-primary">Login</button>
