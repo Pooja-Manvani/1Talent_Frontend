@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SHA256 } from 'crypto-js';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +9,14 @@ import { SHA256 } from 'crypto-js';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  isEyeClosed: boolean;
+  isEyeClosed: string;
   loginForm: FormGroup;
 
-  constructor(private render: Renderer2, private fb: FormBuilder) {
-    this.isEyeClosed = true;
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService
+  ) {
+    this.isEyeClosed = "close";
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
@@ -21,15 +25,21 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  public toggleEye(val?: boolean): void {
-    if (val == undefined)
-      this.isEyeClosed = !this.isEyeClosed;
+  public toggleEye(): void {
+    if (this.isEyeClosed == "close")
+      this.isEyeClosed = "open";
     else
-      this.isEyeClosed = false;
+      this.isEyeClosed = "close";
   }
 
   public onSubmit(): void {
-    let pass = SHA256(this.loginForm.value.password);
-    console.log(pass.toString());
+    let creds = {
+      username: this.loginForm.value.username,
+      password: SHA256(this.loginForm.value.password).toString()
+    }
+    this.authService.login(creds).subscribe((res) => {
+      console.log(res);
+      this.authService.setToken(res.token);
+    });
   }
 }
