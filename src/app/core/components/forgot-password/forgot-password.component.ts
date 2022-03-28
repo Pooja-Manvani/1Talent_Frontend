@@ -9,18 +9,18 @@ import { Router } from '@angular/router';
 })
 export class ForgotPasswordComponent implements OnInit {
   forgotpassword: FormGroup;
-  constructor( private fb: FormBuilder, private router: Router) { 
+
+  constructor(private fb: FormBuilder, private router: Router) {
     this.forgotpassword = this.fb.group({
       email: ['', [Validators.required]],
-    })
+    });
   }
 
-  ngOnInit(): void {
-  }
-  onSubmit(){
-    if
-    (this.forgotpassword.valid){
-      this.router.navigateByUrl("/change-password")
+  ngOnInit(): void { }
+
+  onSubmit() {
+    if (this.forgotpassword.valid) {
+      this.router.navigateByUrl("/change-password");
     }
   }
 }
