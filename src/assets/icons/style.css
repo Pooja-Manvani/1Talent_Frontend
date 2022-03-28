@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?n3eaw');
-  src:  url('fonts/icomoon.eot?n3eaw#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?n3eaw') format('truetype'),
-    url('fonts/icomoon.woff?n3eaw') format('woff'),
-    url('fonts/icomoon.svg?n3eaw#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?ohipro');
+  src:  url('fonts/icomoon.eot?ohipro#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ohipro') format('truetype'),
+    url('fonts/icomoon.woff?ohipro') format('woff'),
+    url('fonts/icomoon.svg?ohipro#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -44,4 +44,49 @@
 .icon-username:before {
   content: "\e903";
   color: #adadad;
+}
+.icon-user:before {
+  content: "\e908";
+}
+.icon-user-line:before {
+  content: "\e909";
+  color: #1271ff;
+}
+.icon-subdomain:before {
+  content: "\e90a";
+  color: #1271ff;
+}
+.icon-domain:before {
+  content: "\e90b";
+  color: #1271ff;
+}
+.icon-calender:before {
+  content: "\e90c";
+  color: #1271ff;
+}
+.icon-call:before {
+  content: "\e90d";
+  color: #1271ff;
+}
+.icon-email-line:before {
+  content: "\e90e";
+  color: #1271ff;
+}
+.icon-apply-leave:before {
+  content: "\e905";
+}
+.icon-Close:before {
+  content: "\e90f";
+}
+.icon-dashboard:before {
+  content: "\e906";
+}
+.icon-next:before {
+  content: "\e910";
+}
+.icon-Previous:before {
+  content: "\e911";
+}
+.icon-sign-up:before {
+  content: "\e907";
 }
