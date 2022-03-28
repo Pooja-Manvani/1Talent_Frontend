@@ -6,12 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component'
 import { RouterModule } from '@angular/router';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     ForgotPasswordComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     RouterModule
   ],
   exports: [
-    LoginComponent
+    LoginComponent,
+    SidebarComponent
   ]
 })
 export class CoreModule { }
