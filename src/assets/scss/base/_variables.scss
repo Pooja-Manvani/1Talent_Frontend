@@ -20,3 +20,11 @@ $btn-font-family: $font-family-hv;
 $btn-padding-x: 3rem;
 $btn-padding-y: 0.5rem;
 $btn-border-radius: 0.5rem;
+
+////// Bootstrap
+//Form floating
+$form-floating-padding-y: 1.75rem 0 0.5rem;
+// $form-floating-input-padding-t: 1.5rem;
+$form-floating-line-height: 1;
+$form-floating-label-transform: scale(0.8) translateY(-2.125rem);
+$form-floating-transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;

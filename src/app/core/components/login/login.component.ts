@@ -1,6 +1,8 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SHA256 } from 'crypto-js';
+
+/////////////////////////////////////////////////////////////////////////
+import { PasswordField } from '../../models/password-field.model';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -9,14 +11,18 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  isEyeClosed: string;
+  eye: PasswordField;
   loginForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService
   ) {
-    this.isEyeClosed = "close";
+    // For password input field
+    this.eye = {
+      id: "password",
+      className: "close"
+    };
     this.loginForm = this.fb.group({
       userName: ['', [Validators.required]],
       password: ['', [Validators.required]]
@@ -25,16 +31,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  // To control password show/hide.
   public toggleEye(): void {
-    if (this.isEyeClosed == "close")
-      this.isEyeClosed = "open";
+    if (this.eye.className == "close")
+      this.eye.className = "open";
     else
-      this.isEyeClosed = "close";
+      this.eye.className = "close";
   }
 
   public onSubmit(): void {
     let creds = {
-      userName: this.loginForm.value.username,
+      userName: this.loginForm.value.userName,
       password: this.loginForm.value.password
     }
     this.authService.login(creds).subscribe((res) => {

@@ -33,19 +33,11 @@
 }
 
 .greeting {
-    background: url("../../images/Login\ page\ image.png");
+    background: url("../../images/login-page-image.png");
     background-size: cover;
+    background-position: center;
     @include media-breakpoint-down(md) {
         width: 100%;
-    }
-    &__logo {
-        background: url("../../images/1Ru\ white\ image_cropped.png");
-        background-size: 50%;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-    &__gradient {
-        background: linear-gradient(-32.28deg, rgba(20, 0, 255, 0.56) 11.82%, rgba(5, 195, 255, 0.8) 98.45%);
     }
     &__text {
         letter-spacing: 0.25rem;
