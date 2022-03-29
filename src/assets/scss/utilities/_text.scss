@@ -4,3 +4,7 @@
 .text-truncate {
     @include text-truncate();
 }
+
+p{
+    margin-bottom: 12px;
+}

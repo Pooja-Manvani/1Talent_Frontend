@@ -7,10 +7,11 @@ $light: #e5e5e5;
 $extra-light: #fcfcfc;
 $white: #ffffff;
 
-$text-muted: #cbcbcb;
+$text-muted: #7A7A7A;
 
 //Body background
 $body-bg: $light;
+$body-color:#515151;
 
 $content-wrapper-bg: #f9fbff; 
 
@@ -32,3 +33,8 @@ $sidebar-bg: #408cff;
 $nav-link-color: $white;
 $nav-link-hover-color: $primary;
 $icon-hover-color: $primary;
+
+//profile module
+$user-avatar-border-bg:#CBDFFF;
+$user-name-color:#515151;
+$user-domain-color:#7A7A7A;

@@ -22,32 +22,29 @@
       width: 40px;
       border-radius: 50%;
       span{
-        font-size: 1.5rem;
+        font-size: 1.25rem;
       }
     }
     &.card-profile {
+      font-size: 1.125rem;
       .user {
+        margin-top: 6rem;
         &-avatar {
           vertical-align: middle;
-          width: 200px;
-          height: 200px;
+          width: $user-avatar-size;
+          height: $user-avatar-size;
           border-radius: 50%;
-          border: 8px solid #cbdfff;
+          border: 8px solid $user-avatar-border-bg;
         }
   
         &-name {
-          font-size: 1.5rem;
-          color: #515151;
-        }
-  
-        &-domain {
-          color: #7a7a7a;
+          font-size: 2rem;
         }
   
         .line {
           height: 3px;
           background-color: $primary;
-          width: 30%;
+          width: 45%;
         }
       }
     }
