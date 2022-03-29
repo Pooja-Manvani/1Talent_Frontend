@@ -10,3 +10,45 @@
         font-size: 0.75rem;
     }
 }
+
+.card {
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: lighten($primary, 41);
+      color: $primary;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      span{
+        font-size: 1.5rem;
+      }
+    }
+    &.card-profile {
+      .user {
+        &-avatar {
+          vertical-align: middle;
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          border: 8px solid #cbdfff;
+        }
+  
+        &-name {
+          font-size: 1.5rem;
+          color: #515151;
+        }
+  
+        &-domain {
+          color: #7a7a7a;
+        }
+  
+        .line {
+          height: 3px;
+          background-color: $primary;
+          width: 30%;
+        }
+      }
+    }
+  }
