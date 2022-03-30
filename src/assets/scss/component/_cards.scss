@@ -19,15 +19,15 @@
       background-color: lighten($primary, 41);
       color: $primary;
       height: 40px;
-      width: 40px;
+      min-width: 40px;
       border-radius: 50%;
       span{
         font-size: 1.25rem;
       }
     }
     &.card-profile {
-      font-size: 1.125rem;
       .user {
+        font-size: 1.125rem;
         margin-top: 6rem;
         &-avatar {
           vertical-align: middle;
