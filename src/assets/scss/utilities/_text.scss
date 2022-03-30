@@ -1,0 +1,10 @@
+// Typographical styles goes here
+@import "../../fonts/stylesheet.scss";
+
+.text-truncate {
+    @include text-truncate();
+}
+
+p{
+    margin-bottom: 12px;
+}

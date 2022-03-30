@@ -1,0 +1,10 @@
+// Form controls styles goes here
+
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
