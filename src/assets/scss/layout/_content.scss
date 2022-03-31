@@ -39,7 +39,6 @@
     }
     &__text {
         letter-spacing: 0.25rem;
-        @include position(absolute, 0, 0, 0, 0);
     }
     &__image {
         @include position(absolute, 0, 0, 0, 0);
