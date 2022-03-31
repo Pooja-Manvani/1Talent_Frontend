@@ -5,9 +5,10 @@ import { ForgotPasswordComponent } from './core/components/forgot-password/forgo
 import { LoginComponent } from './core/components/login/login.component';
 
 const routes: Routes = [
-  {path: '',
-   pathMatch: "full",
-   redirectTo: "login"
+  {
+    path: '',
+    pathMatch: "full",
+    redirectTo: "login"
   },
   {
     path: 'login',
@@ -21,7 +22,12 @@ const routes: Routes = [
     path: 'change-password',
     component: ChangePasswordComponent
   },
-  { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) }
+  {
+    path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
+  {
+    path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
+  },
 ];
 
 @NgModule({
