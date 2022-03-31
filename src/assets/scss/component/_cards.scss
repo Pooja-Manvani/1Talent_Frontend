@@ -10,3 +10,16 @@
         font-size: 0.75rem;
     }
 }
+
+ul{
+    .holiday{
+        padding: 10px 0;
+        border-bottom: 1px solid #e9e9e9;
+        
+        &-date{
+            color: red;
+            // background: ;
+        }
+    
+    }
+}

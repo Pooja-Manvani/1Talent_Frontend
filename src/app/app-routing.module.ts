@@ -20,7 +20,8 @@ const routes: Routes = [
   {
     path: 'change-password',
     component: ChangePasswordComponent
-  }
+  },
+  { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) }
 ];
 
 @NgModule({

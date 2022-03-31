@@ -28,8 +28,20 @@ $form-floating-padding-y: 1.75rem 0 0.5rem;
 $form-floating-line-height: 1;
 $form-floating-label-transform: scale(0.8) translateY(-2.125rem);
 $form-floating-transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+
 //sidebar
-$sidebarWidth: 300px;
+$sidebar-width: 300px;
 $nav-link-font-size: 18px;
 $nav-link-padding-y: 0.75rem;
 $nav-link-padding-x: 1rem;
+
+// Card 
+$card-spacer-y: 1.75rem;
+$card-spacer-x: 2.5rem;
+$card-border-radius: 15px;
+$card-border-width: 0px;
+
+$list-group-item-padding-y: 0px;
+
+// Table
+$table-bg: transparent;
