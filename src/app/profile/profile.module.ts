@@ -6,6 +6,7 @@ import { ProfileContainerComponent } from './profile-container/profile-container
 import { ProfilePresentationComponent } from './profile-container/profile-presentation/profile-presentation.component';
 import { PersonalDetailsPrensentationComponent } from './profile-container/profile-presentation/personal-details-prensentation/personal-details-prensentation.component';
 import { TrainingDetailsPresentationComponent } from './profile-container/profile-presentation/training-details-presentation/training-details-presentation.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -19,7 +20,8 @@ import { TrainingDetailsPresentationComponent } from './profile-container/profil
   ],
   imports: [
     CommonModule,
-    ProfileRoutingModule
+    ProfileRoutingModule,
+    HttpClientModule
   ]
 })
 export class ProfileModule { }
