@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Profile } from '../../models/profile.model';
 
 @Component({
   selector: 'app-profile-presentation',
@@ -18,11 +19,11 @@ export class ProfilePresentationComponent implements OnInit {
   }
 
   /** user profile data */
-  private _profileData : Profile;
+  private _profileData!: Profile;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  
 }

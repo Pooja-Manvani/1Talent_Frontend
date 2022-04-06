@@ -1,9 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Profile } from 'src/app/profile/models/profile.model';
+import { PersonalDetailsPresenterService } from '../personal-details-presenter/personal-details-presenter.service';
 
 @Component({
   selector: 'app-personal-details-prensentation',
   templateUrl: './personal-details-prensentation.component.html',
-  styleUrls: ['./personal-details-prensentation.component.scss']
+  styleUrls: ['./personal-details-prensentation.component.scss'],
+  viewProviders : [PersonalDetailsPresenterService],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class PersonalDetailsPrensentationComponent implements OnInit {
 
