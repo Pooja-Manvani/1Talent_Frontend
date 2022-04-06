@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ProfileService } from './profile.service';
 
 @Component({
   selector: 'app-profile-container',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileContainerComponent implements OnInit {
 
-  constructor() { }
+  public getProfileData$:Observable<Profile>;
+  
+  constructor(private profileService:ProfileService) { 
+    this.getProfileData$ = new Observable<Profile>();
+  }
 
   ngOnInit(): void {
+    this.getProfileData$ = this.profileService.getbyid('sample');
   }
 
 }
