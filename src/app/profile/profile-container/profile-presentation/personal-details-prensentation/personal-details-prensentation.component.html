@@ -17,21 +17,21 @@
             <div class="d-flex flex-column align-items-center justify-content-center mt-3">
 
                 <!-- user name  -->
-                <p class="user-name">{{personalDetails.firstname + " " + personalDetails.middleName + " " + personalDetails.lastName}}</p>
+                <p class="user-name">{{personalDetails.firstName + " " + personalDetails.middleName + " " + personalDetails.lastName}}</p>
 
                 <!-- user domain  -->
-                <p class="user-domain text-muted">{{ personalDetails.subDomainName }}</p>
+                <p class="user-sub-domain text-muted">{{ personalDetails.subDomainName }}</p>
 
                 <div class="line"></div>
 
-                <div class="mt-4 mb-5">
+                <div class="d-flex flex-column mt-4 mb-5">
 
                     <!-- user email : Start  -->
-                    <div class="d-flex align-items-center mb-3">
+                    <div class="d-flex align-items-center flex-grow-1 mb-3">
                         <div class="icon me-3">
                             <span class="icon-email-line"></span>
                         </div>
-                        <span>{{ personalDetails.email }}</span>
+                        <div class="user-email">{{ personalDetails.email }}</div>
                     </div>
 
                     <!-- user email : Ends -->

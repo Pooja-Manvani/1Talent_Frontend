@@ -19,7 +19,7 @@ export class ProfileContainerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getProfileData$ = this.profileService.getProfileDetails('sample');
+    this.getProfileData$ = this.profileService.getProfileDetails('Em@123');
   }
 
 }

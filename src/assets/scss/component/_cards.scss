@@ -1,51 +1,70 @@
 // Card styles goes here
-.card-password{
-    width: 480px;
-    padding: 2.75rem;
+.card-password {
+  width: 480px;
+  padding: 2.75rem;
 
-    .hero-logo{
-        width: 50%;
-    }
-    .link-resend{
-        font-size: 0.75rem;
-    }
+  .hero-logo {
+    width: 50%;
+  }
+  .link-resend {
+    font-size: 0.75rem;
+  }
 }
 
 .card {
-    .icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: lighten($primary, 41);
-      color: $primary;
-      height: 40px;
-      min-width: 40px;
-      border-radius: 50%;
-      span{
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lighten($primary, 41);
+    color: $primary;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    span {
+      font-size: 1.25rem;
+    }
+  }
+  &.card-profile {
+    .user {
+      margin-top: 3rem;
+      @include media-breakpoint-up(md) {
+        margin-top: 0;
+      }
+      @include media-breakpoint-up(xl) {
+        margin-top: 5rem;
+        margin-bottom: 4rem;
+      }
+      &-avatar {
+        vertical-align: middle;
+        width: $user-avatar-size;
+        height: $user-avatar-size;
+        border-radius: 50%;
+        border: 8px solid $user-avatar-border-bg;
+      }
+
+      &-name {
+        font-size: 1.75rem;
+      }
+
+      &-sub-domain {
         font-size: 1.25rem;
       }
-    }
-    &.card-profile {
-      .user {
-        font-size: 1.125rem;
-        margin-top: 6rem;
-        &-avatar {
-          vertical-align: middle;
-          width: $user-avatar-size;
-          height: $user-avatar-size;
-          border-radius: 50%;
-          border: 8px solid $user-avatar-border-bg;
+
+      &-email{
+        @include media-breakpoint-up(xl) {
+         width: 220px;
+         overflow-x: hidden;
+         white-space: nowrap;
+         text-overflow: ellipsis;
         }
-  
-        &-name {
-          font-size: 2rem;
-        }
-  
-        .line {
-          height: 3px;
-          background-color: $primary;
-          width: 45%;
-        }
+      }
+
+      .line {
+        height: 3px;
+        background-color: $primary;
+        width: 45%;
       }
     }
   }
+}
