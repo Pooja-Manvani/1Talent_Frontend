@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiLink: "http://172.16.3.18:3000"
+  baseUrl: "http://172.16.3.9:3000"
 };
 
 /*

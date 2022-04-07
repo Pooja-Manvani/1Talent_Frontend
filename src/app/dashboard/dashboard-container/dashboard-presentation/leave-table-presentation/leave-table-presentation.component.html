@@ -23,92 +23,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>12/12/12</td>
-                        <td>Full Day</td>
-                        <td>2 days</td>
-                        <td>20 FEB 2022</td>
-                        <td>Going on vataction with friends</td>
-                        <td>Rejected</td>
-                        <td><button type="button" class="btn btn-outline-primary">Revoke</button></td>
-                    </tr>
-                    <tr>
-                        <td>12/12/12</td>
-                        <td>Full Day</td>
-                        <td>2 days</td>
-                        <td>20 FEB 2022</td>
-                        <td>Going on vataction with friends</td>
-                        <td>Rejected</td>
-                        <td><button type="button" class="btn btn-outline-primary">Revoke</button></td>
-                    </tr>
-                    <tr>
-                        <td>12/12/12</td>
-                        <td>Full Day</td>
-                        <td>2 days</td>
-                        <td>20 FEB 2022</td>
-                        <td>Going on vataction with friends</td>
-                        <td>Rejected</td>
-                        <td><button type="button" class="btn btn-outline-primary">Revoke</button></td>
-                    </tr>
-                    <tr>
-                        <td>12/12/12</td>
-                        <td>Full Day</td>
-                        <td>2 days</td>
-                        <td>20 FEB 2022</td>
-                        <td>Going on vataction with friends</td>
-                        <td>Rejected</td>
-                        <td><button type="button" class="btn btn-outline-primary">Revoke</button></td>
-                    </tr>
-                    <tr>
-                        <td>12/12/12</td>
-                        <td>Full Day</td>
-                        <td>2 days</td>
-                        <td>20 FEB 2022</td>
-                        <td>Going on vataction with friends</td>
-                        <td>Rejected</td>
-                        <td><button type="button" class="btn btn-outline-primary">Revoke</button></td>
-                    </tr>
-                    <tr>
-                        <td>12/12/12</td>
-                        <td>Full Day</td>
-                        <td>2 days</td>
-                        <td>20 FEB 2022</td>
-                        <td>Going on vataction with friends</td>
-                        <td>Rejected</td>
-                        <td><button type="button" class="btn btn-outline-primary">Revoke</button></td>
-                    </tr>
-                    <tr>
-                        <td>12/12/12</td>
-                        <td>Full Day</td>
-                        <td>2 days</td>
-                        <td>20 FEB 2022</td>
-                        <td>Going on vataction with friends</td>
-                        <td>Rejected</td>
-                        <td><button type="button" class="btn btn-outline-primary">Revoke</button></td>
-                    </tr>
-                    <tr>
-                        <td>12/12/12</td>
-                        <td>Full Day</td>
-                        <td>2 days</td>
-                        <td>20 FEB 2022</td>
-                        <td>Going on vataction with friends</td>
-                        <td>Rejected</td>
-                        <td><button type="button" class="btn btn-outline-primary">Revoke</button></td>
-                    </tr>
-                    <tr>
-                        <td>12/12/12</td>
-                        <td>Full Day</td>
-                        <td>2 days</td>
-                        <td>20 FEB 2022</td>
-                        <td>Going on vataction with friends</td>
-                        <td>Rejected</td>
-                        <td><button type="button" class="btn btn-outline-primary">Revoke</button></td>
+                    <tr *ngFor="let application of leaveData">
+                        <td>{{ application.appliedDate }}</td>
+                        <td>{{ application.applicationTypeName }}</td>
+                        <td>{{ application.noOfDays }} days</td>
+                        <td>{{ application.leaveDates }}</td>
+                        <td class="text-truncate">{{ application.description }}</td>
+                        <td [class]="leaveStatus[application.applicationStatus - 1].toLowerCase() + '-color'">{{ leaveStatus[application.applicationStatus - 1] }}</td>
+                        <td><button type="button" [disabled]="isRevokeButtonDisabled" class="btn btn-outline-primary">{{ mapButton(leaveStatus[application.applicationStatus - 1]) }}</button></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
     </div>
-
 </div>
 <!-- End: Leave Table Presentation  -->
