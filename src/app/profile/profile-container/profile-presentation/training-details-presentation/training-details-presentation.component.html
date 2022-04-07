@@ -21,11 +21,11 @@
                         <div class="ms-56">
                             <div class="row">
                                 <div class="col-6"><span class="text-muted text-nowrap">From</span></div>
-                                <div class="col-6"><span class="text-nowrap">12/12/12</span></div>
+                                <div class="col-6"><span class="text-nowrap">{{ trainingDetails.trainingStart }}</span></div>
                             </div>
                             <div class="row">
                                 <div class="col-6"><span class="text-muted text-nowrap">To</span></div>
-                                <div class="col-6"><span class="text-nowrap">12/12/12</span></div>
+                                <div class="col-6"><span class="text-nowrap">{{ trainingDetails.trainingEnd }}</span></div>
                             </div>
                         </div>
 
@@ -39,7 +39,7 @@
                             </div>
                             <span class="text-muted">Domain</span>
                         </div>
-                        <p class="ms-56">POM</p>
+                        <p class="ms-56">{{ trainingDetails.domainName }}</p>
                     </div>
                     <!-- Domain details : Ends  -->
                     <!-- Sub-domain details Start  -->
@@ -50,7 +50,7 @@
                             </div>
                             <span class="text-muted">Sub-Domain</span>
                         </div>
-                        <p class="ms-56">.net</p>
+                        <p class="ms-56">{{ trainingDetails.subDomainName }}</p>
                     </div>
                     <!-- Sub-domain details Ends  -->
                 </div>
@@ -72,10 +72,11 @@
                         <ul class="list-unstyled mt-3">
                             <li class="mb-2">
                                 <span
-                                    class="d-block badge rounded-pill bg-primary text-primary text-center bg-opacity-10">Ankit
-                                    Patel</span>
+                                    class="d-block badge rounded-pill bg-primary text-primary text-center bg-opacity-10">
+                                    {{ trainingDetails.mentorName }}
+                                </span>
                             </li>
-                            <li class="mb-2">
+                            <!-- <li class="mb-2">
                                 <span
                                     class="d-block badge rounded-pill bg-primary text-primary text-center bg-opacity-10">Ankit
                                     Patel</span>
@@ -84,7 +85,7 @@
                                 <span
                                     class="d-block badge rounded-pill bg-primary text-primary text-center bg-opacity-10">Ankit
                                     Patel</span>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -109,7 +110,7 @@
                                 </div>
                             </div>
                             <div class="col-6 d-flex align-items-center">
-                               <span>sara@12345</span> 
+                               <span>{{ trainingDetails.userName }}</span> 
                             </div>
                         </div>
                         <!-- password  -->
@@ -123,7 +124,7 @@
                                 </div>
                             </div>
                             <div class="col d-flex align-items-center">
-                               <span>*******</span>
+                               <span>{{ trainingDetails.password }}</span>
                             </div>
                         </div>
                         <!-- Change Password  -->

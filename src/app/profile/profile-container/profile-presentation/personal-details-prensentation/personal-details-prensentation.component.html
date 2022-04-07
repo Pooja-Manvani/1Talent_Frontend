@@ -17,10 +17,10 @@
             <div class="d-flex flex-column align-items-center justify-content-center mt-3">
 
                 <!-- user name  -->
-                <p class="user-name">Sara Sam Paul</p>
+                <p class="user-name">{{personalDetails.firstname + " " + personalDetails.middleName + " " + personalDetails.lastName}}</p>
 
                 <!-- user domain  -->
-                <p class="user-domain text-muted">Business Analyst</p>
+                <p class="user-domain text-muted">{{ personalDetails.subDomainName }}</p>
 
                 <div class="line"></div>
 
@@ -31,7 +31,7 @@
                         <div class="icon me-3">
                             <span class="icon-email-line"></span>
                         </div>
-                        <span>sarapoul@1rivet.com</span>
+                        <span>{{ personalDetails.email }}</span>
                     </div>
 
                     <!-- user email : Ends -->
@@ -41,7 +41,7 @@
                         <div class="icon me-3">
                             <span class="icon-call"></span>
                         </div>
-                        <span>+91 8523655963</span>
+                        <span>{{ personalDetails.contactNumber }}</span>
                     </div>
                     <!-- user contact : Ends  -->
                     
