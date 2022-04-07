@@ -11,17 +11,6 @@
   }
 }
 
-ul {
-  .holiday {
-    padding: 10px 0;
-    border-bottom: 1px solid #e9e9e9;
-
-    &-date {
-      color: red;
-    }
-  }
-}
-
 .card {
   .icon {
     display: flex;
@@ -30,16 +19,22 @@ ul {
     background-color: lighten($primary, 41);
     color: $primary;
     height: 40px;
-    width: 40px;
+    min-width: 40px;
     border-radius: 50%;
     span {
       font-size: 1.25rem;
     }
   }
   &.card-profile {
-    font-size: 1.125rem;
     .user {
-      margin-top: 6rem;
+      margin-top: 3rem;
+      @include media-breakpoint-up(md) {
+        margin-top: 0;
+      }
+      @include media-breakpoint-up(xl) {
+        margin-top: 5rem;
+        margin-bottom: 4rem;
+      }
       &-avatar {
         vertical-align: middle;
         width: $user-avatar-size;
@@ -49,7 +44,20 @@ ul {
       }
 
       &-name {
-        font-size: 2rem;
+        font-size: 1.75rem;
+      }
+
+      &-sub-domain {
+        font-size: 1.25rem;
+      }
+
+      &-email{
+        @include media-breakpoint-up(xl) {
+         width: 220px;
+         overflow-x: hidden;
+         white-space: nowrap;
+         text-overflow: ellipsis;
+        }
       }
 
       .line {
