@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
 
-   apiLink: string = environment.apiLink;
+  apiLink: string = environment.baseUrl;
 
   constructor(private http: HttpClient) {
   }
@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   login(creds: {userName: string, password: string}) {
-    console.log(creds);
+ 
     return this.http.post<any>(`${this.apiLink}/api/Login/AuthenticateUser`, creds);
   }
 }

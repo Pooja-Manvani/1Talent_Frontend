@@ -23,7 +23,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
     })
     return next.handle(tokenReq).pipe(
       catchError((error: HttpErrorResponse) => {
-        console.log(error);
+     
         return throwError(error.error);
       })
     )

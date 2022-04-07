@@ -1,6 +1,7 @@
 @import "~/node_modules/bootstrap/scss/root";
-@import "~/node_modules/bootstrap/scss/reboot";
 @import "~/node_modules/bootstrap/scss/utilities";
+@import "~/node_modules/bootstrap/scss/utilities/api";
+@import "~/node_modules/bootstrap/scss/reboot";
 @import "~/node_modules/bootstrap/scss/type";
 @import "~/node_modules/bootstrap/scss/buttons";
 @import "~/node_modules/bootstrap/scss/card";
@@ -10,5 +11,3 @@
 @import "~/node_modules/bootstrap/scss/nav";
 @import "~/node_modules/bootstrap/scss/tables";
 @import "~/node_modules/bootstrap/scss/badge";
-
-

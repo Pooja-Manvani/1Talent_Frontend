@@ -1,0 +1,40 @@
+<!-- Start: Leave Table Presentation  -->
+<div class="w-100 overflow-hidden">
+
+    <!-- Table Heading  -->
+    <div class="table-head d-flex justify-content-between py-4">
+        <h3 class="fs-5"> My Leaves </h3>
+        <button class="btn btn-primary py-3"> APPLY LEAVE </button>
+    </div>
+
+    <div class="overflow-hidden">
+        <div class="overflow-auto">
+            <!-- Leave Table  -->
+            <table class="table table-leave over">
+                <thead>
+                    <tr>
+                        <th scope="col">Application Date</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">No. of Day</th>
+                        <th scope="col">Leaves Date</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Revoke</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let application of leaveData">
+                        <td>{{ application.appliedDate }}</td>
+                        <td>{{ application.applicationTypeName }}</td>
+                        <td>{{ application.noOfDays }} days</td>
+                        <td>{{ application.leaveDates }}</td>
+                        <td class="text-truncate">{{ application.description }}</td>
+                        <td [class]="leaveStatus[application.applicationStatus - 1].toLowerCase() + '-color'">{{ leaveStatus[application.applicationStatus - 1] }}</td>
+                        <td><button type="button" [disabled]="isRevokeButtonDisabled" class="btn btn-outline-primary">{{ mapButton(leaveStatus[application.applicationStatus - 1]) }}</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- End: Leave Table Presentation  -->
