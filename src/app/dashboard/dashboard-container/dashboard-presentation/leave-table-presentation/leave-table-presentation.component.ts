@@ -5,9 +5,8 @@ import { leaveStatus } from 'src/app/shared/leave-status';
 @Component({
   selector: 'app-leave-table-presentation',
   templateUrl: './leave-table-presentation.component.html',
-  styleUrls: ['./leave-table-presentation.component.scss']
 })
-export class LeaveTablePresentationComponent implements OnInit {
+export class LeaveTablePresentationComponent {
   public leaveStatus = leaveStatus;
   public isRevokeButtonDisabled = false;
   private _leaveData!: LeaveDetails[];
@@ -16,11 +15,6 @@ export class LeaveTablePresentationComponent implements OnInit {
   }
   @Input() public set leaveData(v: LeaveDetails[]) {
     this._leaveData = v;
-  }
-
-  constructor() { }
-
-  ngOnInit(): void {
   }
 
   mapButton(status: string) {

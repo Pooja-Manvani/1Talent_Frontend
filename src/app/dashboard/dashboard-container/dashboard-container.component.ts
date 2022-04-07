@@ -5,8 +5,7 @@ import { DashboardService } from '../services/dashboard.service';
 
 @Component({
   selector: 'app-dashboard-container',
-  templateUrl: './dashboard-container.component.html',
-  styleUrls: ['./dashboard-container.component.scss']
+  templateUrl: './dashboard-container.component.html'
 })
 export class DashboardContainerComponent implements OnInit {
   internDashboard$: Observable<LeaveDetails[]>;

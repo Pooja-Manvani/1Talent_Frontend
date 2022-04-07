@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -8,9 +8,8 @@ import { PasswordField } from '../../models/password-field.model';
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
-  styleUrls: ['./change-password.component.scss']
 })
-export class ChangePasswordComponent implements OnInit {
+export class ChangePasswordComponent {
   changePassword: FormGroup;
   eyes: PasswordField[]; // For running a loop instead of repeating same thing 3 times.
 
@@ -35,9 +34,6 @@ export class ChangePasswordComponent implements OnInit {
       newPassword: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
     });
-  }
-
-  ngOnInit(): void {
   }
 
   // To control password show/hide.

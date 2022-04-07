@@ -1,28 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
 import { LeaveDetails } from '../../models/dashboard.models';
 
 @Component({
   selector: 'app-dashboard-presentation',
   templateUrl: './dashboard-presentation.component.html',
-  styleUrls: ['./dashboard-presentation.component.scss']
 })
-export class DashboardPresentationComponent implements OnInit {
+export class DashboardPresentationComponent {
 
   private _internDashboard!: LeaveDetails[];
   public get internDashboard(): LeaveDetails[] {
     return this._internDashboard;
   }
-  @Input() public set internDashboard(v: LeaveDetails[] | null) {
-   
-    if (v) {
-      this._internDashboard = v;
+  @Input() public set internDashboard(value: LeaveDetails[] | null) {
+    if (value) {
+      this._internDashboard = value;
     }
   }
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
-
 }
