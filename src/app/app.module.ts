@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { AuthenticationInterceptor } from './core/helper/authentication.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AuthenticationInterceptor } from './core/helper/authentication.intercep
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule
+    CoreModule,
+    BrowserAnimationsModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthenticationInterceptor,multi:true}],
   bootstrap: [AppComponent]

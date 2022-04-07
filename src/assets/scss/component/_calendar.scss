@@ -1,0 +1,34 @@
+.mat-button {
+    color: $primary;
+}
+
+.mat-icon-button {
+    color: $gray;
+}
+
+.mat-calendar-body-selected {
+    background-color: $selected-date;
+}
+
+.mat-calendar-period-button {
+    font-size: 1.125rem;
+}
+
+.mat-calendar-table-header {
+    tr {
+        color: $primary;
+    }
+
+    th {
+        font-size: small;
+        font-weight: 600;
+    }
+}
+
+.card {
+    .mat-card {
+        box-shadow: none !important;
+        border: 1px solid $light;
+        @include border-radius($calendar-border-radius);
+    }
+}

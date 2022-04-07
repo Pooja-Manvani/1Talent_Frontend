@@ -28,6 +28,7 @@ const routes: Routes = [
   {
     path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
   },
+  { path: 'apply-leave', loadChildren: () => import('./apply-leave/apply-leave.module').then(m => m.ApplyLeaveModule) },
 ];
 
 @NgModule({

@@ -8,7 +8,7 @@ import { Profile } from './models/profile.model';
 export class ProfileService {
 
   // API base Link
-  apiLink: string = environment.apiLink;
+  apiLink: string = environment.baseUrl;
 
   constructor(private http:HttpClient) { }
 
