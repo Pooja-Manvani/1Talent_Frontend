@@ -1,16 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-/////////////////////////////////////////////////////////////////////////
+// --------------------------------------------------------------------
 import { PasswordField } from '../../models/password-field.model';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   eye: PasswordField;
   loginForm: FormGroup;
 
@@ -29,8 +28,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void { }
-
   // To control password show/hide.
   public toggleEye(): void {
     if (this.eye.className == "close")
@@ -45,10 +42,7 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.value.password
     }
     this.authService.login(creds).subscribe((res) => {
- 
       this.authService.setToken(res.token);
-    }, (error) => {
-      console.error("Error: ", error);
-    } );
+    });
   }
 }
