@@ -48,4 +48,13 @@ export class AuthService {
   public checkAuthentication() {
     return this.http.get<boolean>(`${this.apiLink}/api/Login/GetResult`);
   }
+
+  /**
+   * @description sends HTTP request for resetting password
+   * @param email 
+   * @returns Observable<string>
+   */
+  public resetPassword(email: {email : string}): Observable<string> {
+    return this.http.post<string>(`${this.apiLink}/api/ForgotPassword/ForgotPassword`, email);
+  }
 }
