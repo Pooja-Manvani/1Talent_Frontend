@@ -9,12 +9,10 @@
 }
 
 .login-form {
-    // padding: 0 100px 0 50px;
     @include media-breakpoint-up(md) {
    
     }
     @include media-breakpoint-down(md) {
-        // padding: 0 100px;
         width: 100%;
         transform: translateY(-50px);
         background: white;
@@ -33,14 +31,17 @@
 }
 
 .greeting {
-    background: url("../../images/login-page-image.png");
-    background-size: cover;
-    background-position: center;
+    // background: url("../../images/login-page-image.png");
+    // background-size: cover;
+    // background-position: center;
     @include media-breakpoint-down(md) {
         width: 100%;
     }
     &__text {
         letter-spacing: 0.25rem;
+    }
+    &__image {
+        @include position(absolute, 0, 0, 0, 0);
     }
     .brand-logo {
         width: 50px;
@@ -56,9 +57,7 @@
         position: relative;
         &::after {
             content: "";
-            position: absolute;
-            right: 0;
-            bottom:-1rem;
+            @include position(absolute, auto, 0, -1rem);
             height: 1.5px;
             width: 34%;
             background-color: $brand-line-color;
