@@ -22,7 +22,10 @@ export class AuthService {
   }
 
   login(creds: {userName: string, password: string}) {
- 
     return this.http.post<any>(`${this.apiLink}/api/Login/AuthenticateUser`, creds);
+  }
+
+  forgotPassword(forgotPasswordCredentials: {email : string}) {
+    return this.http.post<any>(`${this.apiLink}/api/ForgotPassword/ForgotPassword`, forgotPasswordCredentials);
   }
 }
