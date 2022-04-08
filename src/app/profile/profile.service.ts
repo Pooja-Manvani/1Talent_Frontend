@@ -25,7 +25,7 @@ export class ProfileService {
    * @returns User Profile
    */
   public getProfileDetails(userName: string, userRole: string): Observable<Profile> {
-    return this.http.get<Profile>(`${this.apiLink}/api/${userRole}'Profile'/${userName}`).pipe(
+    return this.http.get<Profile>(`${this.apiLink}/api/${userRole}Profile/${userName}`).pipe(
       map((profile) => {
         return this._profileAdapter.adapt(profile)
       })

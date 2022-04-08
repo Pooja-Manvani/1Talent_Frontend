@@ -20,7 +20,7 @@ export class ProfileContainerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userRole = localStorage.getItem("userName") ?? '';
+    this.userRole = localStorage.getItem("userRole") ?? '';
     this.getProfileData$ = this.profileService.getProfileDetails('Em@123', this.userRole);
   }
 }

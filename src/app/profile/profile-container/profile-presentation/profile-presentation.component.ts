@@ -7,13 +7,13 @@ import { Profile } from '../../models/profile.model';
 })
 export class ProfilePresentationComponent implements OnInit {
 
-   /** setter for user data */
-  @Input() public set profileDetails(profileData: Profile | null){
-    if(profileData){
-      this._profileData = profileData
+  /** setter for user data */
+  @Input() public set profileDetails(value: Profile | null) {
+    if (value) {
+      this._profileData = value;
     }
   }
-  public get profileDetails() : Profile {
+  public get profileDetails(): Profile {
     return this._profileData;
   }
 
@@ -24,5 +24,5 @@ export class ProfilePresentationComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
 }

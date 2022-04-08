@@ -13,9 +13,9 @@ import { Profile } from 'src/app/profile/models/profile.model';
 export class TrainingDetailsPresentationComponent {
 
   /** setter for user training details */
-  @Input() public set trainingDetails(trainingData: Profile | null) {
-    if (trainingData) {
-      this._trainingDetails = trainingData;
+  @Input() public set trainingDetails(value: Profile | null) {
+    if (value) {
+      this._trainingDetails = value;
     }
   }
   public get trainingDetails(): Profile {
