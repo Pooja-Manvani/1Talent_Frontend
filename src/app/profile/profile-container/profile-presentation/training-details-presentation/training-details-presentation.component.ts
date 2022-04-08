@@ -5,7 +5,6 @@ import { TrainingDetailsPresenterService } from '../training-details-presenter/t
 @Component({
   selector: 'app-training-details-presentation',
   templateUrl: './training-details-presentation.component.html',
-  styleUrls: ['./training-details-presentation.component.scss'],
   viewProviders : [TrainingDetailsPresenterService],
   changeDetection : ChangeDetectionStrategy.OnPush
 })

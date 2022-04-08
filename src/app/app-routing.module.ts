@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+// -------------------------------------------------------------------------------------------------------- //
 import { ChangePasswordComponent } from './core/components/change-password/change-password.component';
 import { ForgotPasswordComponent } from './core/components/forgot-password/forgot-password.component';
 import { LoginComponent } from './core/components/login/login.component';
