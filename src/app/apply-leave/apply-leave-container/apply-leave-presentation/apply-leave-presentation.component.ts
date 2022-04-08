@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DateRange } from '@angular/material/datepicker';
 import { ApplyLeavePresenterService } from '../apply-leave-presenter/apply-leave-presenter.service';
 
@@ -7,7 +7,7 @@ import { ApplyLeavePresenterService } from '../apply-leave-presenter/apply-leave
   selector: 'app-apply-leave-presentation',
   templateUrl: './apply-leave-presentation.component.html',
 })
-export class ApplyLeavePresentationComponent implements OnInit {
+export class ApplyLeavePresentationComponent {
   selectedDateRange!: DateRange<Date>;
   currentDate: Date;
   noOfDays: number;
@@ -17,13 +17,22 @@ export class ApplyLeavePresentationComponent implements OnInit {
     this.noOfDays = 0;
   }
 
-  ngOnInit(): void {
+  onDateRangeChange(date: Date | null) {
+    if(date)
+    {
+      this.selectedDateRange = this._applyLeavePresenter.onSelectedChange(date, this.selectedDateRange);
+      console.log(this.selectedDateRange);
+      let end = this.selectedDateRange.end?.getDate() ?? 0;
+      let start = this.selectedDateRange.start?.getDate() ?? 0;
+      this.noOfDays = this._applyLeavePresenter.leaveCount(start, end);
+      console.log(this.noOfDays);
+   }
   }
 
-  onDateRangeChange(date: Date) {
-    this.selectedDateRange = this._applyLeavePresenter.onSelectedChange(date, this.selectedDateRange);
-    let end = this.selectedDateRange.end?.getTime() ?? 0;
-    let start = this.selectedDateRange.start?.getTime() ?? 0;
-    this.noOfDays = this._applyLeavePresenter.leaveCount(start, end);
+  weekendFilter = (date: Date): boolean => {
+    const day = date.getDay();
+    // Prevent Saturday and Sunday from being selected.
+    return day !== 0 && day !== 6;
   }
 }
+

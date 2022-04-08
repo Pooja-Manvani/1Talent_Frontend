@@ -26,6 +26,6 @@ export class ApplyLeavePresenterService {
   }
 
   public leaveCount(start: number, end: number): number {
-    return end ? ((end - start) / (1000 * 60 * 60 * 24)) + 1 : (start ? 1 : 0);
+    return end ? ((end - start) + 1) : (start ? 1 : 0);
   }
 }

@@ -1,3 +1,6 @@
+.leave-calendar{
+    width: 100%;
+}
 .mat-button {
     color: $primary;
 }
@@ -20,7 +23,7 @@
     }
 
     th {
-        font-size: small;
+        font-size: 14px;
         font-weight: 600;
     }
 }
@@ -30,5 +33,19 @@
         box-shadow: none !important;
         border: 1px solid $light;
         @include border-radius($calendar-border-radius);
+    }
+}
+
+//leave tab view
+.tab-name{
+    position: relative;
+    &::before{
+        content: '';
+        position: absolute;
+        bottom: -1rem;
+        height: 8px;
+        border-radius:1rem;
+        width: 100%;
+        background-color: rgba($primary,0.1);
     }
 }

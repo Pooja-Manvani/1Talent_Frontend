@@ -12,10 +12,13 @@
                             <div>(click and drag to select Leave Dates from Calendar)</div>
                         </div>
                         <!-- Start: Calendar-->
-                        <mat-card>
-                            <mat-calendar (selectedChange)="onDateRangeChange($event)" [minDate]="currentDate" [selected]="selectedDateRange">
-                            </mat-calendar>
-                        </mat-card>
+                        <div class="d-flex justify-content-center">
+                            <mat-card class="leave-calendar">
+                                <mat-calendar (selectedChange)="onDateRangeChange($event)" [minDate]="currentDate" [selected]="selectedDateRange" [dateFilter]="weekendFilter">
+                                </mat-calendar>
+                            </mat-card>
+                        </div>
+                        
                         <!--End: Calendar-->
                     </div>
                 </div>
