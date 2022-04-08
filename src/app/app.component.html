@@ -1,6 +1,6 @@
-<!-- <div class="d-flex h-100 overflow-hidden">
-    <app-sidebar></app-sidebar>
-    <main class="content-wrapper flex-grow-1 overflow-vertical"> -->
+<div class="d-flex h-100 overflow-hidden">
+    <app-sidebar *ngIf="isAuthenticated"></app-sidebar>
+    <main class="flex-grow-1 overflow-vertical">
         <router-outlet></router-outlet>
-    <!-- </main>
-</div> -->
+    </main>
+</div>

@@ -1,8 +1,18 @@
-export class PasswordField {
-    id: string;
-    className: string;
+/**
+ * @author Hrishikesh Patel
+ */
 
-    constructor(id: string, className: string) {
+/**
+ * @description Used for password fields.
+ */
+export class PasswordField {
+    public id: string;
+    public className: string;
+
+    constructor(
+        id: string,
+        className: string
+    ) {
         this.id = id;
         this.className = className;
     }

@@ -13,7 +13,7 @@
             </div>
             <!-- End: Brand Logo Image -->
             <!-- Start: Login form -->
-            <form [formGroup]="this.loginForm" class="w-100 pe-4" (ngSubmit)="onSubmit()">
+            <form [formGroup]="loginForm" class="w-100 pe-4" (ngSubmit)="onSubmit()">
                 <div class="d-flex w-100">
                     <label for="username" class="d-flex">
                         <span class="icon-username input-icon input-group-text border-0 mt-4 pe-3"></span>
@@ -26,22 +26,24 @@
                         </label>
                     </div>
                 </div>
+                <!-- Password Field -->
                 <div class="d-flex w-100">
                     <label for="password" class="d-flex"><span
                             class="icon-password input-icon input-group-text border-0 mt-4 pe-3"></span>
                     </label>
                     <div class="form-floating flex-grow-1 d-flex my-3">
-                        <input type="{{ this.eye.className == 'close' ? 'password' : 'text' }}" [id]="this.eye.id"
-                            [formControlName]="this.eye.id" [placeholder]="this.eye.id"
+                        <input type="{{ passwordField.className == 'close' ? 'password' : 'text' }}" [id]="passwordField.id"
+                            [formControlName]="passwordField.id" [placeholder]="passwordField.id"
                             class="form-control border-0 border-bottom">
-                        <label class="text-muted opacity-100" [for]="this.eye.id">
-                            {{ this.eye.id.toUpperCase() }}
+                        <label class="text-muted opacity-100" [for]="passwordField.id">
+                            {{ passwordField.id.toUpperCase() }}
                         </label>
                     </div>
-                    <span #eyeIcon id="eyeIcon" *ngIf="this.loginForm.controls['password'].valid"
-                        class="icon my-3 ps-1 pt-4 fs-4 border-bottom" ngClass="{{'icon-eye-' + eye.className}}"
-                        (click)="toggleEye()"></span>
+                    <span #eyeIcon id="eyeIcon" *ngIf="loginForm.controls['password'].valid"
+                        class="icon my-3 ps-1 pt-4 fs-4 border-bottom" ngClass="{{'icon-eye-' + passwordField.className}}"
+                        (click)="togglePasswordVisibility()"></span>
                 </div>
+                <!-- Forgot Password link -->
                 <div class="pb-5 pt-2">
                     <a class="link-primary text-decoration-none d-flex justify-content-end"
                         routerLink="/forgot-password">Forget Password?</a>
