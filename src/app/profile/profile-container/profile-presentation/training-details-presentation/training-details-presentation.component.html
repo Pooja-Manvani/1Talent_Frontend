@@ -5,11 +5,11 @@
             <h5>Internship Training Details</h5>
         </div>
 
-        <!-- training details card : Start  -->
-        <div class="card border border-light mt-4">
+        <!-- Start: training details card  -->
+        <div class="card training-detials-card border border-light mt-4">
             <div class="card-body">
                 <div class="row g-3">
-                    <!-- Training Duration : Start  -->
+                    <!-- Start: Training Duration -->
                     <div class="col-12 col-sm-12 col-xl-4">
                         <div class="d-flex align-items-center">
                             <div class="icon me-3">
@@ -18,7 +18,8 @@
                             <span class="text-muted text-nowrap">Training Duration</span>
                         </div>
 
-                        <div class="ms-56">
+                        <!-- Training Duration From - To -->
+                        <div class="training-duration">
                             <div class="row">
                                 <div class="col-6"><span class="text-muted text-nowrap">From</span></div>
                                 <div class="col-6"><span class="text-nowrap">{{ trainingDetails.trainingStart }}</span></div>
@@ -30,8 +31,9 @@
                         </div>
 
                     </div>
-                    <!-- Training Duration : Ends  -->
-                    <!-- Domain details : start  -->
+                    <!-- End: Training Duration  -->
+
+                    <!-- Start: Domain details  -->
                     <div class="col-12 col-sm-6 col-xl-4">
                         <div class="d-flex align-items-center">
                             <div class="icon me-3">
@@ -39,10 +41,11 @@
                             </div>
                             <span class="text-muted">Domain</span>
                         </div>
-                        <p class="ms-56">{{ trainingDetails.domainName }}</p>
+                        <p class="training-domain">{{ trainingDetails.domainName }}</p>
                     </div>
-                    <!-- Domain details : Ends  -->
-                    <!-- Sub-domain details Start  -->
+                    <!-- End: Domain details  -->
+
+                    <!-- Start: Sub-domain details  -->
                     <div class="col-12 col-sm-6 col-xl-4">
                         <div class="d-flex align-items-center">
                             <div class="icon me-3">
@@ -50,9 +53,9 @@
                             </div>
                             <span class="text-muted">Sub-Domain</span>
                         </div>
-                        <p class="ms-56">{{ trainingDetails.subDomainName }}</p>
+                        <p class="training-subdomain">{{ trainingDetails.subDomainName }}</p>
                     </div>
-                    <!-- Sub-domain details Ends  -->
+                    <!-- End: Sub-domain details  -->
                 </div>
             </div>
         </div>
@@ -130,7 +133,7 @@
                         </div>
                         <!-- Change Password  -->
                         <div class="d-flex align-items-center justify-content-end mt-3">
-                            <button type="button" class="btn btn-outline-primary">Change Password</button>
+                            <button type="button" class="btn btn-outline-primary" routerLink="../change-password">Change Password</button>
                         </div>
                     </div>
                 </div>

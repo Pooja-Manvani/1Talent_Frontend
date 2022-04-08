@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+// ------------------------------------------------------------------------
+import { Observable } from 'rxjs/internal/Observable';
 import { Profile } from '../models/profile.model';
 import { ProfileService } from '../profile.service';
 
@@ -11,14 +12,15 @@ import { ProfileService } from '../profile.service';
 export class ProfileContainerComponent implements OnInit {
 
   // Observable for profile details
-  public getProfileData$:Observable<Profile>;
-  
-  constructor(private profileService:ProfileService) { 
+  userRole!: string | null;
+  public getProfileData$: Observable<Profile>;
+
+  constructor(private profileService: ProfileService) {
     this.getProfileData$ = new Observable<Profile>();
   }
 
   ngOnInit(): void {
-    this.getProfileData$ = this.profileService.getProfileDetails('Em@123');
+    this.userRole = localStorage.getItem("userName") ?? '';
+    this.getProfileData$ = this.profileService.getProfileDetails('Em@123', this.userRole);
   }
-
 }

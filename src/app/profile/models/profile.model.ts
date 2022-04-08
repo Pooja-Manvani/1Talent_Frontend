@@ -1,20 +1,32 @@
-interface Adapter<T> {
-  adapt(item: any): T;
+/**
+ * @author Aayushi Parmar
+ */
+
+import { Injectable } from "@angular/core";
+import { Adapter } from "src/app/shared/models/adapter.interface";
+
+class Interns {
+  public internName: string;
+
+  constructor(internsName: string) {
+    this.internName = internsName;
+  }
 }
 
 export class Profile {
-  firstName: string;
-  middleName: string;
-  lastName: string;
-  email: string;
-  contactNumber: string;
-  trainingStart: string;
-  trainingEnd: string;
-  userName: string;
-  password: string;
-  mentorName: string;
-  domainName: string;
-  subDomainName: string;
+  public firstName: string;
+  public middleName: string;
+  public lastName: string;
+  public email: string;
+  public contactNumber: string;
+  public trainingStart: string;
+  public trainingEnd: string;
+  public userName: string;
+  public password: string;
+  public mentorName?: string;
+  public internsNames?: Interns[];
+  public domainName: string;
+  public subDomainName: string;
 
   constructor(
     firstName: string,
@@ -25,10 +37,11 @@ export class Profile {
     trainingStart: string,
     trainingEnd: string,
     userName: string,
-    password: string,
-    mentorName: string,
     domainName: string,
-    subDomainName: string
+    subDomainName: string,
+    password: string,
+    internsNames?: Interns[],
+    mentorName?: string,
   ) {
     this.firstName = firstName;
     this.middleName = middleName;
@@ -39,16 +52,18 @@ export class Profile {
     this.trainingEnd = trainingEnd;
     this.userName = userName;
     this.password = password;
-    this.mentorName = mentorName;
     this.domainName = domainName;
     this.subDomainName = subDomainName;
+    this.mentorName = mentorName;
+    this.internsNames = internsNames;
+  }
+
+  public get fullName(): string {
+    return `${this.firstName} ${this.middleName} ${this.lastName}`;
   }
 }
 
-// @Injectable({
-//     providedIn:"root",
-// })
-
+@Injectable()
 export class ProfileAdapter implements Adapter<Profile> {
   adapt(item: any): Profile {
     return new Profile(
@@ -56,11 +71,12 @@ export class ProfileAdapter implements Adapter<Profile> {
       item.middleName,
       item.lastName,
       item.email,
-      item.constructor,
+      item.contactNumber,
       item.trainingStart,
       item.trainingEnd,
       item.userName,
-      item.password,
+      item.Password,
+      item.internNames,
       item.mentorName,
       item.domainName,
       item.subDomainName

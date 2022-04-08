@@ -51,12 +51,12 @@
         font-size: 1.25rem;
       }
 
-      &-email{
+      &-email {
         @include media-breakpoint-up(xl) {
-         width: 220px;
-         overflow-x: hidden;
-         white-space: nowrap;
-         text-overflow: ellipsis;
+          width: 220px;
+          overflow-x: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
       }
 
@@ -65,6 +65,14 @@
         background-color: $primary;
         width: 45%;
       }
+    }
+  }
+
+  .training-detials-card {
+    .training-duration,
+    .training-domain,
+    .training-subdomain {
+      margin-left: 56px;
     }
   }
 }

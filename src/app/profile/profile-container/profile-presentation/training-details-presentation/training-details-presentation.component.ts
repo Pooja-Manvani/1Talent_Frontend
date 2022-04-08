@@ -1,31 +1,28 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+/**
+ * @author Aman Patel
+ */
+import { ChangeDetectionStrategy, Component, Input} from '@angular/core';
+// -------------------------------------------------------------
 import { Profile } from 'src/app/profile/models/profile.model';
-import { TrainingDetailsPresenterService } from '../training-details-presenter/training-details-presenter.service';
 
 @Component({
   selector: 'app-training-details-presentation',
   templateUrl: './training-details-presentation.component.html',
-  viewProviders : [TrainingDetailsPresenterService],
-  changeDetection : ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TrainingDetailsPresentationComponent implements OnInit {
+export class TrainingDetailsPresentationComponent {
 
   /** setter for user training details */
-  @Input() public set trainingDetails(trainingData : Profile | null){
-    if(trainingData){
+  @Input() public set trainingDetails(trainingData: Profile | null) {
+    if (trainingData) {
       this._trainingDetails = trainingData;
     }
   }
-  public get trainingDetails() : Profile {
+  public get trainingDetails(): Profile {
     return this._trainingDetails;
   }
 
   /** user profile details */
-  private _trainingDetails! : Profile;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  private _trainingDetails!: Profile;
 
 }

@@ -42,6 +42,7 @@ export class LoginComponent {
       password: this.loginForm.value.password
     }
     this.authService.login(creds).subscribe((res) => {
+      console.log(res);
       this.authService.setToken(res.token);
     });
   }
