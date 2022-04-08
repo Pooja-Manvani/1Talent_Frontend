@@ -1,6 +1,13 @@
+/**
+ * @author Hrishikesh Patel
+ */
+
+/**
+ * @description Used for password fields.
+ */
 export class PasswordField {
-    id: string;
-    className: string;
+    public id: string;
+    public className: string;
 
     constructor(
         id: string,
