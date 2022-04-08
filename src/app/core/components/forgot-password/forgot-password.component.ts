@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -7,26 +7,31 @@ import { AuthService } from '../../services/auth.service';
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
 })
-export class ForgotPasswordComponent implements OnInit {
-  forgotPassword: FormGroup;
+export class ForgotPasswordComponent {
+  public forgotPassword: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private authService : AuthService) {
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
     this.forgotPassword = this.fb.group({
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
     });
   }
 
-  ngOnInit(): void { }
+  /**
+   * @description Gets form controls
+   */
+  public get getvalue() {
+    return this.forgotPassword.controls;
+  }
 
-  onSubmit() {
-    let forgotPasswordCredentials = {
-      email: this.forgotPassword.value.userName,
-    }
+  /**
+   * @name onSubmit
+   * @description If form is valid, submits email and redirects to log-in page
+   */
+  public onSubmit() {
     if (this.forgotPassword.valid) {
-      this.authService.forgotPassword(forgotPasswordCredentials).subscribe((res)=>
-      {
-        
-      })
+      this.authService.resetPassword(this.forgotPassword.value).subscribe((res) => {
+        this.router.navigateByUrl("/login");
+      });
     }
   }
 }

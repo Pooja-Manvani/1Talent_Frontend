@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 
@@ -25,7 +26,12 @@ export class AuthService {
     return this.http.post<any>(`${this.apiLink}/api/Login/AuthenticateUser`, creds);
   }
 
-  forgotPassword(forgotPasswordCredentials: {email : string}) {
-    return this.http.post<any>(`${this.apiLink}/api/ForgotPassword/ForgotPassword`, forgotPasswordCredentials);
+  /**
+   * @description sends HTTP request for resetting password
+   * @param email 
+   * @returns Observable<string>
+   */
+  public resetPassword(email: {email : string}): Observable<string> {
+    return this.http.post<string>(`${this.apiLink}/api/ForgotPassword/ForgotPassword`, email);
   }
 }
