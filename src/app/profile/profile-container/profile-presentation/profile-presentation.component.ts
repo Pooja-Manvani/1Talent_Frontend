@@ -4,7 +4,6 @@ import { Profile } from '../../models/profile.model';
 @Component({
   selector: 'app-profile-presentation',
   templateUrl: './profile-presentation.component.html',
-  styleUrls: ['./profile-presentation.component.scss']
 })
 export class ProfilePresentationComponent implements OnInit {
 

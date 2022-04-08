@@ -5,7 +5,6 @@ import { PersonalDetailsPresenterService } from '../personal-details-presenter/p
 @Component({
   selector: 'app-personal-details-prensentation',
   templateUrl: './personal-details-prensentation.component.html',
-  styleUrls: ['./personal-details-prensentation.component.scss'],
   viewProviders : [PersonalDetailsPresenterService],
   changeDetection : ChangeDetectionStrategy.OnPush
 })

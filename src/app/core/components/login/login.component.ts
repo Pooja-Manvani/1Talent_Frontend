@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-/////////////////////////////////////////////////////////////////////////
+// --------------------------------------------------------------------
 import { PasswordField } from '../../models/password-field.model';
 import { AuthService } from '../../services/auth.service';
 
@@ -42,10 +42,7 @@ export class LoginComponent {
       password: this.loginForm.value.password
     }
     this.authService.login(creds).subscribe((res) => {
- 
       this.authService.setToken(res.token);
-    }, (error) => {
-      console.error("Error: ", error);
-    } );
+    });
   }
 }
