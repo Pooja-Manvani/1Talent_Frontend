@@ -1,23 +1,23 @@
 <div class="card card-profile shadow-sm h-100">
-    <div class="card-body">
-        <!-- card title :Start -->
-        <div class="app-sub-title">
+    <div class="card-body" *ngIf="personalDetails">
+        <!-- Start: card title -->
+        <div>
             <h5>Personal Details</h5>
         </div>
-        <!-- card title : Ends -->
+        <!-- End: card title -->
 
-        <!-- user details : Start  -->
+        <!-- Start: user details  -->
         <div class="user d-flex flex-column flex-xl-column flex-sm-row  align-items-center justify-content-center justify-content-sm-between justify-content-md-around">
-            <!-- user Avatar : Start  -->
+            <!-- Start: user Avatar -->
             <figure>
                 <img src="../../assets/images/img_avatar.png" alt="Avatar" class="user-avatar">
             </figure>
-            <!-- user Avatar : Ends  -->
+            <!-- End: user Avatar  -->
 
             <div class="d-flex flex-column align-items-center justify-content-center mt-3">
 
                 <!-- user name  -->
-                <p class="user-name">{{personalDetails.firstName + " " + personalDetails.middleName + " " + personalDetails.lastName}}</p>
+                 <p class="user-name text-nowrap">{{personalDetails.fullName}}</p>
 
                 <!-- user domain  -->
                 <p class="user-sub-domain text-muted">{{ personalDetails.subDomainName }}</p>
@@ -26,28 +26,29 @@
 
                 <div class="d-flex flex-column mt-4 mb-5">
 
-                    <!-- user email : Start  -->
+                    <!-- Start: user email  -->
                     <div class="d-flex align-items-center flex-grow-1 mb-3">
+                        <!-- Email Icon -->
                         <div class="icon me-3">
                             <span class="icon-email-line"></span>
                         </div>
                         <div class="user-email">{{ personalDetails.email }}</div>
                     </div>
+                    <!-- End: user email  -->
 
-                    <!-- user email : Ends -->
-
-                    <!-- user contact : Start  -->
+                    <!-- Start: user contact  -->
                     <div class="d-flex align-items-center">
+                        <!-- Call Icon -->
                         <div class="icon me-3">
                             <span class="icon-call"></span>
                         </div>
                         <span>{{ personalDetails.contactNumber }}</span>
                     </div>
-                    <!-- user contact : Ends  -->
+                    <!-- End: user contact -->
                     
                 </div>
             </div>
         </div>
-        <!-- user details : Ends -->
+        <!-- End: user details -->
     </div>
 </div>
