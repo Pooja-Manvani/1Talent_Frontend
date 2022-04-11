@@ -9,8 +9,20 @@ input::-ms-clear {
   box-shadow: none;
 }
 
-// predefined height and padding for validation text
-.validation-text {
-  height: 25px;
-  padding-left: 2.5rem;
+#eyeIcon {
+  position: absolute;
+  right: 0;
+}
+
+.form-floating {
+  position: relative;
+
+  > label {
+    top: 14px;
+  }
+
+  .password-validate {
+    position: absolute;
+    top: 100%;
+  }
 }
