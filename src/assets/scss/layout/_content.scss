@@ -1,5 +1,101 @@
 //content styles
+// Page Tilte
+.page-title {
+    color: $primary;
+    font-size: 30px;
+    display: inline-block;
+    position: relative;
+    &:after {
+        background-color: $primary;
+        content: "";
+        display: block;
+        @include position($right: -25px, $bottom: -10px);
+        height: 4px;
+        width: 95%;
+        border-radius: 2px;
+    }
+}
+
+// Page Sub Title
+.page-sub-title {
+    display: inline-block;
+    position: relative;
+    &:after {
+        background-color: $primary;
+        content: "";
+        display: block;
+        @include position($right: -22px, $bottom: -8px);
+        height: 2px;
+        width: 90%;
+        border-radius: 4px;
+    }
+}
+
+//Brand logo Image
+.wrapper {
+    background-color: $white;
+    height: 768px;
+    width: 1200px;
+    @include media-breakpoint-down(md) {
+        height: 100%;
+    }
+}
+
+.login-form {
+    @include media-breakpoint-down(md) {
+        width: 100%;
+        transform: translateY(-50px);
+        background: white;
+        border-radius: 35px 35px 0px 0px;
+        padding: 40px;
+    }
+}
+
+.brand-logo {
+    width: 50px;
+}
+
+.input-icon {
+    font-size: $input-icon-size;
+}
+
+.greeting {
+    // background: url("../../images/login-page-image.png");
+    // background-size: cover;
+    // background-position: center;
+    @include media-breakpoint-down(md) {
+        width: 100%;
+    }
+    &__text {
+        letter-spacing: 0.25rem;
+    }
+    &__image {
+        @include position(absolute, 0, 0, 0, 0);
+    }
+    .brand-logo {
+        width: 50px;
+    }
+    .brand-title {
+        font-family: "Futura Hv BT";
+        font-style: normal;
+        font-weight: $font-weight-bold;
+        font-size: $font-size-lg;
+        line-height: 2.5rem;
+        /* identical to box height */
+        letter-spacing: 3px;
+        position: relative;
+        &::after {
+            content: "";
+            @include position(absolute, auto, 0, -1rem);
+            height: 1.5px;
+            width: 34%;
+            background-color: $brand-line-color;
+        }
+    }
+}
+
 .content-wrapper {
     padding: 3rem 2rem;
+    overflow: auto;
     background-color: $content-wrapper-bg;
 }
