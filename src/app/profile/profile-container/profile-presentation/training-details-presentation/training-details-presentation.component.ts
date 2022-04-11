@@ -1,7 +1,7 @@
 /**
  * @author Aman Patel
  */
-import { ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 // -------------------------------------------------------------
 import { Profile } from 'src/app/profile/models/profile.model';
 
@@ -10,7 +10,8 @@ import { Profile } from 'src/app/profile/models/profile.model';
   templateUrl: './training-details-presentation.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TrainingDetailsPresentationComponent {
+export class TrainingDetailsPresentationComponent implements OnInit {
+
 
   /** setter for user training details */
   @Input() public set trainingDetails(value: Profile | null) {
@@ -24,5 +25,15 @@ export class TrainingDetailsPresentationComponent {
 
   /** user profile details */
   private _trainingDetails!: Profile;
+
+  public userRole: string | null;
+
+  constructor() {
+    this.userRole = "";
+  }
+
+  ngOnInit(): void {
+    this.userRole = localStorage.getItem("userRole")
+  }
 
 }

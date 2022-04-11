@@ -5,7 +5,7 @@ import { Profile } from '../../models/profile.model';
   selector: 'app-profile-presentation',
   templateUrl: './profile-presentation.component.html',
 })
-export class ProfilePresentationComponent implements OnInit {
+export class ProfilePresentationComponent {
 
   /** setter for user data */
   @Input() public set profileDetails(value: Profile | null) {
@@ -19,10 +19,5 @@ export class ProfilePresentationComponent implements OnInit {
 
   /** user profile data */
   private _profileData!: Profile;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

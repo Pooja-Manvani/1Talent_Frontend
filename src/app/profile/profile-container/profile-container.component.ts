@@ -12,7 +12,8 @@ import { ProfileService } from '../profile.service';
 export class ProfileContainerComponent implements OnInit {
 
   // Observable for profile details
-  userRole!: string | null;
+  private userRole!: string | null;
+  private userName!: string | null;
   public getProfileData$: Observable<Profile>;
 
   constructor(private profileService: ProfileService) {
@@ -21,6 +22,10 @@ export class ProfileContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.userRole = localStorage.getItem("userRole") ?? '';
-    this.getProfileData$ = this.profileService.getProfileDetails('Em@123', this.userRole);
+    this.userName = localStorage.getItem("userName") ?? '';
+    this.getProfileData$ = this.profileService.getProfileDetails(this.userName, this.userRole);
+    this.profileService.getProfileDetails(this.userName, this.userRole).subscribe(res => {
+      console.log(res);
+    })
   }
 }

@@ -37,9 +37,9 @@ export class Profile {
     trainingStart: string,
     trainingEnd: string,
     userName: string,
+    password: string,
     domainName: string,
     subDomainName: string,
-    password: string,
     internsNames?: Interns[],
     mentorName?: string,
   ) {
@@ -54,8 +54,8 @@ export class Profile {
     this.password = password;
     this.domainName = domainName;
     this.subDomainName = subDomainName;
-    this.mentorName = mentorName;
     this.internsNames = internsNames;
+    this.mentorName = mentorName;
   }
 
   public get fullName(): string {
@@ -75,11 +75,11 @@ export class ProfileAdapter implements Adapter<Profile> {
       item.trainingStart,
       item.trainingEnd,
       item.userName,
-      item.Password,
+      item.password,
+      item.domainName,
+      item.subDomainName,
       item.internNames,
       item.mentorName,
-      item.domainName,
-      item.subDomainName
     );
   }
 }
