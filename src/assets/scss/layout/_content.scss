@@ -1,3 +1,35 @@
+
+// Page Tilte
+.page-title {
+    color: $primary;
+    font-size: 30px;
+    display: inline-block;
+    position: relative;
+    &:after {
+        background-color: $primary;
+        content: "";
+        display: block;
+        @include position($right: -25px, $bottom: -10px);
+        height: 4px;
+        width: 95%;
+        border-radius: 2px;
+    }
+}
+// Page Sub Title
+.page-sub-title {
+    display: inline-block;
+    position: relative;
+    &:after {
+        background-color: $primary;
+        content: "";
+        display: block;
+        @include position($right: -22px, $bottom: -8px);
+        height: 2px;
+        width: 90%;
+        border-radius: 4px;
+    }
+}
+
 //Brand logo Image
 .wrapper {
     background-color: $white;
@@ -9,16 +41,12 @@
 }
 
 .login-form {
-    @include media-breakpoint-up(md) {
-   
-    }
     @include media-breakpoint-down(md) {
         width: 100%;
         transform: translateY(-50px);
         background: white;
         border-radius: 35px 35px 0px 0px;
         padding: 40px;
-  
     }
 }
 
@@ -53,7 +81,7 @@
         font-size: $font-size-lg;
         line-height: 2.5rem;
         /* identical to box height */
-        letter-spacing: 3px; ///////////////////////////////////////////////////////////////////////////////////////////////////
+        letter-spacing: 3px;
         position: relative;
         &::after {
             content: "";
@@ -65,7 +93,8 @@
     }
 }
 
-.content-wrapper{
+.content-wrapper {
     padding: 3rem 2rem;
+    overflow: auto;
     background-color: $content-wrapper-bg;
 }
