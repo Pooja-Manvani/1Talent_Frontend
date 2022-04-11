@@ -45,3 +45,24 @@ export class ApplyLeave {
         this.applicationId = applicationId
     }
 }
+
+export class ApplicationType {
+
+    applicationTypeId: number;
+    applicationTypeName: string;
+    createdBy: string;
+    createdDate: string;
+
+    constructor(
+        applicationTypeId: number,
+        applicationTypeName: string,
+        createdBy: string,
+        createdDate: string) 
+        {
+            this.applicationTypeId = applicationTypeId,
+            this.applicationTypeName = applicationTypeName,
+            this.createdBy = createdBy,
+            this.createdDate = createdDate
+    }
+
+}

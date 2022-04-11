@@ -1,66 +1,62 @@
-<div class="d-flex flex-column p-5 h-100">
+<div class="p-5">
     <div class="app-title">
         <h1>Apply Leave</h1>
     </div>
-    <div class="row g-3 flex-grow-1 mt-5">
-        <div class="col col-lg-6 pe-lg-3">
-            <div class="card card-profile shadow-sm h-100">
+    <div class="row g-5 mt-4">
+        <div class="col col-lg-6">
+            <div class="card card-profile shadow-sm h-100 py-4">
                 <div class="card-body">
-                    <div class="py-4">
-                        <div class=" d-flex flex-wrap justify-content-between py-4 fs-6">
-                            <div class="my-2">Select Date</div>
-                            <div>(click and drag to select Leave Dates from Calendar)</div>
-                        </div>
-                        <!-- Start: Calendar-->
-                        <div class="d-flex justify-content-center">
-                            <mat-card class="leave-calendar">
-                                <mat-calendar (selectedChange)="onDateRangeChange($event)" [minDate]="currentDate" [selected]="selectedDateRange" [dateFilter]="weekendFilter">
-                                </mat-calendar>
-                            </mat-card>
-                        </div>
-                        
-                        <!--End: Calendar-->
+                    <div class=" d-flex flex-wrap align-items-center fs-6">
+                        <h3 class="me-5 fw-bold">Select Date</h3>
+                        <h4>(click and drag to select Leave Dates from Calendar)</h4>
                     </div>
+                    <!-- Start: Calendar-->
+                    <div class="calendar d-flex justify-content-center">
+                        <mat-card class="leave-calendar">
+                            <mat-calendar (selectedChange)="onDateRangeChange($event)" [minDate]="currentDate"
+                                [selected]="selectedDateRange" [dateFilter]="disableWeekend">
+                            </mat-calendar>
+                        </mat-card>`
+                    </div>
+                    <!--End: Calendar-->
                 </div>
             </div>
         </div>
         <div class="col col-lg-6 ps-lg-3">
-            <div class="card shadow-sm h-100">
+            <div class="card shadow-sm h-100 py-4">
                 <div class="card-body">
                     <!-- Start: options for leave-->
-                    <div class="d-flex flex-wrap py-4">
-                        <div class="col-6 pe-3 pe-xl-4 pe-xxl-5 my-2">
-                            <h3 class="tab-name fs-5">Leave</h3>
-                            <div class="options p-2"></div>
+                    <div class="d-flex flex-wrap" #tabs>
+                        <div class="col-6 pe-3 pe-xl-4 pe-xxl-5">
+                            <h3 class="tab-name fw-bold fs-5 m-0 pb-3" [ngClass]="{ 'active': activeTab === 0 }" (click)="activeTab = 0" role="button">Leave</h3>
                         </div>
-                        <div class="col-6 ps-3 ps-xl-4 ps-xxl-5 my-2">
-                            <h3 class="tab-name fs-5">WFH</h3>
-                            <div class="options p-2"></div>
+                        <div class="col-6 ps-3 ps-xl-4 ps-xxl-5">
+                            <h3 class="tab-name fw-bold fs-5 m-0 pb-3" [ngClass]="{ 'active': activeTab === 1 }" (click)="activeTab = 1" role="button">WFH</h3>
                         </div>
                     </div>
                     <!--End: options for leave-->
 
                     <!-- Start: Radio-buttons-->
-                    <div class="d-flex justify-content-between flex-wrap py-3 fs-5">
-                        <div class="form-check form-check-inline align-items-center d-flex my-2">
+                    <div *ngIf="activeTab === 0 ? true : false " class="d-flex justify-content-between flex-wrap pt-4 pt-lg-5 fs-5">
+                        <div class="form-check form-check-inline d-flex my-2">
                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
                                 value="Full-Day">
-                            <label class="form-check-label ms-3" for="inlineRadio1">Full-Day</label>
+                            <label class="form-check-label ms-3" for="inlineRadio1"><h3 class="fs-6 mb-0 fw-bold">Full-Day</h3></label>
                         </div>
-                        <div class="form-check form-check-inline align-items-center d-flex my-2">
+                        <div class="form-check form-check-inline d-flex my-2">
                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
                                 value="1st Half Day">
-                            <label class="form-check-label ms-3" for="inlineRadio2">1st Half Day</label>
+                            <label class="form-check-label ms-3" for="inlineRadio2"><h3 class="fs-6 mb-0 fw-bold">1st Half Day</h3></label>
                         </div>
-                        <div class="form-check form-check-inline align-items-center d-flex my-2">
+                        <div class="form-check form-check-inline d-flex my-2">
                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
                                 value="2nd Half Day">
-                            <label class="form-check-label ms-3" for="inlineRadio3">2nd Half Day</label>
+                            <label class="form-check-label ms-3" for="inlineRadio3"><h3 class="fs-6 mb-0 fw-bold">2nd Half Day</h3></label>
                         </div>
                     </div>
                     <!--End: Radio-buttons-->
 
-                    <div class="py-4 fs-5">
+                    <div class="py-4 fs-5 fw-bold" [ngClass] = "{'pt-5': activeTab === 1}">
                         Total Leave Days: {{ noOfDays }}
                     </div>
 
@@ -71,8 +67,8 @@
                     </div>
 
                     <div class="d-flex align-items-center justify-content-end flex-wrap py-5">
-                        <button type="button" class="btn btn-outline-primary">CANCEL</button>
-                        <button type="button" class="btn btn-primary ms-4">SUBMIT</button>
+                        <button type="button" class="btn btn-outline-primary mb-4 mb-md-0 mb-xl-0">CANCEL</button>
+                        <button type="button" class="btn btn-primary ms-md-4">SUBMIT</button>
                     </div>
                 </div>
             </div>

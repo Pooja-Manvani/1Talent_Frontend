@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ApplyLeave } from '../models/leave.model';
+import { ApplicationType, ApplyLeave } from '../models/leave.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +16,13 @@ export class ApplyleaveService {
   }
 
   // Post call for Leave Request
-  postLeaveRequest(data: ApplyLeave, userName: string): Observable<ApplyLeave> {
+  public postLeaveRequest(data: ApplyLeave, userName: string): Observable<ApplyLeave> {
     return this.http.post<ApplyLeave>(`${this.apiLink}/api/ApplyLeave/${userName}`, data);
+  }
+
+  //get User
+  public getApplicationTypeid():Observable<ApplicationType[]>{
+    return this.http.get<ApplicationType[]>(`${this.apiLink}/api/ApplicationType`)
   }
 
 
