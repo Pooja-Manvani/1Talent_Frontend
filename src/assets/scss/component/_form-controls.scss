@@ -8,3 +8,9 @@ input::-ms-clear {
 .form-control:focus {
   box-shadow: none;
 }
+
+// predefined height and padding for validation text
+.validation-text {
+  height: 25px;
+  padding-left: 2.5rem;
+}
