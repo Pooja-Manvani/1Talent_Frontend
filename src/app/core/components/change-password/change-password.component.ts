@@ -34,6 +34,8 @@ export class ChangePasswordComponent {
       newPassword: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
     });
+
+    this.getvalue
   }
 
   // To control password show/hide.
@@ -45,4 +47,38 @@ export class ChangePasswordComponent {
   }
 
   onSubmit() { }
+  
+//  /**
+//    * @description Gets form controls
+//    */
+  public get getvalue() {
+    return this.changePassword.controls
+  
+  }
+
+
+  /**
+   * 
+   * @param changePassword 
+   * @returns 
+   */
+  // Validate(changePassword: FormGroup) {
+  //   // const old_password = changePassword.controls.
+  //   const confirm_password = changePassword.controls.confirmPassword.value;
+
+  //   if (confirm_password.length <= 0) {
+  //     return null;
+  //   }
+
+  //   if (confirm_password !== new_password) {
+  //     return {
+  //       doesNotMatch: true
+  //     };
+  //   }
+
+  //   return null;
+  // }
+
+
+
 }

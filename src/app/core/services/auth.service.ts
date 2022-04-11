@@ -50,11 +50,20 @@ export class AuthService {
   }
 
   /**
-   * @description sends HTTP request for resetting password
+   * @description sends HTTP POST request for resetting password
    * @param email 
    * @returns Observable<string>
    */
   public resetPassword(email: {email : string}): Observable<string> {
     return this.http.post<string>(`${this.apiLink}/api/ForgotPassword/ForgotPassword`, email);
+  }
+  /**
+   * @description sends HTTP PUT request for resetting password
+   * @param changePassword 
+   * @returns Observable<string>
+   */
+  public changePassword(changePassword: {changePassword : string}): Observable<string> {
+    return this.http.put<string>(`${this.apiLink}/api/ForgotPassword/change
+    Password`, changePassword);
   }
 }
