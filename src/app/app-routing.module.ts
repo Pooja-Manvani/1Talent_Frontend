@@ -30,6 +30,7 @@ const routes: Routes = [
   {
     path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
   },
+  { path: 'leave-status', loadChildren: () => import('./leave-status/leave-status.module').then(m => m.LeaveStatusModule) },
 ];
 
 @NgModule({
