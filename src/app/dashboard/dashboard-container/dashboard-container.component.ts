@@ -14,8 +14,11 @@ export class DashboardContainerComponent implements OnInit {
     this.internDashboard$ = new Observable();
   }
 
+  /**
+   * @description gets current Username from local storage
+   */
   ngOnInit(): void {
-    // this.internDashboard$ = this._dashboardService.getInternDashboard(localStorage.getItem('username'));
-    this.internDashboard$ = this._dashboardService.getInternDashboard("Jenica@123");
+    this.internDashboard$ = this._dashboardService.getInternDashboard(localStorage.getItem('userName') ?? '');
+    // this.internDashboard$ = this._dashboardService.getInternDashboard();
   }
 }
