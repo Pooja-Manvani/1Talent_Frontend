@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LeaveDetails } from 'src/app/dashboard/models/dashboard.models';
 import { leaveStatus } from 'src/app/shared/leave-status';
 
