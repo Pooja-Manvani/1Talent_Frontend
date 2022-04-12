@@ -10,11 +10,6 @@ img {
   height: auto;
 }
 
-.overflow-hidden {
-  overflow-y: hidden;
-  overflow-x: hidden;
-}
-
 .overflow-vertical {
   overflow-y: auto;
   overflow-x: hidden;
@@ -24,6 +19,7 @@ img {
   overflow-y: hidden;
   overflow-x: auto;
 }
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -60,8 +56,4 @@ img {
       border-radius: 4px;
     }
   }
-}
-
-.ms-56 {
-  margin-left: 56px;
 }
