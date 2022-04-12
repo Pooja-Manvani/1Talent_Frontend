@@ -8,3 +8,21 @@ input::-ms-clear {
 .form-control:focus {
   box-shadow: none;
 }
+
+#eyeIcon {
+  position: absolute;
+  right: 0;
+}
+
+.form-floating {
+  position: relative;
+
+  > label {
+    top: 14px;
+  }
+
+  .password-validate {
+    position: absolute;
+    top: 100%;
+  }
+}

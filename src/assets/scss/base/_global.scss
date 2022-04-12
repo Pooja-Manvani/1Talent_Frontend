@@ -10,11 +10,6 @@ img {
   height: auto;
 }
 
-.overflow-hidden {
-  overflow-y: hidden;
-  overflow-x: hidden;
-}
-
 .overflow-vertical {
   overflow-y: auto;
   overflow-x: hidden;
@@ -23,6 +18,10 @@ img {
 .overflow-horizontal {
   overflow-y: hidden;
   overflow-x: auto;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .app-title {
@@ -57,8 +56,4 @@ img {
       border-radius: 4px;
     }
   }
-}
-
-.ms-56 {
-  margin-left: 56px;
 }

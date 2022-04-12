@@ -1,60 +1,65 @@
 <!-- Start: Main Section -->
-<main class="h-100 d-flex justify-content-center align-items-center">
-    <div class="wrapper p-0 p-md-5 d-flex flex-column flex-md-row-reverse align-items-center">
-        <!-- Start: Greeting layout -->
-        <div class="greeting h-100 w-100 w-md-50 d-flex justify-content-center align-items-center">
-            <div class="greeting__text d-none d-md-block text-light m-2 p-4">
-                <h6>WELCOME TO</h6>
-                <h2 class="brand-title">1RU LEAVE MANAGEMENT</h2>
-            </div>
-        </div>
+<!-- <main class="h-100 d-flex justify-content-center align-items-center"> -->
+<main class="d-flex justify-content-center align-items-center overflow-hidden p-5 h-100">
+    <div class="wrapper d-flex overflow-hidden p-5">
         <!-- End: Greeting layout -->
-        <div class="login-form px-4 px-md-5 h-100 w-100 w-md-50 d-flex flex-grow-1 flex-column justify-content-center">
+        <div class="login-form d-flex flex-grow-1 flex-column justify-content-center align-items-center w-50">
             <!--Start: Brand Logo Image -->
-            <div class="mb-5 responsive-brand d-flex d-md-column align-items-center">
+            <div class="responsive-brand d-flex d-md-column align-items-center align-self-start mb-5">
                 <figure class="brand-logo overflow-hidden me-3">
                     <img src="../../../../assets/images/1Ru balck logo.png" alt="brand-logo-image" />
                 </figure>
-                <h2 class="brand-title d-md-none">LEAVE MANAGEMENT</h2>
+                <h2 class="brand-title d-md-none fs-5">LEAVE MANAGEMENT</h2>
             </div>
             <!-- End: Brand Logo Image -->
             <!-- Start: Login form -->
-            <form [formGroup]="this.loginForm" (ngSubmit)="onSubmit()">
-                <div class="d-flex">
-                    <label for="username" class="d-flex"><span
-                            class="icon-username input-icon input-group-text border-0 mt-4 pe-3"></span></label>
-                    <div class="form-floating w-100 d-flex my-3">
-                        <input type="text" class="form-control border-0 border-bottom" id="userName"
-                            formControlName="userName" placeholder="PASSWORD">
-                        <label class="text-muted opacity-100" for="userName">
+            <form [formGroup]="loginForm" class="w-100 pe-4" (ngSubmit)="onSubmit()">
+                <div class="d-flex w-100">
+                    <label for="username" class="d-flex">
+                        <span class="icon-username input-icon input-group-text border-0 mt-4 pe-3"></span>
+                    </label>
+                    <div class="form-floating flex-grow-1 d-flex my-3">
+                        <!-- Input-field Username -->
+                        <input type="text" class="form-control border-0 border-bottom" id="userName" formControlName="userName" placeholder="PASSWORD">
+                        <label class="text-secondary opacity-100" for="userName">
                             USERNAME
                         </label>
                     </div>
                 </div>
-                <div class="d-flex">
+                <!-- Password Field -->
+                <div class="d-flex w-100">
                     <label for="password" class="d-flex"><span
-                            class="icon-password input-icon input-group-text border-0 mt-4 pe-3"></span></label>
-                    <div class="form-floating w-100 d-flex my-3">
-                        <input type="{{ this.eye.className == 'close' ? 'password' : 'text' }}" [id]="this.eye.id"
-                            [formControlName]="this.eye.id" [placeholder]="this.eye.id"
-                            class="form-control border-0 border-bottom">
-                        <label class="text-muted opacity-100" [for]="this.eye.id">
-                            {{ this.eye.id.toUpperCase() }}
+                            class="input-icon icon-password input-group-text border-0 mt-4 pe-3"></span>
+                    </label>
+                    <div class="form-floating flex-grow-1 d-flex my-3">
+                        <!-- Input-field Password -->
+                        <input type="{{ passwordField.className == 'close' ? 'password' : 'text' }}" [id]="passwordField.id" [formControlName]="passwordField.id" [placeholder]="passwordField.id" class="form-control border-0 border-bottom">
+                        <label class="text-secondary opacity-100" [for]="passwordField.id">
+                            {{ passwordField.id.toUpperCase() }}
                         </label>
                     </div>
-                    <span #eyeIcon id="eyeIcon" *ngIf="this.loginForm.controls['password'].valid"
-                        class="icon my-3 ps-1 pt-4 fs-4 border-bottom" ngClass="{{'icon-eye-' + eye.className}}"
-                        (click)="toggleEye()"></span>
+                    <span #eyeIcon id="eyeIcon" *ngIf="loginForm.controls['password'].valid" class="icon my-3 ps-1 pt-4 fs-4 border-bottom" ngClass="{{'icon-eye-' + passwordField.className}}" (click)="togglePasswordVisibility()"></span>
                 </div>
+                <!-- Forgot Password link -->
                 <div class="pb-5 pt-2">
-                    <a class="link-primary text-decoration-none d-flex justify-content-end"
-                        routerLink="/forgot-password">Forget Password?</a>
+                    <a class="link-primary text-decoration-none justify-content-end d-flex" routerLink="/forgot-password">Forget Password?</a>
                 </div>
+                <!-- Log-in Button -->
                 <div>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </div>
             </form>
             <!-- End: Login form -->
+        </div>
+        <!-- Start: Greeting layout -->
+        <div class="greeting position-relative text-light d-none d-md-block overflow-hidden w-50 h-100">
+            <div class="greeting__text translate-middle-y d-none d-md-block text-light position-absolute top-50 start-0 end-0 m-2 p-3">
+                <h6>WELCOME TO</h6>
+                <h2 class="brand-title">1RU LEAVE MANAGEMENT</h2>
+            </div>
+            <!-- <figure class="greeting_image overflow-hidden">
+                <img src="../../../../assets/images/login-page-image.png" alt="greeting image" />
+            </figure> -->
         </div>
     </div>
 </main>
