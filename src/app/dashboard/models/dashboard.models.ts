@@ -1,4 +1,5 @@
 export class LeaveDetails {
+    applicationId: number;
     appliedDate: string;
     applicationTypeName: string;
     noOfDays: number;
@@ -7,6 +8,7 @@ export class LeaveDetails {
     applicationStatus: number
 
     constructor(
+        applicationId: number,
         appliedDate: string,
         applicationTypeName: string,
         noOfDays: number,
@@ -14,6 +16,7 @@ export class LeaveDetails {
         description: string,
         applicationStatus: number
     ) {
+        this.applicationId = applicationId;
         this.appliedDate = appliedDate;
         this.applicationTypeName = applicationTypeName;
         this.noOfDays = noOfDays;

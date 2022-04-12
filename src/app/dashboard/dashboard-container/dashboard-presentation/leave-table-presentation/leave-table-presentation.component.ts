@@ -7,6 +7,7 @@ import { leaveStatus } from 'src/app/shared/leave-status';
   templateUrl: './leave-table-presentation.component.html',
 })
 export class LeaveTablePresentationComponent {
+
   public leaveStatus = leaveStatus;
   public isRevokeButtonDisabled = false;
   private _leaveData!: LeaveDetails[];

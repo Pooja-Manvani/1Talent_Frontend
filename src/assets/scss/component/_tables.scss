@@ -26,3 +26,12 @@
         }
     }
 }
+
+
+@each $clr,$clr-val in $leave-status {
+    .#{$clr}-color{
+        background-color: rgba($clr-val, 0.1);
+        color: $clr-val;
+    }
+}
+
