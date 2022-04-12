@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { observable, Observable } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
 import { ApplicationType, ApplyLeave } from '../models/leave.model';
 import { ApplyleaveService } from '../services/applyleave.service';
 
@@ -23,14 +23,13 @@ export class ApplyLeaveContainerComponent implements OnInit {
 
   public onSubmit(data: ApplyLeave) {
     //post call for leave request
-    // this.applyleave.postLeaveRequest(data,this._userName).subscribe({
-    //   next:(res) =>{
-    //     alert("leave has been applied")
-    //   },
-    //   error:(error) =>{
-    //     console.log(error);
-    //   }
-    // })
+    this.applyleave.postLeaveRequest(data,this._userName).subscribe({
+      next:(res) =>{
+        alert("leave has been applied")
+      },
+      error:(error) =>{
+        console.log(error);
+      }
+    })
   }
-
 }

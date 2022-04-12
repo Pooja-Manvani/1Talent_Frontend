@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DateRange } from '@angular/material/datepicker';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
+import { Subject } from 'rxjs/internal/Subject';
 import { ApplyLeave } from '../../models/leave.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ApplyLeavePresenterService {
   private leaveData: Subject<ApplyLeave>;
   public leaveData$: Observable<ApplyLeave>;

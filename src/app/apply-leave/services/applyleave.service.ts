@@ -1,15 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment';
 import { ApplicationType, ApplyLeave } from '../models/leave.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ApplyleaveService {
 
-  apiLink: string;
+  public apiLink: string;
 
   constructor(private http: HttpClient) {
     this.apiLink = environment.baseUrl;
@@ -24,8 +22,4 @@ export class ApplyleaveService {
   public getApplicationTypeid():Observable<ApplicationType[]>{
     return this.http.get<ApplicationType[]>(`${this.apiLink}/api/ApplicationType`)
   }
-
-  
-
-
 }

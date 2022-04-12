@@ -1,13 +1,13 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { DateRange } from '@angular/material/datepicker';
 import { ApplicationType, ApplyLeave } from '../../models/leave.model';
 import { ApplyLeavePresenterService } from '../apply-leave-presenter/apply-leave-presenter.service';
 
 @Component({
-  viewProviders: [ApplyLeavePresenterService],
   selector: 'app-apply-leave-presentation',
   templateUrl: './apply-leave-presentation.component.html',
+  viewProviders: [ApplyLeavePresenterService],
 })
 export class ApplyLeavePresentationComponent implements OnInit {
   //create from group
@@ -16,13 +16,11 @@ export class ApplyLeavePresentationComponent implements OnInit {
   //get application type id
   @Input() public set leaveType(value: ApplicationType[] | null) {
     if (value) {
-      console.log(value);
       this._leaveType = value;
     }
   }
 
   @Output() getLeaveData: EventEmitter<ApplyLeave>;
-
 
   //get leave type
   public get leaveType(): ApplicationType[] {
@@ -50,10 +48,9 @@ export class ApplyLeavePresentationComponent implements OnInit {
     this._applyLeavePresenter.leaveData$.subscribe({
       next: (res) => {
         this.getLeaveData.emit(res)
-        console.log(res);
       },
       error: (error) => {
-        console.log(error)
+        console.error(error)
       }
     })
   }

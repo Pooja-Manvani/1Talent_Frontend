@@ -1,15 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatNativeDateModule } from '@angular/material/core';
+import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { MatNativeDateModule } from '@angular/material/core';
 import { DefaultMatCalendarRangeStrategy, MatDatepickerModule, MAT_DATE_RANGE_SELECTION_STRATEGY } from '@angular/material/datepicker';
-
-import { ApplyLeaveRoutingModule } from './apply-leave-routing.module';
+import { SharedModule } from '../shared/shared.module';
 import { ApplyLeaveContainerComponent } from './apply-leave-container/apply-leave-container.component';
 import { ApplyLeavePresentationComponent } from './apply-leave-container/apply-leave-presentation/apply-leave-presentation.component';
-import { ReactiveFormsModule } from '@angular/forms';
-
-
+import { ApplyLeaveRoutingModule } from './apply-leave-routing.module';
+import { ApplyleaveService } from './services/applyleave.service';
 @NgModule({
   declarations: [
     ApplyLeaveContainerComponent,
@@ -21,9 +19,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    SharedModule
   ],
   providers: [
+    ApplyleaveService,
     {
       provide: MAT_DATE_RANGE_SELECTION_STRATEGY,
       useClass: DefaultMatCalendarRangeStrategy,

@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { AuthGuard } from './core/guards/auth.guard';
 import { AuthenticationInterceptor } from './core/helper/authentication.interceptor';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthService } from './core/services/auth.service';
 
 @NgModule({
@@ -18,8 +17,7 @@ import { AuthService } from './core/services/auth.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule,
-    BrowserAnimationsModule
+    CoreModule
   ],
   providers: [
     {
