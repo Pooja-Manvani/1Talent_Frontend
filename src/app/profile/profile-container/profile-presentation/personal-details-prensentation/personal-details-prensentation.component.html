@@ -1,5 +1,5 @@
 <div class="card card-profile shadow-sm h-100">
-    <div class="card-body" *ngIf="personalDetails">
+    <div class="card-body">
         <!-- Start: card title -->
         <div>
             <h5>Personal Details</h5>
@@ -17,10 +17,10 @@
             <div class="d-flex flex-column align-items-center justify-content-center mt-3">
 
                 <!-- user name  -->
-                 <p class="user-name text-nowrap">{{personalDetails.fullName}}</p>
+                 <p class="user-name text-nowrap">{{personalDetails?.fullName}}</p>
 
                 <!-- user domain  -->
-                <p class="user-sub-domain text-muted">{{ personalDetails.subDomainName }}</p>
+                <p class="user-sub-domain text-muted">{{ personalDetails?.subDomainName }}</p>
 
                 <div class="line"></div>
 
@@ -32,7 +32,7 @@
                         <div class="icon me-3">
                             <span class="icon-email-line"></span>
                         </div>
-                        <div class="user-email">{{ personalDetails.email }}</div>
+                        <div class="user-email">{{ personalDetails?.email }}</div>
                     </div>
                     <!-- End: user email  -->
 
@@ -42,7 +42,7 @@
                         <div class="icon me-3">
                             <span class="icon-call"></span>
                         </div>
-                        <span>{{ personalDetails.contactNumber }}</span>
+                        <span>{{ personalDetails?.contactNumber }}</span>
                     </div>
                     <!-- End: user contact -->
                     
