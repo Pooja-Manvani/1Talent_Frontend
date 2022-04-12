@@ -1,4 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+/**
+ * @author Aman Patel
+ */
+import { Component, Input } from '@angular/core';
+// /----------------------------------------------------
 import { Profile } from '../../models/profile.model';
 
 @Component({

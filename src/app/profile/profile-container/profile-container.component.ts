@@ -1,3 +1,7 @@
+/**
+ * @author Ankit Patel
+ */
+
 import { Component, OnInit } from '@angular/core';
 // ------------------------------------------------------------------------
 import { Observable } from 'rxjs/internal/Observable';
@@ -11,9 +15,9 @@ import { ProfileService } from '../profile.service';
 })
 export class ProfileContainerComponent implements OnInit {
 
-  // Observable for profile details
   private userRole!: string | null;
   private userName!: string | null;
+  // Observable for profile details
   public getProfileData$: Observable<Profile>;
 
   constructor(private profileService: ProfileService) {
@@ -21,11 +25,11 @@ export class ProfileContainerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //user role
     this.userRole = localStorage.getItem("userRole") ?? '';
+    //user name
     this.userName = localStorage.getItem("userName") ?? '';
+
     this.getProfileData$ = this.profileService.getProfileDetails(this.userName, this.userRole);
-    this.profileService.getProfileDetails(this.userName, this.userRole).subscribe(res => {
-      console.log(res);
-    })
   }
 }
