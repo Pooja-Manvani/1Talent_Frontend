@@ -13,8 +13,11 @@ export class LeaveTablePresentationComponent {
   public get leaveData(): LeaveDetails[] {
     return this._leaveData;
   }
-  @Input() public set leaveData(v: LeaveDetails[]) {
-    this._leaveData = v;
+  @Input() public set leaveData(value: LeaveDetails[]) {
+    console.log("value: ", value);
+    if (value) {
+      this._leaveData = value;
+    }
   }
 
   mapButton(status: string) {

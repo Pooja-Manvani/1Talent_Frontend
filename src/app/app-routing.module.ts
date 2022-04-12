@@ -4,37 +4,64 @@ import { RouterModule, Routes } from '@angular/router';
 // -------------------------------------------------------------------------------------------------------- //
 import { ChangePasswordComponent } from './core/components/change-password/change-password.component';
 import { ForgotPasswordComponent } from './core/components/forgot-password/forgot-password.component';
+import { HomeComponent } from './core/components/home/home.component';
 import { LoginComponent } from './core/components/login/login.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    pathMatch: "full",
-    redirectTo: "login"
+    pathMatch: 'full',
+    redirectTo: 'login',
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'forgot-password',
-    component: ForgotPasswordComponent
+    component: ForgotPasswordComponent,
   },
   {
     path: 'change-password',
-    component: ChangePasswordComponent
+    component: ChangePasswordComponent,
   },
   {
-    path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+      },
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+      },
+      {
+        path: 'profile',
+        loadChildren: () =>
+          import('./profile/profile.module').then((m) => m.ProfileModule),
+      },
+      {
+        path: 'apply-leave',
+        loadChildren: () =>
+          import('./apply-leave/apply-leave.module').then((m) => m.ApplyLeaveModule),
+      },
+      {
+        path: 'leave-status',
+        loadChildren: () =>
+          import('./leave-status/leave-status.module').then((m) => m.LeaveStatusModule),
+      },
+    ],
   },
-  {
-    path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
-  },
-  { path: 'leave-status', loadChildren: () => import('./leave-status/leave-status.module').then(m => m.LeaveStatusModule) },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

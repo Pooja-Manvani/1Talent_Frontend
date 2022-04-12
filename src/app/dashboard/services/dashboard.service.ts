@@ -22,6 +22,7 @@ export class DashboardService {
     if (userName) {
       return this.http.get<LeaveDetails[]>(`${this.apiLink}/api/DashBoardLeaveStatus/${userName}`);
     } else {
+      console.log('Gives null');
       return new Observable();
     }
   }
