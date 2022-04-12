@@ -33,12 +33,12 @@
                     </label>
                     <div class="form-floating flex-grow-1 d-flex my-3">
                         <!-- Input-field Password -->
-                        <input type="{{ passwordField.className == 'close' ? 'password' : 'text' }}" [id]="passwordField.id" [formControlName]="passwordField.id" [placeholder]="passwordField.id" class="form-control border-0 border-bottom">
+                        <input type="{{ passwordField.className == 'close' ? 'password' : 'text' }}" [id]="passwordField.id" [formControlName]="passwordField.id" [placeholder]="passwordField.id" class="form-control border-0 border-bottom pe-4">
                         <label class="text-secondary opacity-100" [for]="passwordField.id">
                             {{ passwordField.id.toUpperCase() }}
                         </label>
+                        <span #eyeIcon id="eyeIcon" *ngIf="loginForm.controls['password'].valid" class="icon ps-1 pt-4 fs-4" ngClass="{{'icon-eye-' + passwordField.className}}" (click)="togglePasswordVisibility()"></span>
                     </div>
-                    <span #eyeIcon id="eyeIcon" *ngIf="loginForm.controls['password'].valid" class="icon my-3 ps-1 pt-4 fs-4 border-bottom" ngClass="{{'icon-eye-' + passwordField.className}}" (click)="togglePasswordVisibility()"></span>
                 </div>
                 <!-- Forgot Password link -->
                 <div class="pb-5 pt-2">
