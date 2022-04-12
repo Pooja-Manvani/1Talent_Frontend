@@ -9,13 +9,15 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     ForgotPasswordComponent,
     ChangePasswordComponent,
-    SidebarComponent
+    SidebarComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

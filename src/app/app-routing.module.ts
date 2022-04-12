@@ -4,7 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 // -------------------------------------------------------------------------------------------------------- //
 import { ChangePasswordComponent } from './core/components/change-password/change-password.component';
 import { ForgotPasswordComponent } from './core/components/forgot-password/forgot-password.component';
+import { HomeComponent } from './core/components/home/home.component';
 import { LoginComponent } from './core/components/login/login.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -25,12 +27,26 @@ const routes: Routes = [
     component: ChangePasswordComponent
   },
   {
-    path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
+      },
+      {
+        path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
+      },
+      {
+        path: 'apply-leave', loadChildren: () => import('./apply-leave/apply-leave.module').then(m => m.ApplyLeaveModule)
+      },
+    ],
   },
-  {
-    path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
-  },
-  { path: 'apply-leave', loadChildren: () => import('./apply-leave/apply-leave.module').then(m => m.ApplyLeaveModule) },
 ];
 
 @NgModule({

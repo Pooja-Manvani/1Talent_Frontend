@@ -7,6 +7,7 @@ import { DefaultMatCalendarRangeStrategy, MatDatepickerModule, MAT_DATE_RANGE_SE
 import { ApplyLeaveRoutingModule } from './apply-leave-routing.module';
 import { ApplyLeaveContainerComponent } from './apply-leave-container/apply-leave-container.component';
 import { ApplyLeavePresentationComponent } from './apply-leave-container/apply-leave-presentation/apply-leave-presentation.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ApplyLeavePresentationComponent } from './apply-leave-container/apply-l
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    ReactiveFormsModule
   ],
   providers: [
     {

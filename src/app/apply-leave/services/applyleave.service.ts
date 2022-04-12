@@ -25,5 +25,7 @@ export class ApplyleaveService {
     return this.http.get<ApplicationType[]>(`${this.apiLink}/api/ApplicationType`)
   }
 
+  
+
 
 }

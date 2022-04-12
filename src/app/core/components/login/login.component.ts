@@ -16,9 +16,9 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router
+    private _fb: FormBuilder,
+    private _authService: AuthService,
+    private _router: Router
   ) {
     // For password input field
     this.passwordField = {
@@ -26,33 +26,45 @@ export class LoginComponent implements OnInit {
       className: "close"
     };
     // login formGroup
-    this.loginForm = this.fb.group({
+    this.loginForm = this._fb.group({
       userName: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
   }
 
   ngOnInit(): void {
-    this.authService.checkAuthentication().subscribe(result => {
-      console.log(result);
+    this.props();
+  }
+
+  /**
+   * @name props
+   * @description  It calls all methods when component initialized
+   */
+  
+  public props() {
+    this._authService.checkAuthentication().subscribe(result => {
       if (result) {
-        this.router.navigateByUrl("/dashboard");
+        this._router.navigateByUrl("/home");
       }
     });
   }
 
-  // To control password show/hide.
+  /**
+   * @description for password visibility
+   */
   public togglePasswordVisibility(): void {
     this.passwordField.className = this.passwordField.className === "close" ? "open" : "close";
   }
 
-  // Login api call.
+  /**
+   * @description API call for Log in
+   */
   public onSubmit(): void {
-    this.authService.login(this.loginForm.value).subscribe((res: LoginResponse) => {
-      this.authService.setUserName(this.loginForm.value.userName);
-      this.authService.setUserRole(res.role);
-      this.authService.setToken(res.token);
-      this.router.navigateByUrl("/dashboard");
+    this._authService.login(this.loginForm.value).subscribe((res: LoginResponse) => {
+      this._authService.setUserName(this.loginForm.value.userName);
+      this._authService.setUserRole(res.role);
+      this._authService.setToken(res.token);
+      this._router.navigateByUrl("/home");
     });
   }
 }

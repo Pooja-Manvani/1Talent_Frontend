@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { observable, Observable } from 'rxjs';
-import { ApplicationType } from '../models/leave.model';
+import { ApplicationType, ApplyLeave } from '../models/leave.model';
 import { ApplyleaveService } from '../services/applyleave.service';
 
 @Component({
@@ -9,14 +9,28 @@ import { ApplyleaveService } from '../services/applyleave.service';
 })
 export class ApplyLeaveContainerComponent implements OnInit {
 
-  public $applicationTypeId:Observable<ApplicationType[]> ;
+  private _userName: string;
+  public $applicationType:Observable<ApplicationType[]> ;
   constructor(private applyleave:ApplyleaveService) {
-    this.$applicationTypeId = new Observable();
+    this.$applicationType = new Observable();
+    this._userName = '';
    }
 
   ngOnInit(): void {
-    this.$applicationTypeId = this.applyleave.getApplicationTypeid();
+    this.$applicationType = this.applyleave.getApplicationTypeid();
+    this._userName = localStorage.getItem('userName') ?? '';
   }
 
+  public onSubmit(data: ApplyLeave) {
+    //post call for leave request
+    // this.applyleave.postLeaveRequest(data,this._userName).subscribe({
+    //   next:(res) =>{
+    //     alert("leave has been applied")
+    //   },
+    //   error:(error) =>{
+    //     console.log(error);
+    //   }
+    // })
+  }
 
 }

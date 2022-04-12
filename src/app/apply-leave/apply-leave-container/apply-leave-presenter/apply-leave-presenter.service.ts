@@ -1,15 +1,23 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { DateRange } from '@angular/material/datepicker';
+import { Observable, Subject } from 'rxjs';
+import { ApplyLeave } from '../../models/leave.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApplyLeavePresenterService {
+  private leaveData: Subject<ApplyLeave>;
+  public leaveData$: Observable<ApplyLeave>;
 
-  constructor(private fb:FormBuilder) { }
 
-  public onSelectedChange(date: Date, selectedDateRange: DateRange<Date> ): DateRange<Date> {
+  constructor(private fb: FormBuilder) {
+    this.leaveData = new Subject<ApplyLeave>();
+    this.leaveData$ = this.leaveData.asObservable();
+  }
+
+  public onSelectedChange(date: Date, selectedDateRange: DateRange<Date>): DateRange<Date> {
     if (
       selectedDateRange &&
       selectedDateRange.start &&
@@ -47,11 +55,30 @@ export class ApplyLeavePresenterService {
   }
 
   //create form
-  public buildForm(){
+  public buildForm() {
     return this.fb.group({
-      leaveType:[''],
-      days:[''],
-      description:['']
+      applicationTypeId: ['4'],
+      description: ['', Validators.required],
     })
+  }
+  //onsubmit data
+  public onSubmit(leavedata: ApplyLeave, fromDate: string | undefined, toDate: string | undefined, activeTab: number) {
+    //set application status
+    leavedata.applicationStatus = 3;
+    //fromDate 
+    if(fromDate){
+      leavedata.fromDate = fromDate;
+    }
+    //toDate
+    if (fromDate) {
+      leavedata.toDate = toDate ? toDate : fromDate;
+    }
+    else {
+      console.log('select Date');
+    }
+    //user select work from home
+    leavedata.applicationTypeId = activeTab === 1 ? 1 : leavedata.applicationTypeId;
+
+    this.leaveData.next(leavedata);
   }
 }
