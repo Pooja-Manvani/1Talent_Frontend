@@ -49,12 +49,16 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // To control password show/hide.
+  /**
+   * @description for password visibility
+   */
   public togglePasswordVisibility(): void {
     this.passwordField.className = this.passwordField.className === "close" ? "open" : "close";
   }
 
-  // Login api call.
+  /**
+   * @description API call for Log in
+   */
   public onSubmit(): void {
     this._authService.login(this.loginForm.value).subscribe((res: LoginResponse) => {
       this._authService.setUserName(this.loginForm.value.userName);

@@ -1,16 +1,20 @@
-export class changePassword {
-    public username: string;
+/**
+ * @author Chirag Patel
+ * @description password credentials
+ */
+export class ChangePassword {
+    public userName: string;
     public password: string;
-    public confirmPassword: string;
+    public oldPassword: string;
 
     constructor(
-        username: string,
+        userName: string,
         password: string,
-        confirmPassword: string, 
+        oldPassword: string, 
 
     ) {
-        this.username = username;        
+        this.userName = userName;        
         this.password = password;        
-        this.confirmPassword = confirmPassword;        
+        this.oldPassword = oldPassword;        
     }
 }
