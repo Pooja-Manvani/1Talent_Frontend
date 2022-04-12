@@ -15,7 +15,6 @@ export class AuthService {
    */
   private keysToRemove: Array<string> = ["token", "userName", "userRole"];
 
-
   /**
    * @name apiLink
    * @description  api base url from environment file
