@@ -63,9 +63,7 @@ export class ChangePasswordComponent {
   onSubmit() {
     let { newPassword, oldPassword } = this.changePassword.value;
     this.auth.changePassword({ password: newPassword, oldPassword: oldPassword, userName: this.auth.getUserName() ?? '' }).subscribe((res) => {
-      console.log(res)
-      this.route.navigateByUrl("/dashboard")
-      console.log("Password has been changed")
+      this.route.navigateByUrl("/dashboard");
     });
   }
 

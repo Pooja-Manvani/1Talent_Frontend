@@ -25,11 +25,11 @@ export class ApplyLeaveContainerComponent implements OnInit {
     //post call for leave request
     this.applyleave.postLeaveRequest(data,this._userName).subscribe({
       next:(res) =>{
-        alert("leave has been applied")
+        // alert("leave has been applied")
       },
-      error:(error) =>{
-        console.log(error);
-      }
+      // error:(error) =>{
+      //   console.log(error);
+      // }
     })
   }
 }

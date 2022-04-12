@@ -11,20 +11,20 @@ import { AuthGuard } from './core/guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    pathMatch: "full",
-    redirectTo: "login"
+    pathMatch: 'full',
+    redirectTo: 'login',
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'forgot-password',
-    component: ForgotPasswordComponent
+    component: ForgotPasswordComponent,
   },
   {
     path: 'change-password',
-    component: ChangePasswordComponent
+    component: ChangePasswordComponent,
   },
   {
     path: 'home',
@@ -34,16 +34,27 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'dashboard',
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
       {
-        path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
       },
       {
-        path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
+        path: 'profile',
+        loadChildren: () =>
+          import('./profile/profile.module').then((m) => m.ProfileModule),
       },
       {
-        path: 'apply-leave', loadChildren: () => import('./apply-leave/apply-leave.module').then(m => m.ApplyLeaveModule)
+        path: 'apply-leave',
+        loadChildren: () =>
+          import('./apply-leave/apply-leave.module').then((m) => m.ApplyLeaveModule),
+      },
+      {
+        path: 'leave-status',
+        loadChildren: () =>
+          import('./leave-status/leave-status.module').then((m) => m.LeaveStatusModule),
       },
     ],
   },
@@ -51,6 +62,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

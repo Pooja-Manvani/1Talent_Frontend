@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LeaveDetails } from 'src/app/dashboard/models/dashboard.models';
 import { leaveStatus } from 'src/app/shared/leave-status';
 
@@ -13,8 +13,10 @@ export class LeaveTablePresentationComponent {
   public get leaveData(): LeaveDetails[] {
     return this._leaveData;
   }
-  @Input() public set leaveData(v: LeaveDetails[]) {
-    this._leaveData = v;
+  @Input() public set leaveData(value: LeaveDetails[]) {
+    if (value) {
+      this._leaveData = value;
+    }
   }
 
   mapButton(status: string) {

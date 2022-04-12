@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
 import { LeaveDetails } from '../models/dashboard.models';
 import { DashboardService } from '../services/dashboard.service';
 
@@ -19,6 +19,5 @@ export class DashboardContainerComponent implements OnInit {
    */
   ngOnInit(): void {
     this.internDashboard$ = this._dashboardService.getInternDashboard(localStorage.getItem('userName') ?? '');
-    // this.internDashboard$ = this._dashboardService.getInternDashboard();
   }
 }

@@ -49,9 +49,9 @@ export class ApplyLeavePresentationComponent implements OnInit {
       next: (res) => {
         this.getLeaveData.emit(res)
       },
-      error: (error) => {
-        console.error(error)
-      }
+      // error: (error) => {
+      //   console.error(error)
+      // }
     })
   }
 
