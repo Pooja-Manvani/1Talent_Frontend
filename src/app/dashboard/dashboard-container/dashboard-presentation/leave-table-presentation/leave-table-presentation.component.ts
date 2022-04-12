@@ -14,7 +14,6 @@ export class LeaveTablePresentationComponent {
     return this._leaveData;
   }
   @Input() public set leaveData(value: LeaveDetails[]) {
-    console.log("value: ", value);
     if (value) {
       this._leaveData = value;
     }
