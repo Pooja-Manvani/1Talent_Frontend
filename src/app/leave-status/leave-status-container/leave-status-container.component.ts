@@ -16,8 +16,6 @@ export class LeaveStatusContainerComponent implements OnInit {
   internLeaveStatus$ : Observable<LeaveApplication[]>;
   private _userName : string; 
 
-  
-
   constructor(private _leaveStatusService : LeaveStatusService ) {
     this.internLeaveStatus$ = new Observable();
     this._userName = localStorage.getItem('userName') ?? ''

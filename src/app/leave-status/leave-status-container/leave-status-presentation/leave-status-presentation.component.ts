@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 // ------------------------------------------------------------------
 import { LeaveApplication } from '../../models/leave-status.models';
 import { leaveStatus } from 'src/app/shared/leave-status';
+import { LeaveDetails } from 'src/app/dashboard/models/dashboard.models';
 
 @Component({
   selector: 'app-leave-status-presentation',
@@ -9,17 +10,39 @@ import { leaveStatus } from 'src/app/shared/leave-status';
 })
 export class LeaveStatusPresentationComponent {
   
-  // set leave applications data
-  @Input() public set internLeaveApplication(leaveStatus: LeaveApplication[] | null) {
-    if (leaveStatus) {
-      this._internLeaveApplication = leaveStatus;
+  
+  @Input() public set leaveData(value: LeaveDetails[] | null) {
+    if (value) {
+      this._leaveData = value;
     }
   }
   public leaveStatus = leaveStatus;
-
-  // get leave applications data
-  public get internLeaveApplication(): LeaveApplication[] {
-    return this._internLeaveApplication;
+  public pageTitle: string;
+  public get leaveData(): LeaveDetails[] {
+    return this._leaveData;
   }
-  private _internLeaveApplication!: LeaveApplication[];
+  private _leaveData!: LeaveDetails[];
+
+  constructor() {
+    this.pageTitle = localStorage.getItem('userRole') === 'Intern' ? 'Status' : 'Request';
+  }
+
+  public mapButton(status: string) {
+    if (status === 'Accepted') {
+      // this.isRevokeButtonDisabled = false;
+      return 'Req. To Revoke';
+    } else {
+      // this.isRevokeButtonDisabled = status !== 'Pending';
+      return 'Revoke';
+    }
+  }
+
+  
+  public isRevokeButtonDisabled(status: string) : boolean {
+    if (status === 'Accepted' || status === 'Pending') {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }

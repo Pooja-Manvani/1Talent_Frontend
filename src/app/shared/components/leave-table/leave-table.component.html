@@ -1,0 +1,43 @@
+<!-- Start: Leave Table  -->
+<div class="position-relative overflow-auto h-100">
+    <table class="table table-leave">
+        <thead class="position-sticky top-0 opacity-100">
+          <tr>
+            <th *ngIf="userRole === 'Mentor'" scope="col">Name</th>
+            <th *ngIf="userRole === 'Intern'" scope="col">Application Date</th>
+            <th scope="col">Type</th>
+            <th scope="col">No. of Days</th>
+            <th *ngIf="userRole === 'Mentor'" scope="col">Application Date</th>
+            <th scope="col">Leaves Dates</th>
+            <th *ngIf="userRole === 'Intern'" scope="col">Description</th>
+            <th scope="col">Status</th>
+            <th *ngIf="userRole === 'Intern'" scope="col">Revoke</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="align-middle" *ngFor="let application of leavesList" (click)="showOverlay()">
+            <td *ngIf="userRole === 'Mentor'" scope="col">{{ application.internName }}</td>
+            <td *ngIf="userRole === 'Intern'">{{ application.appliedDate }}</td>
+            <td>{{ application.applicationTypeName }}</td>
+            <td>{{ application.noOfDays }}</td>
+            <td *ngIf="userRole === 'Mentor'">{{ application.appliedDate }}</td>
+            <td>{{ application.leaveDates }}</td>
+            <td *ngIf="userRole === 'Intern'">{{ application.description }}</td>
+            <td>
+              <div [class]="leaveStatus[application.applicationStatus - 1].toLowerCase().replace('. ', '-') + '-color'"
+                class="text-center text-nowrap rounded-3 p-2">
+                {{ leaveStatus[application.applicationStatus - 1] }}
+              </div>
+            </td>
+            <td *ngIf="userRole === 'Intern'">
+              <button type="button" [disabled]="isRevokeButtonDisabled(leaveStatus[application.applicationStatus - 1])"
+                class="btn btn-outline-primary text-nowrap px-3 w-100">
+                {{ mapButton(leaveStatus[application.applicationStatus - 1]) | uppercase }}
+              </button>
+              <!-- <button class="btn btn-outline-primary w-100">Revoke</button> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+<!-- End: Leave Table  -->

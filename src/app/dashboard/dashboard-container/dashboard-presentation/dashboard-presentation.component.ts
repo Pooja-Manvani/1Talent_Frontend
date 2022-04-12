@@ -8,13 +8,13 @@ import { LeaveDetails } from '../../models/dashboard.models';
 })
 export class DashboardPresentationComponent {
 
-  private _internDashboard!: LeaveDetails[];
-  public get internDashboard(): LeaveDetails[] {
-    return this._internDashboard;
+  private _internLeaveData!: LeaveDetails[];
+  public get internLeaveData(): LeaveDetails[] {
+    return this._internLeaveData;
   }
-  @Input() public set internDashboard(value: LeaveDetails[] | null) {
+  @Input() public set internLeaveData(value: LeaveDetails[] | null) {
     if (value) {
-      this._internDashboard = value;
+      this._internLeaveData = value;
     }
   }
 }

@@ -1,8 +1,13 @@
 <div class="content-wrapper d-flex flex-column p-5">
     <!-- Dashboard Title  -->
-    <div class="app-title">
-        <h1>Dashboard</h1>
+    <div>
+        <h1 class="page-title">Dashboard</h1>
     </div>
     <app-leave-status-presentation></app-leave-status-presentation>
-    <app-leave-table-presentation [leaveData]="internDashboard"></app-leave-table-presentation>
+    <div class="table-head d-flex justify-content-between py-4">
+        <h3 class="fs-5">My Leaves</h3>
+        <button class="btn btn-primary py-2" routerLink="../apply-leave"> APPLY LEAVE </button>
+    </div>
+    <!-- Intern Leave Table  -->
+    <app-leave-table [leavesList]="internLeaveData" class="dashboard-leave-table flex-grow-1 overflow-hidden"></app-leave-table>
 </div>
