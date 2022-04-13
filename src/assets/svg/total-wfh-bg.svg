@@ -1,0 +1,23 @@
+<svg width="112" height="87" viewBox="0 0 112 87" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="101" cy="32" r="2" fill="#F26A6A" fill-opacity="0.5"/>
+<circle cx="12" cy="28" r="1" fill="#F26A6A" fill-opacity="0.5"/>
+<circle cx="18" cy="56" r="1" fill="#F26A6A" fill-opacity="0.5"/>
+<circle cx="2" cy="45" r="2" fill="#F26A6A" fill-opacity="0.5"/>
+<circle cx="97" cy="74" r="1" fill="#F26A6A" fill-opacity="0.5"/>
+<circle cx="91" cy="17" r="1" fill="#F26A6A" fill-opacity="0.5"/>
+<circle cx="21" cy="78" r="2" fill="#F26A6A" fill-opacity="0.5"/>
+<circle cx="31" cy="18" r="2" fill="#F26A6A" fill-opacity="0.5"/>
+<circle cx="109" cy="48" r="3" fill="#F26A6A" fill-opacity="0.5"/>
+<circle cx="70" cy="3" r="3" fill="#F26A6A" fill-opacity="0.5"/>
+<circle cx="60" cy="47" r="29" stroke="url(#paint0_linear_260_1017)" stroke-width="4"/>
+<circle cx="25" cy="66" r="3" fill="#F26A6A" fill-opacity="0.5"/>
+<circle cx="62" cy="86" r="1" fill="#F26A6A" fill-opacity="0.5"/>
+<circle cx="83" cy="79" r="1" fill="#F26A6A" fill-opacity="0.5"/>
+<circle cx="97" cy="59" r="2" fill="#F26A6A" fill-opacity="0.5"/>
+<defs>
+<linearGradient id="paint0_linear_260_1017" x1="60" y1="16" x2="60" y2="78" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F26A6A"/>
+<stop offset="1" stop-color="#F26A6A" stop-opacity="0.4"/>
+</linearGradient>
+</defs>
+</svg>

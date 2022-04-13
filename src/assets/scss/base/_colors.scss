@@ -46,3 +46,13 @@ $selected-date: #f89ca7;
 $user-avatar-border-bg:#CBDFFF;
 $user-name-color:#515151;
 $user-domain-color:#7A7A7A;
+
+
+// Leave-Status 
+$leave-status:(
+    "accepted" : $primary,
+    "rejected" : $danger,
+    "pending" : $warning,
+    "req-revoke" : $warning,
+    "revoked" : #717171
+);

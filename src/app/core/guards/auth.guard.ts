@@ -1,3 +1,7 @@
+/**
+ * @author Jigar Bhanushali, Himani Barot
+ */
+
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';

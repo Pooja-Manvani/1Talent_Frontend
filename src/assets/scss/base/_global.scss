@@ -23,38 +23,3 @@ img {
 .cursor-pointer {
   cursor: pointer;
 }
-
-.app-title {
-  h1 {
-    color: $primary;
-    font-size: 30px;
-    display: inline-block;
-    position: relative;
-    &:after {
-      background-color: $primary;
-      content: "";
-      display: block;
-      @include position($right:-25px,$bottom:-10px);
-      height: 4px;
-      width: 95%;
-      border-radius: 2px;
-    }
-  }
-}
-
-.app-sub-title {
-  h5 {
-    display: inline-block;
-    position: relative;
-    &:after {
-      background-color: $primary;
-      content: "";
-      display: block;
-      @include position($right:-22px,$bottom:-8px);
-      height: 2px;
-      width: 90%;
-      border-radius: 4px;
-    }
-  }
-}
-

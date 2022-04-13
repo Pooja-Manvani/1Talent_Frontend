@@ -27,7 +27,7 @@ export class ResponseHandlingInterceptor implements HttpInterceptor {
    * 
    * @param toaster Inject the ngx-toaster service for showing toaster 
    */
-  constructor(private toaster : ToastrService) { }
+  constructor(private toaster: ToastrService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(

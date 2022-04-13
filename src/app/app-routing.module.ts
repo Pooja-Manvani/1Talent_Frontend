@@ -56,6 +56,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./leave-status/leave-status.module').then((m) => m.LeaveStatusModule),
       },
+      {
+        path: 'leave-requests',
+        loadChildren: () =>
+          import('./leave-status/leave-status.module').then((m) => m.LeaveStatusModule),
+      },
     ],
   },
 ];

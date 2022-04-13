@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { AuthService } from '../../services/auth.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   public passwordField: PasswordField;
   public loginForm: FormGroup;
 
@@ -30,6 +30,25 @@ export class LoginComponent {
       userName: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
+  }
+
+  ngOnInit(): void {
+    this.props();
+  }
+
+  /**
+   * @name props
+   * @description  It calls all methods when component initialized
+   */
+
+  public props() {
+    if (this._authService.getToken()) {
+      this._authService.checkAuthentication().subscribe(result => {
+        if (result) {
+          this._router.navigateByUrl("/home");
+        }
+      });
+    }
   }
 
   /**
