@@ -32,23 +32,6 @@ export class LoginComponent {
     });
   }
 
-  ngOnInit(): void {
-    this.props();
-  }
-
-  /**
-   * @name props
-   * @description  It calls all methods when component initialized
-   */
-  
-  public props() {
-    this._authService.checkAuthentication().subscribe(result => {
-      if (result) {
-        this._router.navigateByUrl("/home");
-      }
-    });
-  }
-
   /**
    * @description for password visibility
    */
