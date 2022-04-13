@@ -42,7 +42,8 @@ export class LeaveTableComponent {
       // this._LeaveTablePresenterService.viewRequest()
       //TODO: show overlay
       console.log("hi");
-      
     }
+    console.log("confirmation");
+    this._LeaveTablePresenterService.displayConfirmation();
   }
 }
