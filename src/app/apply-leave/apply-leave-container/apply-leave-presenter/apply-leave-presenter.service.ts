@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DateRange } from '@angular/material/datepicker';
+import { DatePipe } from '@angular/common';
+
+// ----------------------------------------------------------------------------------------------------- //
 import { Observable } from 'rxjs/internal/Observable';
 import { Subject } from 'rxjs/internal/Subject';
 import { ApplyLeave } from '../../models/leave.model';
@@ -65,19 +68,23 @@ export class ApplyLeavePresenterService {
     //set application status
     leavedata.applicationStatus = 3;
     //fromDate 
-    if(fromDate){
-      leavedata.fromDate = fromDate;
+    if (fromDate) {
+      leavedata.fromDate = this._formatDate(fromDate);
     }
     //toDate
     if (fromDate) {
-      leavedata.toDate = toDate ? toDate : fromDate;
+      leavedata.toDate = this._formatDate(toDate ? toDate : fromDate);
     }
     // else {
     //   console.log('select Date');
     // }
     //user select work from home
-    leavedata.applicationTypeId = activeTab === 1 ? 1 : leavedata.applicationTypeId;
+    leavedata.applicationTypeId = activeTab === 1 ? 1 : +leavedata.applicationTypeId;
 
     this.leaveData.next(leavedata);
+  }
+
+  private _formatDate(date: string): string {
+    return new DatePipe('en-US').transform(date, 'YYYY-MM-dd') ?? ""
   }
 }
