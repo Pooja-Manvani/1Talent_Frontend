@@ -11,7 +11,6 @@ import { LeaveStatusPresentationComponent } from './leave-status-container/leave
 import { LeaveStatusService } from './services/leave-status.service';
 import { SharedModule } from '../shared/shared.module';
 
-
 @NgModule({
   declarations: [
     LeaveStatusContainerComponent,
@@ -24,6 +23,6 @@ import { SharedModule } from '../shared/shared.module';
   ],
   providers: [
     LeaveStatusService
-  ] 
+  ]
 })
 export class LeaveStatusModule { }

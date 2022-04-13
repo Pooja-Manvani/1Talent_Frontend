@@ -2,31 +2,42 @@
  * @author Hrishikesh Patel
  */
 
-import { Component, Input } from '@angular/core';
-import { LeaveDetails } from 'src/app/dashboard/models/dashboard.models';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { LeaveApplication } from 'src/app/leave-status/models/leave-status.models';
 import { leaveStatus } from 'src/app/shared/leave-status';
+import { LeaveGrant } from '../../models/leave-grants.model';
 import { LeaveTablePresenterService } from './leaveTablePresenter/leave-table-presenter.service';
 
 @Component({
   selector: 'app-leave-table',
   templateUrl: './leave-table.component.html',
-  viewProviders:[LeaveTablePresenterService]
+  viewProviders: [LeaveTablePresenterService]
 })
-export class LeaveTableComponent {
-  public leaveStatus = leaveStatus;
-
-  public userRole: string | null;
-
-  private _leavesList!: LeaveDetails[];
-  public get leavesList(): LeaveDetails[] {
-    return this._leavesList;
-  }
-  @Input() public set leavesList(value: LeaveDetails[]) {
+export class LeaveTableComponent implements OnInit {
+  @Input() public set leavesList(value: LeaveApplication[]) {
     this._leavesList = value;
   }
 
-  constructor(private _LeaveTablePresenterService:LeaveTablePresenterService ) {
+  @Output() buttonClick: EventEmitter<LeaveGrant>;
+
+  public leaveStatus = leaveStatus;
+  public userRole: string | null;
+
+  public get leavesList(): LeaveApplication[] {
+    return this._leavesList;
+  }
+
+  private _leavesList!: LeaveApplication[];
+
+  constructor(private _LeaveTablePresenterService: LeaveTablePresenterService) {
     this.userRole = localStorage.getItem('userRole');
+    this.buttonClick = new EventEmitter();
+  }
+
+  ngOnInit(): void {
+    this._LeaveTablePresenterService.buttonClick$.subscribe((leaveGrant: LeaveGrant) => {
+      this.buttonClick.emit(leaveGrant);
+    });
   }
 
   public mapButton(status: string) {
@@ -37,12 +48,9 @@ export class LeaveTableComponent {
     return !(status === 'Accepted' || status === 'Pending');
   }
 
-  public showOverlay() {
+  public showOverlay(leaveData: LeaveApplication) {
     if (this.userRole === 'Mentor') {
-      // this._LeaveTablePresenterService.viewRequest()
-      //TODO: show overlay
-      console.log("hi");
-      
+      this._LeaveTablePresenterService.viewRequest(leaveData);
     }
   }
 }

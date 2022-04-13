@@ -2,9 +2,6 @@
  * @author Sushil Hariakar
  */
 
-import { Injectable } from '@angular/core';
-import { Adapter } from 'src/app/shared/models/adapter.interface';
-
 export class LeaveApplication {
   public applicationId: number;
   public appliedDate: string;
@@ -13,6 +10,8 @@ export class LeaveApplication {
   public leaveDates: string;
   public description: string;
   public applicationStatus: number;
+  public internName?: string;
+
   constructor(
     applicationId: number,
     appliedDate: string,
@@ -20,7 +19,8 @@ export class LeaveApplication {
     noOfDays: number,
     leaveDates: string,
     description: string,
-    applicationStatus: number
+    applicationStatus: number,
+    internName?: string,
   ) {
     this.applicationId = applicationId;
     this.appliedDate = appliedDate;
@@ -29,20 +29,6 @@ export class LeaveApplication {
     this.leaveDates = leaveDates;
     this.description = description;
     this.applicationStatus = applicationStatus;
-  }
-}
-
-@Injectable()
-export class LeaveApplicationAdapter implements Adapter<LeaveApplication> {
-  adapt(item: any): LeaveApplication {
-    return new LeaveApplication(
-      item.applicationId,
-      item.appliedDate,
-      item.applicationTypeName,
-      item.noOfDays,
-      item.leaveDates,
-      item.description,
-      item.applicationStatus
-    );
+    this.internName = internName;
   }
 }

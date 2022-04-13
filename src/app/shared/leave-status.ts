@@ -3,5 +3,5 @@ export const leaveStatus: string[] = [
     "Rejected",
     "Pending",
     "Req. Revoke",
-    "Revoked"
+    "Revoked",
 ]

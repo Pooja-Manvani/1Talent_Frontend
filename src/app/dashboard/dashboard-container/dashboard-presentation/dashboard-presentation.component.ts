@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-
-import { LeaveDetails } from '../../models/dashboard.models';
+import { LeaveApplication } from 'src/app/leave-status/models/leave-status.models';
 
 @Component({
   selector: 'app-dashboard-presentation',
@@ -8,11 +7,11 @@ import { LeaveDetails } from '../../models/dashboard.models';
 })
 export class DashboardPresentationComponent {
 
-  private _internLeaveData!: LeaveDetails[];
-  public get internLeaveData(): LeaveDetails[] {
+  private _internLeaveData!: LeaveApplication[];
+  public get internLeaveData(): LeaveApplication[] {
     return this._internLeaveData;
   }
-  @Input() public set internLeaveData(value: LeaveDetails[] | null) {
+  @Input() public set internLeaveData(value: LeaveApplication[] | null) {
     if (value) {
       this._internLeaveData = value;
     }

@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 // ------------------------------------------------------------------ //
 import { leaveStatus } from 'src/app/shared/leave-status';
-import { LeaveDetails } from 'src/app/dashboard/models/dashboard.models';
+import { LeaveGrant } from 'src/app/shared/models/leave-grants.model';
+import { LeaveApplication } from '../../models/leave-status.models';
 
 @Component({
   selector: 'app-leave-status-presentation',
@@ -11,22 +12,25 @@ export class LeaveStatusPresentationComponent {
 
   @Input() public pageTitle: string;
 
-  @Input() public set leaveData(value: LeaveDetails[] | null) {
+  @Input() public set leaveData(value: LeaveApplication[] | null) {
     if (value) {
       this._leaveData = value;
     }
   }
 
+  @Output() public leaveGrant: EventEmitter<LeaveGrant>;
+
   public leaveStatus = leaveStatus;
 
-  public get leaveData(): LeaveDetails[] {
+  public get leaveData(): LeaveApplication[] {
     return this._leaveData;
   }
 
-  private _leaveData!: LeaveDetails[];
+  private _leaveData!: LeaveApplication[];
 
   constructor() {
     this.pageTitle = '';
+    this.leaveGrant = new EventEmitter();
   }
 
   public mapButton(status: string) {
@@ -35,5 +39,9 @@ export class LeaveStatusPresentationComponent {
 
   public isRevokeButtonDisabled(status: string): boolean {
     return !(status === 'Accepted' || status === 'Pending');
+  }
+  
+  public onButtonClick(leaveGrant: LeaveGrant) {
+    this.leaveGrant.emit(leaveGrant);
   }
 }
