@@ -1,4 +1,8 @@
 @import "./assets/scss/base/index";
+
+//Toaster scss files are imported
+@import '~node_modules/ngx-toastr/toastr';
+
 // Vendor base and component style import
 @import './assets/scss/vendor/bootstrap-base';
 @import './assets/scss/vendor/bootstrap-components';
