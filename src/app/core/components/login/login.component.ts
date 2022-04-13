@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { AuthService } from '../../services/auth.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   public passwordField: PasswordField;
   public loginForm: FormGroup;
 
@@ -29,15 +29,6 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       userName: ['', [Validators.required]],
       password: ['', [Validators.required]]
-    });
-  }
-
-  ngOnInit(): void {
-    this.authService.checkAuthentication().subscribe(result => {
-      console.log(result);
-      if (result) {
-        this.router.navigateByUrl("/dashboard");
-      }
     });
   }
 

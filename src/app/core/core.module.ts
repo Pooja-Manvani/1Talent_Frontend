@@ -31,7 +31,7 @@ import { LoginComponent } from './components/login/login.component';
       toastClass : "toast toast-bootstrap-compatibility-fix",
       positionClass: "toast-top-right",
       closeButton: true,
-      // timeOut: 10000,
+      timeOut: 4000,
       preventDuplicates: true,
     })
   ],
