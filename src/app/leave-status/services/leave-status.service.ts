@@ -15,12 +15,13 @@ export class LeaveStatusService {
   constructor(private http: HttpClient) { 
     this.apiLink = environment.baseUrl;
   }
+
   /**
    * @description API to get Leave status of interns
    * @param userName
    * @returns Observable()
    */
-  public getLeaveStatus(userName : string): Observable<LeaveApplication[]>{
-    return this.http.get<LeaveApplication[]>(`${this.apiLink}/api/InternLeaveStatus/${userName}`)
+  public getLeaveStatus(userName: string, userRole: string): Observable<LeaveApplication[]>{
+    return this.http.get<LeaveApplication[]>(`${this.apiLink}/api/${userRole.replace(' ', '')}/${userName}`)
   }
 }

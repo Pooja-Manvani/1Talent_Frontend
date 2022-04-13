@@ -5,10 +5,12 @@
 import { Component, Input } from '@angular/core';
 import { LeaveDetails } from 'src/app/dashboard/models/dashboard.models';
 import { leaveStatus } from 'src/app/shared/leave-status';
+import { LeaveTablePresenterService } from './leaveTablePresenter/leave-table-presenter.service';
 
 @Component({
   selector: 'app-leave-table',
   templateUrl: './leave-table.component.html',
+  viewProviders:[LeaveTablePresenterService]
 })
 export class LeaveTableComponent {
   public leaveStatus = leaveStatus;
@@ -23,7 +25,7 @@ export class LeaveTableComponent {
     this._leavesList = value;
   }
 
-  constructor() {
+  constructor(private _LeaveTablePresenterService:LeaveTablePresenterService ) {
     this.userRole = localStorage.getItem('userRole');
   }
 
@@ -37,7 +39,10 @@ export class LeaveTableComponent {
 
   public showOverlay() {
     if (this.userRole === 'Mentor') {
+      // this._LeaveTablePresenterService.viewRequest()
       //TODO: show overlay
+      console.log("hi");
+      
     }
   }
 }
