@@ -5,6 +5,10 @@
     @include text-truncate();
 }
 
-p{
+p {
     margin-bottom: 12px;
+}
+
+textarea {
+    resize: none;
 }

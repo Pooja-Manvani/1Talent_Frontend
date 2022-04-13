@@ -35,13 +35,6 @@
         width: 100%;
     }
     letter-spacing: 0.25rem;
-    // &__image {
-    //     @include position(absolute,
-    //     0,
-    //     0,
-    //     0,
-    //     0);
-    // }
     .brand-logo {
         width: 50px;
     }
@@ -53,7 +46,7 @@
         line-height: 2.5rem;
         display: inline;
         /* identical to box height */
-        letter-spacing: 3px; ///////////////////////////////////////////////////////////////////////////////////////////////////
+        letter-spacing: 3px;
         position: relative;
         &::after {
             content: "";

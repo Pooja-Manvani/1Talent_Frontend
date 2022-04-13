@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 // ------------------------------------------------------------------------ //
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment';
+import { ChangePassword } from '../models/change-password.model';
 import { LoginCredentials, LoginResponse } from '../models/login.model';
 
 @Injectable()
@@ -13,7 +14,6 @@ export class AuthService {
    * @description keys to remove from local storage
    */
   private keysToRemove: Array<string> = ["token", "userName", "userRole"];
-
 
   /**
    * @name apiLink
@@ -116,12 +116,11 @@ export class AuthService {
     return this.http.post<string>(`${this.apiLink}/api/ForgotPassword/ForgotPassword`, email);
   }
   /**
-   * @description sends HTTP PUT request for resetting password
+   * @description sends HTTP POST request for resetting password
    * @param changePassword 
    * @returns Observable<string>
    */
-  public changePassword(changePassword: {changePassword : string}): Observable<string> {
-    return this.http.put<string>(`${this.apiLink}/api/ForgotPassword/change
-    Password`, changePassword);
+  public changePassword(changePassword: ChangePassword): Observable<ChangePassword> {
+    return this.http.post<ChangePassword>(`${this.apiLink}/api/ForgotPassword/changePassword`, changePassword);
   }
 }

@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { AuthGuard } from './core/guards/auth.guard';
 import { AuthenticationInterceptor } from './core/helper/authentication.interceptor';
 import { ResponseHandlingInterceptor } from './core/helper/response-handling.interceptor';
 import { AuthService } from './core/services/auth.service';
@@ -32,7 +33,8 @@ import { AuthService } from './core/services/auth.service';
       useClass: ResponseHandlingInterceptor,
       multi: true 
     },
-    AuthService
+    AuthService,
+    AuthGuard,
   ],
   bootstrap: [AppComponent]
 })

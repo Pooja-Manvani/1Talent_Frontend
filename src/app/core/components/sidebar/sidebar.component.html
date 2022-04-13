@@ -16,16 +16,28 @@
                     <span class="nav-link-name">Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item mb-4">
-                <a  class="nav-link">
+            <li *ngIf="userRole === 'Mentor'" class="nav-item mb-4">
+                <a class="nav-link" routerLink="leave-requests" routerLinkActive="active">
                     <span class="icon icon-apply-leave me-2"></span>
                     <span class="nav-link-name">Leave Request</span>
+                </a>
+            </li>
+            <li *ngIf="userRole === 'Intern'" class="nav-item mb-4">
+                <a class="nav-link" routerLink="apply-leave" routerLinkActive="active">
+                    <span class="icon icon-apply-leave me-2"></span>
+                    <span class="nav-link-name">Apply Leave</span>
                 </a>
             </li>
             <li class="nav-item mb-4">
                 <a class="nav-link" routerLink="profile" routerLinkActive="active">
                     <span class="icon icon-user me-2"></span>
                     <span class="nav-link-name">My Profile</span>
+                </a>
+            </li>
+            <li class="nav-item mb-4">
+                <a class="nav-link" routerLink="leave-status" routerLinkActive="active">
+                    <span class="icon icon-user me-2"></span>
+                    <span class="nav-link-name">Leave Status</span>
                 </a>
             </li>
         </ul>
