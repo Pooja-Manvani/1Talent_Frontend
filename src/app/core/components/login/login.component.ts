@@ -40,13 +40,15 @@ export class LoginComponent implements OnInit {
    * @name props
    * @description  It calls all methods when component initialized
    */
-  
+
   public props() {
-    this._authService.checkAuthentication().subscribe(result => {
-      if (result) {
-        this._router.navigateByUrl("/home");
-      }
-    });
+    if (this._authService.getToken()) {
+      this._authService.checkAuthentication().subscribe(result => {
+        if (result) {
+          this._router.navigateByUrl("/home");
+        }
+      });
+    }
   }
 
   /**

@@ -34,7 +34,7 @@ export class LeaveStatusContainerComponent implements OnInit {
   leaveGrant(leaveGrantData: LeaveGrant) {
     leaveGrantData.userName = this._userName;
     this._leaveStatusService.leaveGrant(leaveGrantData).subscribe((res) => {
-      console.log(res);
+//show grant status
     });
   }
 }

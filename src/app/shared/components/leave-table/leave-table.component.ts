@@ -48,9 +48,11 @@ export class LeaveTableComponent implements OnInit {
     return !(status === 'Accepted' || status === 'Pending');
   }
 
-  public showOverlay(leaveData: LeaveApplication) {
-    if (this.userRole === 'Mentor') {
+  public showOverlay(leaveData?: LeaveApplication) {
+    if (this.userRole === 'Mentor' && leaveData) {
       this._LeaveTablePresenterService.viewRequest(leaveData);
+    } else {
+      this._LeaveTablePresenterService.displayConfirmation();
     }
   }
 }

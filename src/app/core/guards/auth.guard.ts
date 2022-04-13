@@ -1,3 +1,7 @@
+/**
+ * @author Jigar Bhanushali, Himani Barot
+ */
+
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
@@ -7,7 +11,7 @@ import { AuthService } from '../services/auth.service';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  constructor(private _authService: AuthService, private router: Router) { }
+  constructor(private _authService: AuthService) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -20,9 +24,13 @@ export class AuthGuard implements CanActivate {
      */
     let authStatus = new Subject<boolean>();
     let authStatus$ = authStatus.asObservable();
-    this._authService.checkAuthentication().subscribe((status) => {
-      authStatus.next(status);
-    })
+    if (this._authService.getToken()) {
+      this._authService.checkAuthentication().subscribe((status) => {
+        authStatus.next(status);
+      })
+    } else {
+      authStatus.next(false);
+    }
     return authStatus$;
   }
 }
