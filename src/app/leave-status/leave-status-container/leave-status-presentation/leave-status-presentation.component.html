@@ -5,5 +5,7 @@
   </div>
 
   <!-- Leave Status Table  -->
-  <app-leave-table [leavesList]="leaveData" (buttonClick)="onButtonClick($event)" class="flex-grow-1 overflow-hidden"></app-leave-table>
+  <app-leave-table [leavesList]="leaveData" (buttonClick)="onButtonClick($event)"
+    (revokeLeaveRequest)="revokeLeaveRequest($event)" class="flex-grow-1 overflow-hidden">
+  </app-leave-table>
 </div>

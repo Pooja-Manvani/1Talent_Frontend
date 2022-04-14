@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Overlay, OverlayRef } from '@angular/cdk/overlay';
+import { ComponentPortal } from '@angular/cdk/portal';
+import { Component, ComponentRef, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
+import { ConfirmationPopupComponent } from 'src/app/shared/components/confirmation-popup/confirmation-popup.component';
 import { ApplicationType, ApplyLeave } from '../models/leave.model';
 import { ApplyleaveService } from '../services/applyleave.service';
 
@@ -8,28 +11,42 @@ import { ApplyleaveService } from '../services/applyleave.service';
   templateUrl: './apply-leave-container.component.html',
 })
 export class ApplyLeaveContainerComponent implements OnInit {
+  public $applicationType: Observable<ApplicationType[]>;
+
+  private _overlayRef!: OverlayRef
+  private _confirmationRef!: ComponentRef<ConfirmationPopupComponent>;
 
   private _userName: string;
-  public $applicationType:Observable<ApplicationType[]> ;
-  constructor(private applyleave:ApplyleaveService) {
+
+  constructor(private _applyleave: ApplyleaveService, private _overlay: Overlay) {
     this.$applicationType = new Observable();
     this._userName = '';
-   }
+  }
 
   ngOnInit(): void {
-    this.$applicationType = this.applyleave.getApplicationTypeid();
+    this.$applicationType = this._applyleave.getApplicationTypeMap();
     this._userName = localStorage.getItem('userName') ?? '';
   }
 
   public onSubmit(data: ApplyLeave) {
     //post call for leave request
-    this.applyleave.postLeaveRequest(data,this._userName).subscribe({
-      next:(res) =>{
-        // alert("leave has been applied")
-      },
-      // error:(error) =>{
-      //   console.log(error);
-      // }
-    })
+    this._applyleave.postLeaveRequest(data, this._userName).subscribe((res) => {
+      // Open confirmation popup when Leave applied successfully.
+      this._overlayRef = this._overlay.create({
+        hasBackdrop: true,
+        positionStrategy: this._overlay
+          .position()
+          .global()
+          .centerHorizontally()
+          .centerVertically(),
+      });
+
+      const component = new ComponentPortal(ConfirmationPopupComponent);
+      this._confirmationRef = this._overlayRef.attach(component);
+
+      this._confirmationRef.instance.closeConfirmationPopup.subscribe(() => {
+        this._overlayRef.detach();
+      });
+    });
   }
 }

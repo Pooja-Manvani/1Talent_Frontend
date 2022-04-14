@@ -19,8 +19,8 @@ export class Profile {
   public lastName: string;
   public email: string;
   public contactNumber: string;
-  public trainingStart: string;
-  public trainingEnd: string;
+  public trainingStart: Date;
+  public trainingEnd: Date;
   public userName: string;
   public password: string;
   public mentorName?: string;
@@ -34,8 +34,8 @@ export class Profile {
     lastName: string,
     email: string,
     contactNumber: string,
-    trainingStart: string,
-    trainingEnd: string,
+    trainingStart: Date,
+    trainingEnd: Date,
     userName: string,
     password: string,
     domainName: string,
@@ -72,8 +72,8 @@ export class ProfileAdapter implements Adapter<Profile> {
       item.lastName,
       item.email,
       item.contactNumber,
-      item.trainingStart,
-      item.trainingEnd,
+      new Date(item.trainingStart),
+      new Date(item.trainingEnd),
       item.userName,
       item.password,
       item.domainName,

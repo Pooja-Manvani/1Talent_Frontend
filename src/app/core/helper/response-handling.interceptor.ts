@@ -45,19 +45,11 @@ export class ResponseHandlingInterceptor implements HttpInterceptor {
                * handle all the API response from the error status code
                */
               case 204:
-                this.message = errorResponse.statusText;
-                break;
               case 400:
-                this.message = errorResponse.statusText;
-                break;
               case 401:
-                this.message = errorResponse.statusText;
-                break;
               case 404:
-                this.message = errorResponse.statusText;
-                break;
               case 500:
-                this.message = errorResponse.statusText;
+                this.message = errorResponse.error.message;
                 break;
             }
           }

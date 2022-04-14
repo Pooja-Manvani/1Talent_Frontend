@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 // ------------------------------------------------------------------------ //
 import { Observable } from 'rxjs/internal/Observable';
+import { AUTHENTICATE_USER, CHANGE_PASSWORD, CHECK_AUTHENTICATION, FORGOT_PASSWORD } from 'src/app/shared/constants';
 import { environment } from 'src/environments/environment';
 import { ChangePassword } from '../models/change-password.model';
 import { LoginCredentials, LoginResponse } from '../models/login.model';
@@ -19,15 +20,16 @@ export class AuthService {
    * @name apiLink
    * @description  api base url from environment file
    */
-  public apiLink: string = environment.baseUrl;
-
-  constructor(private http: HttpClient) { }
+  public apiLink: string;
+  constructor(private http: HttpClient) {
+    this.apiLink = environment.baseUrl + '/api/';
+  }
 
   /**
    * @name getToken
    * @description gets token from localStorage  
    * @return string | null
-   */ 
+   */
   public getToken(): string | null {
     return localStorage.getItem("token");
   }
@@ -94,7 +96,7 @@ export class AuthService {
    * @return Observable<LoginResponse>
    */
   public login(credentials: LoginCredentials): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiLink}/api/Login/AuthenticateUser`, credentials);
+    return this.http.post<LoginResponse>(`${this.apiLink}${AUTHENTICATE_USER}`, credentials);
   }
 
   /**
@@ -102,8 +104,8 @@ export class AuthService {
    * @description check authentication
    * @return Observable<boolean>
    */
-  public checkAuthentication() : Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiLink}/api/Login/GetResult`);
+  public checkAuthentication(): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiLink}${CHECK_AUTHENTICATION}`);
   }
 
   /**
@@ -113,7 +115,7 @@ export class AuthService {
    * @returns Observable<string>
    */
   public resetPassword(email: { email: string }): Observable<string> {
-    return this.http.post<string>(`${this.apiLink}/api/ForgotPassword/ForgotPassword`, email);
+    return this.http.post<string>(`${this.apiLink}${FORGOT_PASSWORD}`, email);
   }
   /**
    * @description sends HTTP POST request for resetting password
@@ -121,6 +123,6 @@ export class AuthService {
    * @returns Observable<string>
    */
   public changePassword(changePassword: ChangePassword): Observable<ChangePassword> {
-    return this.http.post<ChangePassword>(`${this.apiLink}/api/ForgotPassword/changePassword`, changePassword);
+    return this.http.post<ChangePassword>(`${this.apiLink}${CHANGE_PASSWORD}`, changePassword);
   }
 }

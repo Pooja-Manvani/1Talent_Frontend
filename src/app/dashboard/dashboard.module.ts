@@ -8,6 +8,7 @@ import { DashboardPresentationComponent } from './dashboard-container/dashboard-
 import { LeaveStatusPresentationComponent } from './dashboard-container/dashboard-presentation/leave-status-presentation/leave-status-presentation.component';
 import { DashboardService } from './services/dashboard.service';
 import { SharedModule } from '../shared/shared.module';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    SharedModule
+    SharedModule,
+    GoogleChartsModule
   ],
   providers: [
     DashboardService

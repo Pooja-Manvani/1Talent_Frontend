@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Subject } from 'rxjs/internal/Subject';
 import { LeaveApplication } from 'src/app/leave-status/models/leave-status.models';
 import { LeaveGrant } from 'src/app/shared/models/leave-grants.model';
-import { ConfirmationPopupComponent } from '../confirmation-popup/confirmation-popup.component';
+import { ConfirmationPopupComponent } from '../../confirmation-popup/confirmation-popup.component';
 import { ViewLeaveRequestPresentationComponent } from '../view-leave-request/view-leave-request-presentation/view-leave-request-presentation.component';
 
 @Injectable()
@@ -18,6 +18,9 @@ export class LeaveTablePresenterService {
   public buttonClick$: Observable<LeaveGrant>;
   private _buttonClick: Subject<LeaveGrant>;
 
+  public leaveRevokeData$: Observable<LeaveGrant>;
+  private _leaveRevokeData: Subject<LeaveGrant>;
+
   private _overlayRef!: OverlayRef
   private _viewLeaveComponentRef!: ComponentRef<ViewLeaveRequestPresentationComponent>
   private _confirmationRef!: ComponentRef<ConfirmationPopupComponent>;
@@ -25,6 +28,9 @@ export class LeaveTablePresenterService {
   constructor(private overlay: Overlay) {
     this._buttonClick = new Subject();
     this.buttonClick$ = this._buttonClick.asObservable();
+    
+    this._leaveRevokeData = new Subject();
+    this.leaveRevokeData$ = this._leaveRevokeData.asObservable();
   }
 
   /**
@@ -52,17 +58,22 @@ export class LeaveTablePresenterService {
       this._overlayRef.detach();
     });
 
-    this._overlayRef.backdropClick().subscribe(() => {
+    this._viewLeaveComponentRef.instance.close.subscribe(() => {
       this._overlayRef.detach();
     });
   }
 
   /**
-   * @author Hemani Barot
+   * @author Himani Barot
    * @name displayConfirmation
    * @description displays confirmation popup for revoke requests
    */
-  public displayConfirmation() {
+  public displayConfirmationPopup(data: LeaveApplication, isRevokeConfirmationPopup: boolean) {
+
+    let newRevokeData: LeaveGrant = {} as LeaveGrant;
+    newRevokeData.applicationId = data.applicationId;
+    newRevokeData.applicationStatus = data.applicationStatus;
+
     this._overlayRef = this.overlay.create({
       hasBackdrop: true,
       positionStrategy: this.overlay
@@ -75,7 +86,12 @@ export class LeaveTablePresenterService {
     const component = new ComponentPortal(ConfirmationPopupComponent);
     this._confirmationRef = this._overlayRef.attach(component);
 
-    this._confirmationRef.instance.close.subscribe((name) => {
+    this._confirmationRef.instance.isRevokeConfirmationPopup = isRevokeConfirmationPopup;
+    this._confirmationRef.instance.sendRevokeLeaveRequest.subscribe(()=>{
+      this._leaveRevokeData.next(newRevokeData);
+    });
+    
+    this._confirmationRef.instance.closeConfirmationPopup.subscribe(() => {
       this._overlayRef.detach();
     });
   }

@@ -15,7 +15,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="align-middle" *ngFor="let application of leavesList" (click)="showOverlay(application)">
+          <tr class="align-middle cursor-pointer" *ngFor="let application of leavesList" (click)="showOverlay(application)">
             <td *ngIf="userRole === 'Mentor'" scope="col">{{ application.internName }}</td>
             <td *ngIf="userRole === 'Intern'">{{ application.appliedDate }}</td>
             <td>{{ application.applicationTypeName }}</td>
@@ -31,7 +31,7 @@
             </td>
             <td *ngIf="userRole === 'Intern'">
               <button type="button" [disabled]="isRevokeButtonDisabled(leaveStatus[application.applicationStatus - 1])"
-                class="btn btn-outline-primary text-nowrap px-3 w-100" (click)="showOverlay()">
+                class="btn btn-outline-primary text-nowrap px-3 w-100" (click)="showConfirmationPopup(application)">
                 {{ mapButton(leaveStatus[application.applicationStatus - 1]) | uppercase }}
               </button>
               <!-- <button class="btn btn-outline-primary w-100">Revoke</button> -->

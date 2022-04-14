@@ -11,6 +11,7 @@ export class LeaveApplication {
   public description: string;
   public applicationStatus: number;
   public internName?: string;
+  public internUserName?: string;
 
   constructor(
     applicationId: number,
@@ -21,6 +22,7 @@ export class LeaveApplication {
     description: string,
     applicationStatus: number,
     internName?: string,
+    internUserName?: string,
   ) {
     this.applicationId = applicationId;
     this.appliedDate = appliedDate;
@@ -30,5 +32,6 @@ export class LeaveApplication {
     this.description = description;
     this.applicationStatus = applicationStatus;
     this.internName = internName;
+    this.internUserName = internUserName;
   }
 }
