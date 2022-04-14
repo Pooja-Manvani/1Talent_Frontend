@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { of } from 'rxjs';
 
 // --------------------------------------------------------------------- //
 import { Observable } from 'rxjs/internal/Observable';
@@ -10,7 +9,8 @@ import { LeaveStatusService } from '../services/leave-status.service';
 
 @Component({
   selector: 'app-leave-status-container',
-  templateUrl: './leave-status-container.component.html'
+  templateUrl: './leave-status-container.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LeaveStatusContainerComponent implements OnInit {
 
@@ -20,7 +20,7 @@ export class LeaveStatusContainerComponent implements OnInit {
 
   public pageTitle: string;
 
-  constructor(private _leaveStatusService: LeaveStatusService, private _toaster: ToastrService) {
+  constructor(private _leaveStatusService: LeaveStatusService, private _toaster: ToastrService, private _cdr: ChangeDetectorRef) {
     this.internLeaveStatus$ = new Observable();
     this._userName = localStorage.getItem('userName') ?? ''
     this._userRole = localStorage.getItem('userRole') ?? ''
@@ -41,6 +41,7 @@ export class LeaveStatusContainerComponent implements OnInit {
     this._leaveStatusService.leaveGrant(leaveGrantData).subscribe((res) => {
       this._toaster.success(res);
       this.internLeaveStatus$ = this._leaveStatusService.getLeaveStatus(this._userName, this._userRole);
+      this._cdr.markForCheck();
     });
   }
 
@@ -54,6 +55,8 @@ export class LeaveStatusContainerComponent implements OnInit {
     data.userName = this._userName;
     this._leaveStatusService.revokeLeaveRequest(data).subscribe((res: any) => {
       this._toaster.success(res.message);
+      this.internLeaveStatus$ = this._leaveStatusService.getLeaveStatus(this._userName, this._userRole);
+      this._cdr.markForCheck();
     });
   }
 
