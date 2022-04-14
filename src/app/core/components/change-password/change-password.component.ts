@@ -40,7 +40,7 @@ export class ChangePasswordComponent {
       newPassword: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
     }, {
-      validator: ConfirmedValidator('newPassword', 'confirmPassword')
+      validator: this.ConfirmedValidator('newPassword', 'confirmPassword')
     });
 
   }
@@ -75,22 +75,22 @@ export class ChangePasswordComponent {
     return this.changePassword.controls;
   }
 
-}
-/**
- * @name ConfirmedValidator
- * @description Logic for matching the new password and confirm password fields
- */
-function ConfirmedValidator(controlName: string, matchingControlName: string) {
-  return (formGroup: FormGroup) => {
-    const control = formGroup.controls[controlName];
-    const matchingControl = formGroup.controls[matchingControlName];
-    if (matchingControl.errors && !matchingControl.errors['confirmedValidator']) {
-      return;
-    }
-    if (control.value !== matchingControl.value) {
-      matchingControl.setErrors({ confirmedValidator: true });
-    } else {
-      matchingControl.setErrors(null);
+  /**
+   * @name ConfirmedValidator
+   * @description Logic for matching the new password and confirm password fields
+   */
+  public ConfirmedValidator(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+      if (matchingControl.errors && !matchingControl.errors['confirmedValidator']) {
+        return;
+      }
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ confirmedValidator: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
     }
   }
 }

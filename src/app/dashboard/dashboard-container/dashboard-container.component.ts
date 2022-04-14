@@ -18,6 +18,6 @@ export class DashboardContainerComponent implements OnInit {
    * @description gets current Username from local storage
    */
   ngOnInit(): void {
-    this.internDashboard$ = this._dashboardService.getInternDashboard(localStorage.getItem('userName') ?? '');
+    this.internDashboard$ = this._dashboardService.getInternDashboard(localStorage.getItem('userName') ?? '', localStorage.getItem('userRole') ?? '');
   }
 }

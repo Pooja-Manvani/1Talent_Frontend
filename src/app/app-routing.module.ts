@@ -24,18 +24,19 @@ const routes: Routes = [
     component: ForgotPasswordComponent,
   },
   {
-    path: 'change-password',
-    component: ChangePasswordComponent,
-  },
-  {
     path: 'home',
     component: HomeComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',
+      },
+      {
+        path: 'change-password',
+        component: ChangePasswordComponent,
       },
       {
         path: 'dashboard',
@@ -49,16 +50,14 @@ const routes: Routes = [
       },
       {
         path: 'apply-leave',
-        // canActivateChild:[AuthGuard],
         loadChildren: () =>
           import('./apply-leave/apply-leave.module').then((m) => m.ApplyLeaveModule),
       },
       {
         path: 'leave-status',
-        // canActivateChild:[AuthGuard],
         loadChildren: () =>
           import('./leave-status/leave-status.module').then((m) => m.LeaveStatusModule),
-      },
+        },
       {
         path: 'leave-requests',
         loadChildren: () =>

@@ -37,9 +37,8 @@ export class LeaveStatusContainerComponent implements OnInit {
    * @param leaveGrantData 
    */
   public leaveGrant(leaveGrantData: LeaveGrant) {
-    leaveGrantData.userName = this._userName;
     this._leaveStatusService.leaveGrant(leaveGrantData).subscribe((res) => {
-      this._toaster.success(res);
+      this._toaster.success(res.message);
       this.internLeaveStatus$ = this._leaveStatusService.getLeaveStatus(this._userName, this._userRole);
       this._cdr.markForCheck();
     });

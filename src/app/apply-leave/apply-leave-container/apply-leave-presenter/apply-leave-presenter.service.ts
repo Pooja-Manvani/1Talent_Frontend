@@ -1,25 +1,19 @@
-import { ComponentRef, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DateRange } from '@angular/material/datepicker';
 import { DatePipe } from '@angular/common';
-import { ComponentPortal } from '@angular/cdk/portal';
-import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 
 // ----------------------------------------------------------------------------------------------------- //
 import { Observable } from 'rxjs/internal/Observable';
 import { Subject } from 'rxjs/internal/Subject';
 import { ApplyLeave } from '../../models/leave.model';
-import { ConfirmationPopupComponent } from 'src/app/shared/components/confirmation-popup/confirmation-popup.component';
 
 @Injectable()
 export class ApplyLeavePresenterService {
   private leaveData: Subject<ApplyLeave>;
   public leaveData$: Observable<ApplyLeave>;
 
-  private _overlayRef!: OverlayRef
-  private _confirmationRef!: ComponentRef<ConfirmationPopupComponent>;
-
-  constructor(private _fb: FormBuilder, private _overlay: Overlay) {
+  constructor(private _fb: FormBuilder) {
     this.leaveData = new Subject<ApplyLeave>();
     this.leaveData$ = this.leaveData.asObservable();
   }
@@ -113,28 +107,10 @@ export class ApplyLeavePresenterService {
     leavedata.applicationTypeId = activeTab === 1 ? 1 : +leavedata.applicationTypeId;
 
     this.leaveData.next(leavedata);
-
-    // Open confirmation popup when Leave applied successfully.
-    this._overlayRef = this._overlay.create({
-      hasBackdrop: true,
-      positionStrategy: this._overlay
-        .position()
-        .global()
-        .centerHorizontally()
-        .centerVertically(),
-    });
-
-    const component = new ComponentPortal(ConfirmationPopupComponent);
-    this._confirmationRef = this._overlayRef.attach(component);
-
-    this._confirmationRef.instance.closeConfirmationPopup.subscribe(() => {
-      this._overlayRef.detach();
-    });
   }
 
   // Date formatting
   private _formatDate(date: string): string {
     return new DatePipe('en-US').transform(date, 'YYYY-MM-dd') ?? ""
   }
-
 }

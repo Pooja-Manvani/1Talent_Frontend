@@ -13,11 +13,19 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
   userRole:string
   constructor(private _authService: AuthService) { 
-    this.userRole = localStorage.getItem('userRole') ?? ''
-
+    this.userRole = localStorage.getItem('userRole') ?? '';
   }
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    return (this.userRole === 'Intern') ? true : false
+    if (this.userRole === 'Intern') {
+      if (state.url.includes("leave-requests")) {
+        return false;
+      }
+    } else {
+      if (state.url.includes("leave-status") || state.url.includes("apply-leave")) {
+        return false;
+      }
+    }
+    return true;
   }
 
   canActivate(

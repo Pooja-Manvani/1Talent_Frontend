@@ -41,7 +41,6 @@ export class ViewLeaveRequestPresentationComponent {
    * @param value
    */
   public buttonClick(value: string): void {
-    // debugger
     this.buttonClickEvent.emit({
       button: value,
       applicationId: this.requestData.applicationId,

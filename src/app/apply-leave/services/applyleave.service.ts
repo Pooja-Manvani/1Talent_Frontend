@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
+import { APPLICATION_TYPE_MAP, APPLY_LEAVE } from 'src/app/shared/constants';
 import { environment } from 'src/environments/environment';
 import { ApplicationType, ApplyLeave } from '../models/leave.model';
 
@@ -10,16 +11,16 @@ export class ApplyleaveService {
   public apiLink: string;
 
   constructor(private _http: HttpClient) {
-    this.apiLink = environment.baseUrl;
+    this.apiLink = environment.baseUrl + '/api/';
   }
 
   // Post call for Leave Request
   public postLeaveRequest(data: ApplyLeave, userName: string): Observable<ApplyLeave> {
-    return this._http.post<ApplyLeave>(`${this.apiLink}/api/ApplyLeave/${userName}`, data);
+    return this._http.post<ApplyLeave>(`${this.apiLink}${APPLY_LEAVE}/${userName}`, data);
   }
 
   //get User
-  public getApplicationTypeid():Observable<ApplicationType[]>{
-    return this._http.get<ApplicationType[]>(`${this.apiLink}/api/ApplicationType`)
+  public getApplicationTypeMap():Observable<ApplicationType[]>{
+    return this._http.get<ApplicationType[]>(`${this.apiLink}${APPLICATION_TYPE_MAP}`)
   }
 }
