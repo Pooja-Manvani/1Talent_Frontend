@@ -1,4 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component} from '@angular/core';
+import { ChartType } from 'angular-google-charts';
 
 @Component({
   selector: 'app-leave-status-presentation',
@@ -6,31 +7,24 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 })
 export class LeaveStatusPresentationComponent {
 
-  @ViewChild('pieChart')
-  pieChart!: ElementRef;
+  public chartType = ChartType.PieChart;
 
-  drawChart = () => {
-    const data = google.visualization.arrayToDataTable([
-      ['Task', 'Hours per Day'],
-      ['Accepted', 8],
-      ['Rejected', 2],
-      ['Pending', 2],
-      ['Req. Revoke', 0],
-      ['Revoked', 0]
-    ]);
-  
-    const options = {
-      pieHole: 0.8,
-      // legend: {position: 'top'},
-    };
-  
-    const chart = new google.visualization.PieChart(this.pieChart.nativeElement);
-  
-    chart.draw(data, options);
-  }
-  
-    ngOnInit() {
-      google.charts.load('current', { 'packages': ['corechart'] });
-      google.charts.setOnLoadCallback(this.drawChart);
-    }
+  public chartData = [
+    ['Accepted', 8],
+    ['Rejected', 5],
+    ['Pending', 1],
+    ['Req. Revoke', 0],
+    ['Revoked', 0]
+  ];
+
+  public chartOptions = {
+    pieHole: .6,
+    legend: 'none',
+    pieStartAngle: -95,
+    'width':250,
+    'height':200,
+    chartArea: { width: '100%', height: '100%' },
+    pieSliceTextStyle: { color: 'transparent' },
+    colors: ['#408CFF', '#F26A6A', '#FFB800', '#f3b49f', '#f6c7b6'],
+  };
 }
