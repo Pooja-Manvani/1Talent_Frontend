@@ -11,19 +11,19 @@ export class ApplyLeaveContainerComponent implements OnInit {
 
   private _userName: string;
   public $applicationType:Observable<ApplicationType[]> ;
-  constructor(private applyleave:ApplyleaveService) {
+  constructor(private _applyleave:ApplyleaveService) {
     this.$applicationType = new Observable();
     this._userName = '';
    }
 
   ngOnInit(): void {
-    this.$applicationType = this.applyleave.getApplicationTypeid();
+    this.$applicationType = this._applyleave.getApplicationTypeid();
     this._userName = localStorage.getItem('userName') ?? '';
   }
 
   public onSubmit(data: ApplyLeave) {
     //post call for leave request
-    this.applyleave.postLeaveRequest(data,this._userName).subscribe({
+    this._applyleave.postLeaveRequest(data,this._userName).subscribe({
       next:(res) =>{
         // alert("leave has been applied")
       },

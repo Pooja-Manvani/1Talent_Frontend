@@ -1,24 +1,36 @@
-import { Injectable } from '@angular/core';
+import { ComponentRef, Injectable } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DateRange } from '@angular/material/datepicker';
 import { DatePipe } from '@angular/common';
+import { ComponentPortal } from '@angular/cdk/portal';
+import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 
 // ----------------------------------------------------------------------------------------------------- //
 import { Observable } from 'rxjs/internal/Observable';
 import { Subject } from 'rxjs/internal/Subject';
 import { ApplyLeave } from '../../models/leave.model';
+import { ConfirmationPopupComponent } from 'src/app/shared/components/confirmation-popup/confirmation-popup.component';
 
 @Injectable()
 export class ApplyLeavePresenterService {
   private leaveData: Subject<ApplyLeave>;
   public leaveData$: Observable<ApplyLeave>;
 
+  private _overlayRef!: OverlayRef
+  private _confirmationRef!: ComponentRef<ConfirmationPopupComponent>;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private _fb: FormBuilder, private _overlay: Overlay) {
     this.leaveData = new Subject<ApplyLeave>();
     this.leaveData$ = this.leaveData.asObservable();
   }
 
+  /**
+   * @name onSelectedChange
+   * @description Select date range from start to end
+   * @param date 
+   * @param selectedDateRange 
+   * @returns DateRange<Date>
+   */
   public onSelectedChange(date: Date, selectedDateRange: DateRange<Date>): DateRange<Date> {
     if (
       selectedDateRange &&
@@ -36,6 +48,13 @@ export class ApplyLeavePresenterService {
     return selectedDateRange;
   }
 
+  /**
+   * @name leaveCount
+   * @description Counts leave by excluding weekends
+   * @param start 
+   * @param end 
+   * @returns number
+   */
   public leaveCount(start: number, end: number): number {
     let day = start;
     let count = 0;
@@ -56,15 +75,27 @@ export class ApplyLeavePresenterService {
     return current + (noOfDays * (24 * 60 * 60 * 1000));
   }
 
-  //create form
+  /**
+   * @name buildForm
+   * @description Creates apply leave form
+   */
   public buildForm() {
-    return this.fb.group({
+    return this._fb.group({
       applicationTypeId: ['4'],
       description: ['', Validators.required],
     })
   }
-  //onsubmit data
+
+  /**
+   * @name onSubmit
+   * @description Submit form
+   * @param leavedata 
+   * @param fromDate 
+   * @param toDate 
+   * @param activeTab 
+   */
   public onSubmit(leavedata: ApplyLeave, fromDate: string | undefined, toDate: string | undefined, activeTab: number) {
+
     //set application status
     leavedata.applicationStatus = 3;
     //fromDate 
@@ -82,9 +113,28 @@ export class ApplyLeavePresenterService {
     leavedata.applicationTypeId = activeTab === 1 ? 1 : +leavedata.applicationTypeId;
 
     this.leaveData.next(leavedata);
+
+    // Open confirmation popup when Leave applied successfully.
+    this._overlayRef = this._overlay.create({
+      hasBackdrop: true,
+      positionStrategy: this._overlay
+        .position()
+        .global()
+        .centerHorizontally()
+        .centerVertically(),
+    });
+
+    const component = new ComponentPortal(ConfirmationPopupComponent);
+    this._confirmationRef = this._overlayRef.attach(component);
+
+    this._confirmationRef.instance.closeConfirmationPopup.subscribe(() => {
+      this._overlayRef.detach();
+    });
   }
 
+  // Date formatting
   private _formatDate(date: string): string {
     return new DatePipe('en-US').transform(date, 'YYYY-MM-dd') ?? ""
   }
+
 }

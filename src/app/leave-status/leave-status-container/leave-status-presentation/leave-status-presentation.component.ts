@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+
 // ------------------------------------------------------------------ //
 import { leaveStatus } from 'src/app/shared/leave-status';
 import { LeaveGrant } from 'src/app/shared/models/leave-grants.model';
@@ -19,6 +20,7 @@ export class LeaveStatusPresentationComponent {
   }
 
   @Output() public leaveGrant: EventEmitter<LeaveGrant>;
+  @Output() public revokeLeaveRequestData: EventEmitter<LeaveGrant>;
 
   public leaveStatus = leaveStatus;
 
@@ -31,6 +33,7 @@ export class LeaveStatusPresentationComponent {
   constructor() {
     this.pageTitle = '';
     this.leaveGrant = new EventEmitter();
+    this.revokeLeaveRequestData = new EventEmitter();
   }
 
   public mapButton(status: string) {
@@ -40,8 +43,22 @@ export class LeaveStatusPresentationComponent {
   public isRevokeButtonDisabled(status: string): boolean {
     return !(status === 'Accepted' || status === 'Pending');
   }
-  
+
+  /**
+   * @author Jigar Bhanushali
+   * @description This function emits the leave grant.
+   * @param leaveGrant 
+   */
   public onButtonClick(leaveGrant: LeaveGrant) {
     this.leaveGrant.emit(leaveGrant);
+  }
+
+  /**
+   * @author Himani Barot
+   * @description This function emits the revoked leave request data.
+   * @param data 
+   */
+  public revokeLeaveRequest(data: LeaveGrant) {
+    this.revokeLeaveRequestData.emit(data);
   }
 }
