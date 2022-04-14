@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { LeaveDetails } from '../models/dashboard.models';
+import { Observable } from 'rxjs/internal/Observable';
+import { LeaveApplication } from 'src/app/leave-status/models/leave-status.models';
 import { DashboardService } from '../services/dashboard.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { DashboardService } from '../services/dashboard.service';
   templateUrl: './dashboard-container.component.html'
 })
 export class DashboardContainerComponent implements OnInit {
-  internDashboard$: Observable<LeaveDetails[]>;
+  internDashboard$: Observable<LeaveApplication[]>;
 
   constructor(private _dashboardService: DashboardService) {
     this.internDashboard$ = new Observable();
@@ -19,6 +19,5 @@ export class DashboardContainerComponent implements OnInit {
    */
   ngOnInit(): void {
     this.internDashboard$ = this._dashboardService.getInternDashboard(localStorage.getItem('userName') ?? '');
-    // this.internDashboard$ = this._dashboardService.getInternDashboard();
   }
 }

@@ -1,0 +1,72 @@
+<div class="p-5">
+    <div>
+        <h1 class="page-title">Apply Leave</h1>
+    </div>
+    <div class="row g-5 mt-4">
+        <div class="col col-lg-6">
+            <div class="card card-profile shadow-sm h-100 py-4">
+                <div class="card-body mat-typography">
+                    <div class=" d-flex flex-wrap align-items-center fs-6">
+                        <h3 class="me-5 fw-bold">Select Date</h3>
+                        <h4>(click and drag to select Leave Dates from Calendar)</h4>
+                    </div>
+                    <!-- Start: Calendar-->
+                    <div class="calendar d-flex justify-content-center">
+                        <mat-card class="leave-calendar">
+                            <mat-calendar (selectedChange)="onDateRangeChange($event)" [minDate]="currentDate"
+                                [selected]="selectedDateRange" [dateFilter]="disableWeekend">
+                            </mat-calendar>
+                        </mat-card>`
+                    </div>
+                    <!--End: Calendar-->
+                </div>
+            </div>
+        </div>
+        <div class="col col-lg-6 ps-lg-3">
+            <div class="card shadow-sm h-100 py-4">
+                <div class="card-body">
+                    <!-- Start: options for leave-->
+                    <div class="d-flex flex-wrap" #tabs>
+                        <div class="col-6 pe-3 pe-xl-4 pe-xxl-5">
+                            <h3 class="tab-name fw-bold fs-5 m-0 pb-3" [ngClass]="{ 'active': activeTab === 0 }" (click)="activeTab = 0" role="button">Leave</h3>
+                        </div>
+                        <div class="col-6 ps-3 ps-xl-4 ps-xxl-5">
+                            <h3 class="tab-name fw-bold fs-5 m-0 pb-3" [ngClass]="{ 'active': activeTab === 1 }" (click)="activeTab = 1" role="button">WFH</h3>
+                        </div>
+                    </div>
+                    <!--End: options for leave-->
+                    <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()">                      
+                   
+                    <!-- Start: Radio-buttons-->
+                    <div *ngIf="activeTab === 0 ? true : false " class="d-flex justify-content-between flex-wrap pt-4 pt-lg-5 fs-5">
+                        <div *ngFor ="let leave of leaveType?.slice(1)" class="form-check form-check-inline d-flex my-2" >
+                            <input class="form-check-input" type="radio" name="applicationTypeId" id="inlineRadio1"
+                                value="{{leave.applicationTypeId}}"  formControlName="applicationTypeId">
+                            <label class="form-check-label ms-3" for="inlineRadio1"><h3 class="fs-6 mb-0 fw-bold">{{leave.applicationTypeName}}</h3></label>
+                        </div>
+                    </div>
+                    <!--End: Radio-buttons-->
+
+                    <div class="py-4 fs-5 fw-bold" [ngClass] = "{'pt-5': activeTab === 1}">
+                        Total Leave Days: {{ noOfDays }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1"></label>
+                        <textarea class="form-control p-3 rounded-3" id="exampleFormControlTextarea1" rows="8"
+                            placeholder="Type your Reason for Leave" formControlName="description"></textarea>
+                            <div class="error mt-3 ms-2 text-danger" *ngIf=" submitted || formControl['description'].touched && formControl['description'].invalid">
+                                <div *ngIf="formControl['description'].errors && formControl['description'].errors['required']">*Description is required.</div>
+                            </div>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-end flex-wrap pt-5">
+                        <button type="button" class="btn btn-outline-primary mb-4 mb-md-0 mb-xl-0">CANCEL</button>
+                        <button type="submit" class="btn btn-primary ms-md-4">SUBMIT</button>
+                    </div>
+                </form>
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>

@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 
 // ----------------------------------------------------------------------------------------
 import { Observable } from 'rxjs';
+import { LeaveApplication } from 'src/app/leave-status/models/leave-status.models';
 import { environment } from 'src/environments/environment';
-import { LeaveDetails } from '../models/dashboard.models';
 
 @Injectable()
 export class DashboardService {
@@ -18,9 +18,9 @@ export class DashboardService {
  * @param userName 
  * @returns Observable()
  */
-  getInternDashboard(userName: string): Observable<LeaveDetails[]> {
+  getInternDashboard(userName: string): Observable<LeaveApplication[]> {
     if (userName) {
-      return this.http.get<LeaveDetails[]>(`${this.apiLink}/api/DashBoardLeaveStatus/${userName}`);
+      return this.http.get<LeaveApplication[]>(`${this.apiLink}/api/DashBoardLeaveStatus/${userName}`);
     } else {
       return new Observable();
     }

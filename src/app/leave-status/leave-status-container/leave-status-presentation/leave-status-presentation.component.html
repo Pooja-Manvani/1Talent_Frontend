@@ -1,0 +1,9 @@
+<div class="content-wrapper h-100 d-flex flex-column">
+  <!-- Leave Status Table Heading  -->
+  <div>
+    <h1 class="page-title mb-3">{{ pageTitle }}</h1>
+  </div>
+
+  <!-- Leave Status Table  -->
+  <app-leave-table [leavesList]="leaveData" (buttonClick)="onButtonClick($event)" class="flex-grow-1 overflow-hidden"></app-leave-table>
+</div>

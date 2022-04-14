@@ -1,0 +1,63 @@
+.leave-calendar {
+    width: 100%;
+}
+.mat-button {
+    color: $primary;
+}
+
+.mat-icon-button {
+    color: $gray;
+}
+
+.mat-calendar-body-selected {
+    background-color: $selected-date;
+}
+
+.mat-calendar-period-button {
+    font-size: 1.125rem;
+}
+
+.mat-calendar-table-header {
+    tr {
+        color: $primary;
+    }
+
+    th {
+        font-size: 14px;
+        font-weight: 600;
+    }
+}
+
+.card {
+    .mat-card {
+        box-shadow: none !important;
+        border: 1px solid $light;
+        @include border-radius($calendar-border-radius);
+    }
+}
+
+//leave tab view
+.tab-name {
+    position: relative;
+    transition: 0.4s all;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        height: 8px;
+        border-radius: 1rem;
+        width: 100%;
+        background-color: rgba($primary, 0.1);
+    }
+    &.active {
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: -1.2rem;
+            height: 8px;
+            border-radius: 1rem;
+            width: 100%;
+            background-color: rgba($primary, 1);
+        }
+    }
+}

@@ -7,9 +7,10 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent {
+  userRole: string | null;
 
   constructor(private _service: AuthService,private _router : Router){
-
+    this.userRole = localStorage.getItem('userRole'); 
   }
   /**
    * @name signOut
