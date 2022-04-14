@@ -52,7 +52,7 @@ export class LeaveTablePresenterService {
       this._overlayRef.detach();
     });
 
-    this._overlayRef.backdropClick().subscribe(() => {
+    this._viewLeaveComponentRef.instance.close.subscribe(() => {
       this._overlayRef.detach();
     });
   }

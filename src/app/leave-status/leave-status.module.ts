@@ -21,8 +21,5 @@ import { SharedModule } from '../shared/shared.module';
     LeaveStatusRoutingModule,
     SharedModule
   ],
-  providers: [
-    LeaveStatusService
-  ]
 })
 export class LeaveStatusModule { }

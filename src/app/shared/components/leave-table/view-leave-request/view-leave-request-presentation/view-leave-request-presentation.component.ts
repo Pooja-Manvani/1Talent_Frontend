@@ -9,10 +9,12 @@ import { LeaveGrant } from 'src/app/shared/models/leave-grants.model';
 @Component({
   selector: 'app-view-leave-request-presentation',
   templateUrl: './view-leave-request-presentation.component.html',
+  styleUrls: ['./view-leave-request-presentation.component.scss']
 })
 export class ViewLeaveRequestPresentationComponent {
 
   buttonClickEvent: EventEmitter<LeaveGrant>;
+  close: EventEmitter<string>;
 
   private _requestData!: LeaveApplication;
   public get requestData(): LeaveApplication {
@@ -28,7 +30,9 @@ export class ViewLeaveRequestPresentationComponent {
 
   constructor() {
     this.buttonClickEvent = new EventEmitter();
+    this.close = new EventEmitter();
     this.leaveStatus = leaveStatus;
+    
   }
 
   /**
@@ -37,10 +41,11 @@ export class ViewLeaveRequestPresentationComponent {
    * @param value
    */
   public buttonClick(value: string): void {
+    // debugger
     this.buttonClickEvent.emit({
       button: value,
       applicationId: this.requestData.applicationId,
-      userName: '',
+      userName: this.requestData.internUserName ?? '',
       applicationStatus: this.requestData.applicationStatus,
     });
   }
@@ -53,7 +58,12 @@ export class ViewLeaveRequestPresentationComponent {
    */
   public buttonStatus(buttonName: string): boolean {
     return buttonName === 'Revoke'
-      ? !['Accepted', 'Req. Revoke'].includes(leaveStatus[this.requestData.applicationStatus - 1])
+      ? leaveStatus[this.requestData.applicationStatus - 1] !== 'Req. Revoke'   
       : leaveStatus[this.requestData.applicationStatus - 1] !== 'Pending';
   }
+
+  onClose() {
+    this.close.emit();
+  }
 }
+

@@ -1,24 +1,24 @@
 <!-- @author Jigar Bhanushali -->
-<div class="view-leave-request bg-white overflow-hidden">
+<div class="view-leave-request bg-white overflow-hidden position-relative">
+        <span (click)="onClose()" class="icon icon-Close position-absolute top-0 end-0 pt-3 pe-3 fs-5"></span>
     <div class="row">
-
-        <div class="col-4 bg-primary bg-opacity-10">
+        <div class="col-12 col-lg-5 col-xl-4 col-xxl-3 bg-primary bg-opacity-10">
             <div class="p-5">
                 <!-- overlay title -->
                 <div class="pb-4 mb-4">
                     <h4 class="page-title fs-4 mb-3 text-nowrap">View Leave Request</h4>
                 </div>
                 <!-- intern details start -->
-                <div>
-                    <div class="d-flex pb-4">
+                <div class="row">
+                    <div class="d-flex flex-column flex-lg-row pb-4 col col-lg-12">
                         <div class="intern-info pe-4 text-muted">Name</div>
                         <div>{{ requestData.internName }}</div>
                     </div>
-                    <div class="d-flex pb-4">
+                    <div class="d-flex flex-column flex-lg-row pb-4 col col-lg-12">
                         <div class="intern-info pe-4 text-muted">Type</div>
                         <div>{{ requestData.applicationTypeName }}</div>
                     </div>
-                    <div class="d-flex pb-4">
+                    <div class="d-flex flex-column flex-lg-row pb-4 col col-lg-12">
                         <div class="intern-info pe-4 text-muted">From</div>
                         <div>{{ requestData.leaveDates }}</div>
                     </div>
@@ -26,7 +26,7 @@
                 <!-- intern details end -->
             </div>
         </div>
-        <div class="col-8">
+        <div class="col-12 col-lg-7 col-xl-8 col-xxl-9">
             <div class="p-5">
                 <div class="text-end pt-5 pb-4"> <span class="pe-4 text-muted">Application Date</span><span
                         class="ps-3 ">{{ requestData.appliedDate }}</span>
@@ -39,8 +39,8 @@
                 <div class="text-end pt-5 mt-5">
                     <button class="btn btn-outline-primary" [disabled]="buttonStatus('Revoke')"
                         (click)="buttonClick('Revoke')">Revoke</button>
-                    <button class="btn btn-danger text-white mx-4" [disabled]="buttonStatus('Decline')"
-                        (click)="buttonClick('Decline')">Decline</button>
+                    <button class="btn btn-danger text-white mx-4" [disabled]="buttonStatus('Reject')"
+                        (click)="buttonClick('Decline')">Reject</button>
                     <button class="btn btn-primary" [disabled]="buttonStatus('Accept')"
                         (click)="buttonClick('Accept')">Accept</button>
                 </div>

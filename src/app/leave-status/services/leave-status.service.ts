@@ -12,7 +12,9 @@ import { LeaveApplication } from '../models/leave-status.models';
 // -------------------------------------------------------------------------
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LeaveStatusService {
 
   apiLink: string;
@@ -38,6 +40,10 @@ export class LeaveStatusService {
    * @returns Observable()
    */
   public leaveGrant(leaveGrantData: LeaveGrant): Observable<string> {
-    return this.http.post<string>(`${this.apiLink}/api/MentorLeaveRequest`, leaveGrantData)
+    return this.http.post<string>(`${this.apiLink}/api/MentorLeaveRequest`, leaveGrantData);
+  }
+
+  public getApplicationById(id: number): Observable<LeaveApplication> {
+    return this.http.get<LeaveApplication>(`${this.apiLink}/api/ViewLeaveRequest/${id}`);
   }
 }

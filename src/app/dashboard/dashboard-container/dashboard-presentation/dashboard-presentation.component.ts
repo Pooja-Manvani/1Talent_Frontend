@@ -7,13 +7,18 @@ import { LeaveApplication } from 'src/app/leave-status/models/leave-status.model
 })
 export class DashboardPresentationComponent {
 
-  private _internLeaveData!: LeaveApplication[];
+  public userRole: string;
   public get internLeaveData(): LeaveApplication[] {
     return this._internLeaveData;
   }
+  private _internLeaveData!: LeaveApplication[];
   @Input() public set internLeaveData(value: LeaveApplication[] | null) {
     if (value) {
       this._internLeaveData = value;
     }
+  }
+
+  constructor(){
+    this.userRole = localStorage.getItem('userRole') ?? ''
   }
 }

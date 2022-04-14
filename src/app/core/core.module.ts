@@ -12,6 +12,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 
@@ -21,7 +22,8 @@ import { HomeComponent } from './components/home/home.component';
     ForgotPasswordComponent,
     ChangePasswordComponent,
     SidebarComponent,
-    HomeComponent
+    HomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule,

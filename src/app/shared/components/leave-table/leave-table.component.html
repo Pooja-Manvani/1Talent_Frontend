@@ -15,7 +15,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="align-middle" *ngFor="let application of leavesList" (click)="showOverlay(application)">
+          <tr class="align-middle cursor-pointer" *ngFor="let application of leavesList" (click)="showOverlay(application)">
             <td *ngIf="userRole === 'Mentor'" scope="col">{{ application.internName }}</td>
             <td *ngIf="userRole === 'Intern'">{{ application.appliedDate }}</td>
             <td>{{ application.applicationTypeName }}</td>

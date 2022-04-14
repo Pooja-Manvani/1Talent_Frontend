@@ -6,6 +6,7 @@ import { ChangePasswordComponent } from './core/components/change-password/chang
 import { ForgotPasswordComponent } from './core/components/forgot-password/forgot-password.component';
 import { HomeComponent } from './core/components/home/home.component';
 import { LoginComponent } from './core/components/login/login.component';
+import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
@@ -29,7 +30,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -48,11 +49,13 @@ const routes: Routes = [
       },
       {
         path: 'apply-leave',
+        // canActivateChild:[AuthGuard],
         loadChildren: () =>
           import('./apply-leave/apply-leave.module').then((m) => m.ApplyLeaveModule),
       },
       {
         path: 'leave-status',
+        // canActivateChild:[AuthGuard],
         loadChildren: () =>
           import('./leave-status/leave-status.module').then((m) => m.LeaveStatusModule),
       },
@@ -63,6 +66,10 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: '**',
+    component: PageNotFoundComponent
+  }
 ];
 
 @NgModule({

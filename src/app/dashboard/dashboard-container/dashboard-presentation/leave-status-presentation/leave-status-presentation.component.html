@@ -55,9 +55,9 @@
     </div>
     <div class="col-12 col-sm-6 col-lg-3">
 
-        <!-- List of Holidays Card  -->
+        <!-- List of Holidays Card start -->
         <div class="card h-100">
-            <div class="card-body">
+            <div class="card-body" *ngIf="userRole == 'Intern'">
                 <div class="card-title fs-4">List of Holidays</div>
                 <ul class="list-unstyled mt-4">
                     <li class="holiday d-flex justify-content-between mb-4 pb-3 border-bottom">
@@ -75,9 +75,45 @@
                     <li class="holiday d-flex justify-content-between mb-4 pb-3">
                         <div class="card-text text-muted text-nowrap"> Holi </div> <span
                             class="badge rounded-pill text-warning bg-warning bg-opacity-10 px-4 py-2 holiday-date-size"> 1 JAN </span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- List of Holidays Card end -->
+              <!-- Intern leave card start  -->
+              <div class="card-body" *ngIf="userRole == 'Mentor'">
+                  <div class="card-title fw-bold">Intern who has more leaves requests</div>
+                <ul class="p-0 mt-4">
+                    <li class="d-flex justify-content-between pb-2 mb-4">
+                        <div class="text-muted d-flex align-items-center">Oaken Hans</div>
+                        <div class="border border-primary rounded-circle ">
+                            <small class="m-1 d-flex align-items-center justify-content-center rounded-circle p-1 badge-small bg-primary bg-opacity-10 text-primary">10</small>
+                        </div>
+                    </li>
+                    <li class="d-flex justify-content-between pb-2 mb-4">
+                        <div class="text-muted d-flex align-items-center">Sven Snowgies</div>
+                        <div class="border border-primary rounded-circle ">
+                            <small class="m-1 d-flex align-items-center justify-content-center rounded-circle p-1 badge-small bg-primary bg-opacity-10 text-primary">08</small>
+                        </div>
+                    </li>
+                    <li class="d-flex justify-content-between pb-2 mb-4">
+                        <div class="text-muted d-flex align-items-center">Sven Snowgies</div>
+                        <div class="border border-primary rounded-circle ">
+                            <small class="m-1 d-flex align-items-center justify-content-center rounded-circle p-1 badge-small bg-primary bg-opacity-10 text-primary">06</small>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="card-title fw-bold">Intern who has less leave requests</div>
+                <ul class="p-0 mt-4">
+                    <li class="d-flex justify-content-between pb-2 mb-4">
+                        <div class="text-muted  d-flex align-items-center">Elsa Frost</div>
+                        <div class="border border-primary rounded-circle ">
+                            <small class="m-1 d-flex align-items-center justify-content-center rounded-circle p-1 badge-small bg-primary bg-opacity-10 text-primary">02</small>
+                        </div>
                     </li>
                 </ul>
             </div>
+            <!-- Intern leave card end  -->
         </div>
     </div>
 </div>

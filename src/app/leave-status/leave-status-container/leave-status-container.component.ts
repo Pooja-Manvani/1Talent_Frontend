@@ -15,8 +15,8 @@ import { LeaveStatusService } from '../services/leave-status.service';
 export class LeaveStatusContainerComponent implements OnInit {
 
   internLeaveStatus$: Observable<LeaveApplication[]>;
-  private _userName: string; 
-  private _userRole: string; 
+  private _userName: string;
+  private _userRole: string;
 
   public pageTitle: string;
 
@@ -32,9 +32,8 @@ export class LeaveStatusContainerComponent implements OnInit {
   }
 
   leaveGrant(leaveGrantData: LeaveGrant) {
-    leaveGrantData.userName = this._userName;
     this._leaveStatusService.leaveGrant(leaveGrantData).subscribe((res) => {
-//show grant status
+      //show grant status
     });
   }
 }

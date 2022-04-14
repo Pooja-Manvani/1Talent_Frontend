@@ -4,6 +4,7 @@
 
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LeaveApplication } from 'src/app/leave-status/models/leave-status.models';
+import { LeaveStatusService } from 'src/app/leave-status/services/leave-status.service';
 import { leaveStatus } from 'src/app/shared/leave-status';
 import { LeaveGrant } from '../../models/leave-grants.model';
 import { LeaveTablePresenterService } from './leaveTablePresenter/leave-table-presenter.service';
@@ -29,7 +30,7 @@ export class LeaveTableComponent implements OnInit {
 
   private _leavesList!: LeaveApplication[];
 
-  constructor(private _LeaveTablePresenterService: LeaveTablePresenterService) {
+  constructor(private _LeaveTablePresenterService: LeaveTablePresenterService, private _leaveStatusService: LeaveStatusService) {
     this.userRole = localStorage.getItem('userRole');
     this.buttonClick = new EventEmitter();
   }
@@ -50,7 +51,11 @@ export class LeaveTableComponent implements OnInit {
 
   public showOverlay(leaveData?: LeaveApplication) {
     if (this.userRole === 'Mentor' && leaveData) {
-      this._LeaveTablePresenterService.viewRequest(leaveData);
+      this._leaveStatusService.getApplicationById(leaveData.applicationId).subscribe(res => {
+        res.applicationStatus = leaveData.applicationStatus;
+        res.applicationId = leaveData.applicationId;
+        this._LeaveTablePresenterService.viewRequest(res);
+      });
     } else {
       this._LeaveTablePresenterService.displayConfirmation();
     }
