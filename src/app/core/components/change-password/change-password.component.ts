@@ -18,7 +18,7 @@ export class ChangePasswordComponent {
   changePassword: FormGroup;
   passwordVisibility: PasswordField[]; // For running a loop instead of repeating same thing 3 times.
 
-  constructor(private fb: FormBuilder, private route: Router, private auth: AuthService) {
+  constructor(private _fb: FormBuilder, private _route: Router, private _auth: AuthService) {
     // Statically assigned three password input fields.
     this.passwordVisibility = [
       {
@@ -35,7 +35,7 @@ export class ChangePasswordComponent {
       }
     ];
     // Change Password formGroup
-    this.changePassword = this.fb.group({
+    this.changePassword = this._fb.group({
       oldPassword: ['', [Validators.required]],
       newPassword: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
@@ -62,8 +62,8 @@ export class ChangePasswordComponent {
    */
   onSubmit() {
     let { newPassword, oldPassword } = this.changePassword.value;
-    this.auth.changePassword({ password: newPassword, oldPassword: oldPassword, userName: this.auth.getUserName() ?? '' }).subscribe((res) => {
-      this.route.navigateByUrl("/dashboard");
+    this._auth.changePassword({ password: newPassword, oldPassword: oldPassword, userName: this._auth.getUserName() ?? '' }).subscribe((res) => {
+      this._route.navigateByUrl("/dashboard");
     });
   }
 

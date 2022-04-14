@@ -9,17 +9,17 @@ export class ApplyleaveService {
 
   public apiLink: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private _http: HttpClient) {
     this.apiLink = environment.baseUrl;
   }
 
   // Post call for Leave Request
   public postLeaveRequest(data: ApplyLeave, userName: string): Observable<ApplyLeave> {
-    return this.http.post<ApplyLeave>(`${this.apiLink}/api/ApplyLeave/${userName}`, data);
+    return this._http.post<ApplyLeave>(`${this.apiLink}/api/ApplyLeave/${userName}`, data);
   }
 
   //get User
   public getApplicationTypeid():Observable<ApplicationType[]>{
-    return this.http.get<ApplicationType[]>(`${this.apiLink}/api/ApplicationType`)
+    return this._http.get<ApplicationType[]>(`${this.apiLink}/api/ApplicationType`)
   }
 }

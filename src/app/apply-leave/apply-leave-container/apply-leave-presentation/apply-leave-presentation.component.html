@@ -1,4 +1,5 @@
 <div class="p-5">
+    <!-- Apply leave heading -->
     <div>
         <h1 class="page-title">Apply Leave</h1>
     </div>
@@ -37,9 +38,11 @@
                         </div>
                     </div>
                     <!--End: options for leave-->
+
+                    <!-- Start: Apply leave form -->
                     <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()">
 
-                        <!-- Start: Radio-buttons-->
+                        <!-- Radio-buttons -->
                         <div *ngIf="activeTab === 0 ? true : false "
                             class="d-flex justify-content-between flex-wrap pt-4 pt-lg-5 fs-5">
                             <div *ngFor="let leave of leaveType?.slice(1)"
@@ -71,10 +74,12 @@
                         </div>
 
                         <div class="d-flex align-items-center justify-content-end flex-wrap pt-5">
-                            <button type="button" class="btn btn-outline-primary mb-4 mb-md-0 mb-xl-0">CANCEL</button>
+                            <button type="button" class="btn btn-outline-primary mb-4 mb-md-0 mb-xl-0"
+                                routerLink="/home/dashboard">CANCEL</button>
                             <button type="submit" class="btn btn-primary ms-md-4">SUBMIT</button>
                         </div>
                     </form>
+                    <!-- End: Apply leave form -->
                 </div>
             </div>
         </div>

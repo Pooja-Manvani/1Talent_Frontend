@@ -1,0 +1,22 @@
+<div class="confirmation-modal bg-white p-5">
+    <!-- Confirmation popup to revoke leave request -->
+    <div class="h-100 d-flex flex-column justify-content-between" *ngIf="isRevokeConfirmationPopup">
+        <div>
+            <h2 class="mb-3">Revoke request</h2>
+            <p class="fs-5 text-muted">Are you sure you want to revoke the request?</p>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-outline-primary me-4" (click)="closeModal()">No</button>
+            <button type="button" class="btn btn-primary" (click)="revokeLeaveRequest()">Yes</button>
+        </div>
+    </div>
+
+    <!-- Popup to show apply leave request successfully -->
+    <div *ngIf="!isRevokeConfirmationPopup">
+        <p class="text-end cursor-pointer m-0" (click)="closeModal()"><span class="icon-Close fs-5"></span></p>
+        <figure class="success-gif m-auto">
+            <img src="../../../../../assets/images/apply-leave-successful.gif" alt="Success">
+        </figure>
+        <p class="text-center">Your leave request has been <br> submitted successfully.</p>
+    </div>
+</div>
