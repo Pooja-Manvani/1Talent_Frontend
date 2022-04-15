@@ -41,7 +41,7 @@
       }
       &-avatar {
         vertical-align: middle;
-        width: $user-avatar-size;
+        min-width: $user-avatar-size;
         height: $user-avatar-size;
         border-radius: 50%;
         border: 8px solid $user-avatar-border-bg;

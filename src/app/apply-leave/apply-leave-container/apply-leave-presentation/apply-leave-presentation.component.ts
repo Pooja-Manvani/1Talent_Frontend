@@ -34,7 +34,7 @@ export class ApplyLeavePresentationComponent implements OnInit {
   public startDate!: string | undefined;
   public endDate: string | undefined;
   private _leaveType!: ApplicationType[];
-  public submitted:boolean;
+  public submitted: boolean;
 
   constructor(private _applyLeavePresenter: ApplyLeavePresenterService) {
     this.currentDate = new Date(this._applyLeavePresenter.incrementDay(new Date().getTime(), -90));
@@ -45,14 +45,9 @@ export class ApplyLeavePresentationComponent implements OnInit {
   }
   ngOnInit() {
     //emit leaveData 
-    this._applyLeavePresenter.leaveData$.subscribe({
-      next: (res) => {
-        this.getLeaveData.emit(res)
-      },
-      // error: (error) => {
-      //   console.error(error)
-      // }
-    })
+    this._applyLeavePresenter.leaveData$.subscribe((res) => {
+      this.getLeaveData.emit(res)
+    });
   }
 
   //get date range start to end
@@ -73,20 +68,19 @@ export class ApplyLeavePresentationComponent implements OnInit {
     return day !== 0 && day !== 6;
   }
 
-  //get form controls
-  public get formControl(){
-      return this.leaveForm['controls'];
+  // get form controls
+  public get formControl() {
+    return this.leaveForm['controls'];
   }
 
-  //form submit
+  // form submit
   public onSubmit() {
-    //check form is valid or not 
-    if(this.leaveForm.status === 'INVALID'){
+    // check form is valid or not
+    if (this.leaveForm.status === 'INVALID' || !this.startDate) {
       this.submitted = true;
-    }
-    else{
-      //submit data
-      this._applyLeavePresenter.onSubmit(this.leaveForm.value ,this.startDate ,this.endDate ,this.activeTab);
+    } else {
+      // submit data
+      this._applyLeavePresenter.onSubmit(this.leaveForm.value, this.startDate, this.endDate, this.activeTab);
     }
   }
 }

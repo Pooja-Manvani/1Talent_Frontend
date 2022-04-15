@@ -8,14 +8,15 @@ export class ApplyLeave {
     description: string;
     applicationTypeId: number;
     applicationStatus: number;
+    userName: string;
     
     constructor(
         fromDate: string,
         toDate: string,
         description: string,
         applicationTypeId: number,
-        applicationStatus: number
-
+        applicationStatus: number,
+        userName: string,
     ) {
 
         this.fromDate = fromDate;
@@ -23,6 +24,7 @@ export class ApplyLeave {
         this.description = description;
         this.applicationTypeId = applicationTypeId;
         this.applicationStatus = applicationStatus;
+        this.userName = userName;
     }
 }
 

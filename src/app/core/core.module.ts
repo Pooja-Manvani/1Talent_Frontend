@@ -32,13 +32,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     RouterModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot({
-      toastClass : "toast toast-bootstrap-compatibility-fix",
-      positionClass: "toast-top-right",
-      closeButton: true,
-      timeOut: 4000,
-      preventDuplicates: true,
-    })
   ],
   exports: [
     LoginComponent,

@@ -1,4 +1,4 @@
-<aside class="d-flex flex-column h-100 overflow-hidden p-4">
+<aside class="d-flex flex-column h-100 overflow-hidden py-4">
     <!-- bard logo starts  -->
     <div class="brand d-flex flex-column align-items-center justify-content-center flex-shrink-0">
         <figure class="brand-img">
@@ -9,7 +9,7 @@
     </div>
     <!-- bard logo ends  -->
     <!-- nav-bar starts  -->
-    <nav class="overflow-vertical flex-grow-1 mt-5">
+    <nav class="overflow-vertical flex-grow-1 mt-5 px-4">
         <ul class="nav flex-column">
             <li class="nav-item mb-4">
                 <a class="nav-link" (click)="onRouteChange($event)" routerLink="dashboard" routerLinkActive="active">
@@ -45,7 +45,7 @@
     </nav>
     <!-- nav-bar ends  -->
     <!-- logOut starts  -->
-    <nav>
+    <nav class="px-4">
         <ul class="nav flex-column">
             <li class="nav-item mb-2">
                 <a class="nav-link" (click)="onRouteChange($event)" (click)="signOut()">

@@ -1,8 +1,9 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
 
 // ------------------------------------------------------------------------ //
 import { AppRoutingModule } from './app-routing.module';
@@ -15,12 +16,25 @@ import { AuthService } from './core/services/auth.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule
+    CoreModule,
+    ToastrModule.forRoot({
+      toastClass: "toast toast-bootstrap-compatibility-fix",
+      positionClass: "toast-top-right",
+      closeButton: true,
+      timeOut: 4000,
+      preventDuplicates: true,
+    }),
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.rotatingPlane,
+      backdropBackgroundColour: 'rgba(0,0,0,0.1)',
+      backdropBorderRadius: '4px',
+      primaryColour: '#1271ff',
+    }),
   ],
   providers: [
     {
@@ -31,7 +45,7 @@ import { AuthService } from './core/services/auth.service';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ResponseHandlingInterceptor,
-      multi: true 
+      multi: true
     },
     AuthService,
     AuthGuard,

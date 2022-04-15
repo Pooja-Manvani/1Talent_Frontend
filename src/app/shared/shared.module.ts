@@ -4,17 +4,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
 //-------------------------------------------------------//
 
-import { LeaveTableComponent } from './components/leave-table/leave-table.component';
 import { ViewLeaveRequestPresentationComponent } from './components/leave-table/view-leave-request/view-leave-request-presentation/view-leave-request-presentation.component';
 import { ConfirmationPopupComponent } from './components/confirmation-popup/confirmation-popup.component';
+import { LeaveTableContainerComponent } from './components/leave-table/leave-table-container/leave-table-container.component';
+import { LeaveTablePresentationComponent } from './components/leave-table/leave-table-container/leave-table-presentation/leave-table-presentation.component';
 
 
 
 @NgModule({
   declarations: [
-    LeaveTableComponent,
+    LeaveTablePresentationComponent,
     ViewLeaveRequestPresentationComponent,
-    ConfirmationPopupComponent
+    ConfirmationPopupComponent,
+    LeaveTableContainerComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,7 @@ import { ConfirmationPopupComponent } from './components/confirmation-popup/conf
   ],
   exports: [
     ReactiveFormsModule,
-    LeaveTableComponent
+    LeaveTableContainerComponent
   ]
 })
 export class SharedModule { }

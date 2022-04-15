@@ -3,6 +3,7 @@ import { ComponentPortal } from '@angular/cdk/portal';
 import { Component, ComponentRef, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { ConfirmationPopupComponent } from 'src/app/shared/components/confirmation-popup/confirmation-popup.component';
+import { LoaderService } from 'src/app/shared/services/loader.service';
 import { ApplicationType, ApplyLeave } from '../models/leave.model';
 import { ApplyleaveService } from '../services/applyleave.service';
 
@@ -18,7 +19,11 @@ export class ApplyLeaveContainerComponent implements OnInit {
 
   private _userName: string;
 
-  constructor(private _applyleave: ApplyleaveService, private _overlay: Overlay) {
+  constructor(
+    private _applyleave: ApplyleaveService,
+    private _overlay: Overlay,
+    private _loaderService: LoaderService,
+  ) {
     this.$applicationType = new Observable();
     this._userName = '';
   }
@@ -30,7 +35,9 @@ export class ApplyLeaveContainerComponent implements OnInit {
 
   public onSubmit(data: ApplyLeave) {
     //post call for leave request
+    this._loaderService.setLoader(true);
     this._applyleave.postLeaveRequest(data, this._userName).subscribe((res) => {
+      this._loaderService.setLoader(false);
       // Open confirmation popup when Leave applied successfully.
       this._overlayRef = this._overlay.create({
         hasBackdrop: true,

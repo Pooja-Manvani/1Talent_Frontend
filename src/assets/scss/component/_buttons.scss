@@ -1,4 +1,10 @@
 // Button styles goes here
 .btn {
     cursor: pointer;
+
+    @include media-breakpoint-down(md) {
+        font-size: 0.75rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 }

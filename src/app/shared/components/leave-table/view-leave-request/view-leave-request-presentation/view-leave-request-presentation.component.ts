@@ -1,6 +1,7 @@
 /**
- * @author Hrishikesh Patel
+ * @author Jigar Bhanushali, Hrishikesh Patel
  */
+
 import { Component, EventEmitter, Input } from '@angular/core';
 import { LeaveApplication } from 'src/app/leave-status/models/leave-status.models';
 import { leaveStatus } from 'src/app/shared/leave-status';
