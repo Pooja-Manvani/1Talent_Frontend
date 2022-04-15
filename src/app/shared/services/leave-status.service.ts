@@ -7,12 +7,11 @@ import { Injectable } from '@angular/core';
 
 // ------------------------------------------------------------------------- //
 import { Observable } from 'rxjs/internal/Observable';
+import { map } from 'rxjs/internal/operators/map';
 import { INTERN_DASHBOARD, INTERN_LEAVE_STATUS, MENTOR_DASHBOARD, MENTOR_LEAVE_REQUESTS, MENTOR_LEAVE_REQUEST_BY_ID } from 'src/app/shared/constants';
 import { LeaveGrant } from 'src/app/shared/models/leave-grants.model';
 import { environment } from 'src/environments/environment';
-import { LeaveApplication } from '../models/leave-status.models';
-
-
+import { LeaveApplication } from '../../leave-status/models/leave-status.models';
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +45,12 @@ export class LeaveStatusService {
   }
 
   public getApplicationById(id: number): Observable<LeaveApplication> {
-    return this._http.get<LeaveApplication>(`${this.apiLink}${MENTOR_LEAVE_REQUEST_BY_ID}/${id}`);
+    return this._http.get<LeaveApplication>(`${this.apiLink}${MENTOR_LEAVE_REQUEST_BY_ID}/${id}`).pipe(
+      map((res: any) => {
+        res.leaveDates = res.from
+        return res;
+      })
+    );
   }
 
   /**

@@ -61,6 +61,7 @@ export class ChangePasswordComponent {
    * @description API call for Change Password
    */
   onSubmit() {
+    // TODO: Solve issue when error is returned even after successful service call.
     let { newPassword, oldPassword } = this.changePassword.value;
     this._auth.changePassword({ password: newPassword, oldPassword: oldPassword, userName: this._auth.getUserName() ?? '' }).subscribe((res) => {
       this._route.navigateByUrl("/dashboard");

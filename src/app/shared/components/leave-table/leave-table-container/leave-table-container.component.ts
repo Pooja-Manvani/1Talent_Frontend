@@ -2,8 +2,9 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } 
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs/internal/Observable';
 import { LeaveApplication } from 'src/app/leave-status/models/leave-status.models';
-import { LeaveStatusService } from 'src/app/leave-status/services/leave-status.service';
+import { LeaveStatusService } from 'src/app/shared/services/leave-status.service';
 import { LeaveGrant } from 'src/app/shared/models/leave-grants.model';
+import { LoaderService } from 'src/app/shared/services/loader.service';
 
 @Component({
   selector: 'app-leave-table-container',
@@ -17,7 +18,12 @@ export class LeaveTableContainerComponent implements OnInit {
   private _userName: string;
   private _userRole: string;
 
-  constructor(private _leaveStatusService: LeaveStatusService, private _toaster: ToastrService, private _cdr: ChangeDetectorRef) {
+  constructor(
+    private _leaveStatusService: LeaveStatusService,
+    private _toastrService: ToastrService,
+    private _loaderService: LoaderService,
+    private _cdr: ChangeDetectorRef
+  ) {
     this.leavesList$ = new Observable();
     this._userName = localStorage.getItem('userName') ?? '';
     this._userRole = localStorage.getItem('userRole') ?? '';
@@ -39,10 +45,12 @@ export class LeaveTableContainerComponent implements OnInit {
    * @param leaveGrantData 
    */
   public leaveGrant(leaveGrantData: LeaveGrant) {
+    this._loaderService.setLoader(true);
     this._leaveStatusService.leaveGrant(leaveGrantData).subscribe((res) => {
-      this._toaster.success(res.message);
+      this._toastrService.success(res.message);
       this.leavesList$ = this.getLeaveList();
       this._cdr.markForCheck();
+      this._loaderService.setLoader(false);
     });
   }
 
@@ -54,10 +62,12 @@ export class LeaveTableContainerComponent implements OnInit {
    */
   public revokeLeaveRequestData(data: LeaveGrant) {
     data.userName = this._userName;
+    this._loaderService.setLoader(true);
     this._leaveStatusService.revokeLeaveRequest(data).subscribe((res: any) => {
-      this._toaster.success(res.message);
+      this._toastrService.success(res.message);
       this.leavesList$ = this.getLeaveList();
       this._cdr.markForCheck();
+      this._loaderService.setLoader(false);
     });
   }
 }

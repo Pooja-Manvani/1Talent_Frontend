@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoaderService } from 'src/app/shared/services/loader.service';
 
 // -------------------------------------------------------------------------------------------------- //
 import { LoginResponse } from '../../models/login.model';
@@ -17,8 +18,9 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _fb: FormBuilder,
+    private _router: Router,
+    private _loaderService: LoaderService,
     private _authService: AuthService,
-    private _router: Router
   ) {
     // For password input field
     this.passwordField = {
@@ -43,7 +45,9 @@ export class LoginComponent implements OnInit {
 
   public props() {
     if (this._authService.getToken()) {
+      this._loaderService.setLoader(true);
       this._authService.checkAuthentication().subscribe(result => {
+        this._loaderService.setLoader(false);
         if (result) {
           this._router.navigateByUrl("/home");
         }
@@ -62,10 +66,12 @@ export class LoginComponent implements OnInit {
    * @description API call for Log in
    */
   public onSubmit(): void {
+    this._loaderService.setLoader(true);
     this._authService.login(this.loginForm.value).subscribe((res: LoginResponse) => {
       this._authService.setUserName(this.loginForm.value.userName);
       this._authService.setUserRole(res.role);
       this._authService.setToken(res.token);
+      this._loaderService.setLoader(false);
       this._router.navigateByUrl("/home");
     });
   }

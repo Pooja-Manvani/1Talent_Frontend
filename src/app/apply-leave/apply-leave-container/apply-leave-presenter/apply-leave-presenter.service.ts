@@ -100,9 +100,6 @@ export class ApplyLeavePresenterService {
     if (fromDate) {
       leavedata.toDate = this._formatDate(toDate ? toDate : fromDate);
     }
-    // else {
-    //   console.log('select Date');
-    // }
     //user select work from home
     leavedata.applicationTypeId = activeTab === 1 ? 1 : +leavedata.applicationTypeId;
 

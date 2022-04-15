@@ -4,4 +4,10 @@ import { Component } from '@angular/core';
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
-export class HomeComponent {}
+export class HomeComponent {
+  isSidebarOpen: boolean;
+
+  constructor() {
+    this.isSidebarOpen = false;
+  }
+}

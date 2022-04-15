@@ -1,41 +1,42 @@
-<aside id="sidebar" class="d-flex flex-column h-100 overflow-hidden p-4">
+<aside class="d-flex flex-column h-100 overflow-hidden py-4">
     <!-- bard logo starts  -->
     <div class="brand d-flex flex-column align-items-center justify-content-center flex-shrink-0">
         <figure class="brand-img">
-            <img routerLink="dashboard" src="../../../../assets/images/1rivet_university_white.png" alt="Logo" class="img cursor-pointer">
+            <img routerLink="dashboard" src="../../../../assets/images/1rivet_university_white.png" alt="Logo"
+                class="img cursor-pointer">
         </figure>
         <p class="text-white project-name">Leave Management</p>
     </div>
     <!-- bard logo ends  -->
     <!-- nav-bar starts  -->
-    <nav class="overflow-vertical flex-grow-1 mt-5">
+    <nav class="overflow-vertical flex-grow-1 mt-5 px-4">
         <ul class="nav flex-column">
             <li class="nav-item mb-4">
-                <a class="nav-link" routerLink="dashboard" routerLinkActive="active">
+                <a class="nav-link" (click)="onRouteChange($event)" routerLink="dashboard" routerLinkActive="active">
                     <i class="icon icon-dashboard me-2"></i>
                     <span class="nav-link-name">Dashboard</span>
                 </a>
             </li>
             <li *ngIf="userRole === 'Mentor'" class="nav-item mb-4">
-                <a class="nav-link" routerLink="leave-requests" routerLinkActive="active">
+                <a class="nav-link" (click)="onRouteChange($event)" routerLink="leave-requests" routerLinkActive="active">
                     <span class="icon icon-apply-leave me-2"></span>
                     <span class="nav-link-name">Leave Request</span>
                 </a>
             </li>
             <li *ngIf="userRole === 'Intern'" class="nav-item mb-4">
-                <a class="nav-link" routerLink="apply-leave" routerLinkActive="active">
+                <a class="nav-link" (click)="onRouteChange($event)" routerLink="apply-leave" routerLinkActive="active">
                     <span class="icon icon-apply-leave me-2"></span>
                     <span class="nav-link-name">Apply Leave</span>
                 </a>
             </li>
             <li *ngIf="userRole === 'Intern'" class="nav-item mb-4">
-                <a class="nav-link" routerLink="leave-status" routerLinkActive="active">
+                <a class="nav-link" (click)="onRouteChange($event)" routerLink="leave-status" routerLinkActive="active">
                     <span class="icon icon-user me-2"></span>
                     <span class="nav-link-name">Leave Status</span>
                 </a>
             </li>
             <li class="nav-item mb-4">
-                <a class="nav-link" routerLink="profile" routerLinkActive="active">
+                <a class="nav-link" (click)="onRouteChange($event)" routerLink="profile" routerLinkActive="active">
                     <span class="icon icon-user me-2"></span>
                     <span class="nav-link-name">My Profile</span>
                 </a>
@@ -44,10 +45,10 @@
     </nav>
     <!-- nav-bar ends  -->
     <!-- logOut starts  -->
-    <nav>
+    <nav class="px-4">
         <ul class="nav flex-column">
             <li class="nav-item mb-2">
-                <a class="nav-link" (click)="signOut()">
+                <a class="nav-link" (click)="onRouteChange($event)" (click)="signOut()">
                     <span class="icon icon-sign-up me-2"></span>
                     <span class="nav-link-name">Sign Out</span>
                 </a>

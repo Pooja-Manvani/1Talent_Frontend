@@ -45,14 +45,9 @@ export class ApplyLeavePresentationComponent implements OnInit {
   }
   ngOnInit() {
     //emit leaveData 
-    this._applyLeavePresenter.leaveData$.subscribe({
-      next: (res) => {
-        this.getLeaveData.emit(res)
-      },
-      // error: (error) => {
-      //   console.error(error)
-      // }
-    })
+    this._applyLeavePresenter.leaveData$.subscribe((res) => {
+      this.getLeaveData.emit(res)
+    });
   }
 
   //get date range start to end

@@ -4,10 +4,11 @@
 
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LeaveApplication } from 'src/app/leave-status/models/leave-status.models';
-import { LeaveStatusService } from 'src/app/leave-status/services/leave-status.service';
+import { LeaveStatusService } from 'src/app/shared/services/leave-status.service';
 import { leaveStatus } from 'src/app/shared/leave-status';
 import { LeaveGrant } from 'src/app/shared/models/leave-grants.model';
 import { LeaveTablePresenterService } from '../leave-table-presenter/leave-table-presenter.service';
+import { LoaderService } from 'src/app/shared/services/loader.service';
 
 @Component({
   selector: 'app-leave-table-presentation',
@@ -35,7 +36,11 @@ export class LeaveTablePresentationComponent implements OnInit {
 
   private _leavesList!: LeaveApplication[];
 
-  constructor(private _leaveTablePresenterService: LeaveTablePresenterService, private _leaveStatusService: LeaveStatusService) {
+  constructor(
+    private _leaveTablePresenterService: LeaveTablePresenterService,
+    private _leaveStatusService: LeaveStatusService,
+    private _loaderService: LoaderService,
+  ) {
     this.userRole = localStorage.getItem('userRole');
     this.buttonClick = new EventEmitter();
     this.revokeLeaveRequest = new EventEmitter();
@@ -79,10 +84,12 @@ export class LeaveTablePresentationComponent implements OnInit {
    */
   public showOverlay(leaveData?: LeaveApplication) {
     if (this.userRole === 'Mentor' && leaveData) {
+      this._loaderService.setLoader(true);
       this._leaveStatusService.getApplicationById(leaveData.applicationId).subscribe(res => {
         res.applicationStatus = leaveData.applicationStatus;
         res.applicationId = leaveData.applicationId;
         this._leaveTablePresenterService.viewRequest(res);
+        this._loaderService.setLoader(false);
       });
     } 
   }
