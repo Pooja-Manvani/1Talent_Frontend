@@ -1,10 +1,10 @@
-<div class="p-5">
+<div class="p-4 p-lg-5">
     <!-- Apply leave heading -->
     <div>
         <h1 class="page-title">Apply Leave</h1>
     </div>
-    <div class="row g-5 mt-4">
-        <div class="col col-lg-6">
+    <div class="row gx-3 gx-lg-5 gy-5 mt-2">
+        <div class="col-12 col-md-6">
             <div class="card card-profile shadow-sm h-100 py-4">
                 <div class="card-body mat-typography">
                     <div class=" d-flex flex-wrap align-items-center fs-6">
@@ -17,13 +17,13 @@
                             <mat-calendar (selectedChange)="onDateRangeChange($event)" [minDate]="currentDate"
                                 [selected]="selectedDateRange" [dateFilter]="disableWeekend">
                             </mat-calendar>
-                        </mat-card>`
+                        </mat-card>
                     </div>
                     <!--End: Calendar-->
                 </div>
             </div>
         </div>
-        <div class="col col-lg-6 ps-lg-3">
+        <div class="col-12 col-md-6 ps-lg-3">
             <div class="card shadow-sm h-100 py-4">
                 <div class="card-body">
                     <!-- Start: options for leave-->
@@ -46,8 +46,8 @@
                         <div *ngIf="activeTab === 0 ? true : false "
                             class="d-flex justify-content-between flex-wrap pt-4 pt-lg-5 fs-5">
                             <div *ngFor="let leave of leaveType?.slice(1)"
-                                class="form-check form-check-inline d-flex my-2">
-                                <input class="form-check-input" type="radio" name="applicationTypeId"
+                                class="form-check form-check-inline d-flex my-2 align-items-center">
+                                <input class="form-check-input mt-0" type="radio" name="applicationTypeId"
                                     [id]="leave.applicationTypeId" value="{{leave.applicationTypeId}}"
                                     formControlName="applicationTypeId">
                                 <label class="form-check-label ms-3" [for]="leave.applicationTypeId">
@@ -74,9 +74,9 @@
                         </div>
 
                         <div class="d-flex align-items-center justify-content-end flex-wrap pt-5">
-                            <button type="button" class="btn btn-outline-primary mb-4 mb-md-0 mb-xl-0"
+                            <button type="button" class="btn btn-outline-primary m-2"
                                 routerLink="/home/dashboard">CANCEL</button>
-                            <button type="submit" class="btn btn-primary ms-md-4">SUBMIT</button>
+                            <button type="submit" class="btn btn-primary m-2">SUBMIT</button>
                         </div>
                     </form>
                     <!-- End: Apply leave form -->
