@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -9,15 +9,23 @@ import { AuthService } from '../../services/auth.service';
 export class SidebarComponent {
   userRole: string | null;
 
-  constructor(private _service: AuthService,private _router : Router){
-    this.userRole = localStorage.getItem('userRole'); 
+  @Output() public closeSidebar: EventEmitter<Event>;
+
+  constructor(private _service: AuthService, private _router: Router) {
+    this.userRole = localStorage.getItem('userRole');
+    this.closeSidebar = new EventEmitter();
   }
+
   /**
    * @name signOut
    * @description service call for token removal and route to login page
    */
-  public signOut(){
+  public signOut() {
     this._service.clearLocalStorage()
     this._router.navigateByUrl("/login")
+  }
+
+  onRouteChange(click: any) {
+    this.closeSidebar.emit();
   }
 }
