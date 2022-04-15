@@ -1,5 +1,11 @@
 <div class="d-flex h-100 overflow-hidden">
-    <app-sidebar></app-sidebar>
+    <input type="checkbox" id="toggle" [(ngModel)]="isSidebarOpen" [checked]="isSidebarOpen">
+    <label for="toggle" class="toggle-menu position-absolute">
+        <span class="icon-next shadow fs-3 p-1 text-white rounded-circle"></span>
+    </label>
+    <div id="sidebar">
+        <app-sidebar (closeSidebar)="isSidebarOpen = false"></app-sidebar>
+    </div>
     <main class="flex-grow-1 overflow-vertical">
         <router-outlet></router-outlet>
     </main>
