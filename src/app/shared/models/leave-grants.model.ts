@@ -1,8 +1,8 @@
 export class LeaveGrant {
-    applicationId: number;
-    userName: string;
-    applicationStatus: number;
-    button: string;
+    public applicationId: number;
+    public userName: string;
+    public applicationStatus: number;
+    public button: string;
 
     constructor(
         applicationId: number,

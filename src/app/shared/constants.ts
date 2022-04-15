@@ -17,6 +17,10 @@
   '/ViewLeaveRequest/{id}' 
   
   */
+
+/**
+ * @description constants of the API END-Points
+ */
 export const APPLICATION_TYPE_MAP = 'ApplicationType';
 export const APPLY_LEAVE = 'ApplyLeave';
 export const INTERN_DASHBOARD = 'DashBoardLeaveStatus';
