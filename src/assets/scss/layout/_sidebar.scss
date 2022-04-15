@@ -1,14 +1,21 @@
 #sidebar {
   background-color: $sidebar-bg;
-  width: $sidebar-width;
+  min-width: $sidebar-width;
 
+  @include media-breakpoint-down(lg){
+    position: absolute;
+    height: 100%;
+    transition: 0.4s all;
+    left: -$sidebar-width;
+    z-index: 99;
+  }
   .brand {
     &-img {
       width: 50px;
       height: 55px;
     }
 
-    .project-name{
+    .project-name {
       font-size: 20px;
     }
   }
@@ -31,5 +38,45 @@
   .active {
     background-color: $white;
     color: $primary;
+  }
+}
+
+#toggle,
+.toggle-menu {
+  display: none;
+}
+
+.toggle-menu {
+  left: 4px;
+  top: 90px;
+  z-index: 999;
+  transition: 0.4s all;
+
+  & span{
+    background-color: $sidebar-bg;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .toggle-menu {
+    display: block;
+  }
+}
+
+#toggle:checked ~ {
+
+  & #sidebar{
+    left: 0px;
+    backdrop-filter: blur(8px);
+  }
+
+  & .toggle-menu{
+    left: 285px;
+    transform: rotate(180deg);
+  }
+  
+  & main{
+    filter: blur(4px);
+    pointer-events: none;
   }
 }
