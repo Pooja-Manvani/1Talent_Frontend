@@ -6,6 +6,7 @@ import { ChangePasswordComponent } from './core/components/change-password/chang
 import { ForgotPasswordComponent } from './core/components/forgot-password/forgot-password.component';
 import { HomeComponent } from './core/components/home/home.component';
 import { LoginComponent } from './core/components/login/login.component';
+import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
@@ -23,18 +24,19 @@ const routes: Routes = [
     component: ForgotPasswordComponent,
   },
   {
-    path: 'change-password',
-    component: ChangePasswordComponent,
-  },
-  {
     path: 'home',
     component: HomeComponent,
     canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',
+      },
+      {
+        path: 'change-password',
+        component: ChangePasswordComponent,
       },
       {
         path: 'dashboard',
@@ -55,9 +57,18 @@ const routes: Routes = [
         path: 'leave-status',
         loadChildren: () =>
           import('./leave-status/leave-status.module').then((m) => m.LeaveStatusModule),
+        },
+      {
+        path: 'leave-requests',
+        loadChildren: () =>
+          import('./leave-status/leave-status.module').then((m) => m.LeaveStatusModule),
       },
     ],
   },
+  {
+    path: '**',
+    component: PageNotFoundComponent
+  }
 ];
 
 @NgModule({

@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DateRange } from '@angular/material/datepicker';
+import { DatePipe } from '@angular/common';
+
+// ----------------------------------------------------------------------------------------------------- //
 import { Observable } from 'rxjs/internal/Observable';
 import { Subject } from 'rxjs/internal/Subject';
 import { ApplyLeave } from '../../models/leave.model';
@@ -10,12 +13,18 @@ export class ApplyLeavePresenterService {
   private leaveData: Subject<ApplyLeave>;
   public leaveData$: Observable<ApplyLeave>;
 
-
-  constructor(private fb: FormBuilder) {
+  constructor(private _fb: FormBuilder) {
     this.leaveData = new Subject<ApplyLeave>();
     this.leaveData$ = this.leaveData.asObservable();
   }
 
+  /**
+   * @name onSelectedChange
+   * @description Select date range from start to end
+   * @param date 
+   * @param selectedDateRange 
+   * @returns DateRange<Date>
+   */
   public onSelectedChange(date: Date, selectedDateRange: DateRange<Date>): DateRange<Date> {
     if (
       selectedDateRange &&
@@ -33,6 +42,13 @@ export class ApplyLeavePresenterService {
     return selectedDateRange;
   }
 
+  /**
+   * @name leaveCount
+   * @description Counts leave by excluding weekends
+   * @param start 
+   * @param end 
+   * @returns number
+   */
   public leaveCount(start: number, end: number): number {
     let day = start;
     let count = 0;
@@ -53,31 +69,48 @@ export class ApplyLeavePresenterService {
     return current + (noOfDays * (24 * 60 * 60 * 1000));
   }
 
-  //create form
+  /**
+   * @name buildForm
+   * @description Creates apply leave form
+   */
   public buildForm() {
-    return this.fb.group({
+    return this._fb.group({
       applicationTypeId: ['4'],
       description: ['', Validators.required],
     })
   }
-  //onsubmit data
+
+  /**
+   * @name onSubmit
+   * @description Submit form
+   * @param leavedata 
+   * @param fromDate 
+   * @param toDate 
+   * @param activeTab 
+   */
   public onSubmit(leavedata: ApplyLeave, fromDate: string | undefined, toDate: string | undefined, activeTab: number) {
+
     //set application status
     leavedata.applicationStatus = 3;
     //fromDate 
-    if(fromDate){
-      leavedata.fromDate = fromDate;
+    if (fromDate) {
+      leavedata.fromDate = this._formatDate(fromDate);
     }
     //toDate
     if (fromDate) {
-      leavedata.toDate = toDate ? toDate : fromDate;
+      leavedata.toDate = this._formatDate(toDate ? toDate : fromDate);
     }
     // else {
     //   console.log('select Date');
     // }
     //user select work from home
-    leavedata.applicationTypeId = activeTab === 1 ? 1 : leavedata.applicationTypeId;
+    leavedata.applicationTypeId = activeTab === 1 ? 1 : +leavedata.applicationTypeId;
 
     this.leaveData.next(leavedata);
+  }
+
+  // Date formatting
+  private _formatDate(date: string): string {
+    return new DatePipe('en-US').transform(date, 'YYYY-MM-dd') ?? ""
   }
 }

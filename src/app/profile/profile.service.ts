@@ -9,15 +9,18 @@ import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/internal/operators/map';
 // ----------------------------------------------------------------------
 import { environment } from 'src/environments/environment';
+import { INTERN_PROFILE, MENTOR_PROFILE } from '../shared/constants';
 import { Profile, ProfileAdapter } from './models/profile.model';
 
 @Injectable()
 export class ProfileService {
 
   // API base Link
-  apiLink: string = environment.baseUrl;
+  apiLink: string;
 
-  constructor(private http: HttpClient, private _profileAdapter: ProfileAdapter) { }
+  constructor(private http: HttpClient, private _profileAdapter: ProfileAdapter) { 
+    this.apiLink = environment.baseUrl + '/api/';
+  }
 
   /**
    * Get Users Profile details
@@ -25,7 +28,7 @@ export class ProfileService {
    * @returns User Profile
    */
   public getProfileDetails(userName: string, userRole: string): Observable<Profile> {
-    return this.http.get<Profile>(`${this.apiLink}/api/${userRole}Profile/${userName}`).pipe(
+    return this.http.get<Profile>(`${this.apiLink}${userRole === 'Mentor' ? MENTOR_PROFILE : INTERN_PROFILE}/${userName}`).pipe(
       map((profile) => {
         return this._profileAdapter.adapt(profile)
       })

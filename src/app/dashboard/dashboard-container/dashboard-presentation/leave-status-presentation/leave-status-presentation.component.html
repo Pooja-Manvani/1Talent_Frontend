@@ -1,27 +1,33 @@
 <!-- Start: Leave Status Presentation  -->
 
 <div class="row pt-5 g-3">
-    <div class="col-12 col-sm-12 col-lg-6">
+    <div class="col-12 col-sm-12 col-xl-6">
 
         <!-- Leave Status Card  -->
         <div class="card h-100">
             <div class="card-body">
                 <div class="card-title fs-4"> Leave Status </div>
-                <div class="card-content d-flex justify-content-between">
-                    <div class="circle">
-
+                <div class="card-content d-flex flex-column flex-sm-row align-items-center justify-content-around mt-3">
+                    <div class="position-relative chart">
+                        <google-chart [type]="chartType" [data]="chartData" [options]="chartOptions"></google-chart>
+                        <div class="total-leave d-flex flex-column align-items-center ">
+                            <span class="text-muted fs-6">Total Leave</span>
+                            <span class="fs-3">20</span>
+                        </div>
                     </div>
-                    <ul class="list-unstyled">
-                        <li class="d-flex mb-5"> 
-                            <span class="me-4 p-3 rounded-circle badge bg-warning bg-opacity-10 text-warning"> 01 </span>
+                    <ul class="list-unstyled mt-3">
+                        <li class="d-flex mb-4">
+                            <span class="me-4 p-3 rounded-circle badge bg-warning bg-opacity-10 text-warning"> 01
+                            </span>
                             <div class="card-text text-muted d-flex align-items-center"> Pending Request </div>
                         </li>
-                        <li class="d-flex mb-5"> 
-                            <span class="me-4 p-3 rounded-circle badge bg-danger bg-opacity-10 text-danger"> 01 </span>
+                        <li class="d-flex mb-4">
+                            <span class="me-4 p-3 rounded-circle badge bg-danger bg-opacity-10 text-danger"> 05 </span>
                             <div class="card-text text-muted d-flex align-items-center"> Rejected Request </div>
                         </li>
-                        <li class="d-flex mb-5"> 
-                            <span class="me-4 p-3 rounded-circle badge bg-primary bg-opacity-10 text-primary"> 01 </span>
+                        <li class="d-flex mb-4">
+                            <span class="me-4 p-3 rounded-circle badge bg-primary bg-opacity-10 text-primary"> 08
+                            </span>
                             <div class="card-text text-muted d-flex align-items-center"> Accepted Request </div>
                         </li>
                     </ul>
@@ -29,16 +35,16 @@
             </div>
         </div>
     </div>
-    <div class="col-12 col-sm-6 col-lg-3 d-flex flex-column">
+    <div class="col-12 col-sm-6 col-xl-3 d-flex flex-column">
 
         <!-- Total Leave Request Card  -->
         <div class="card flex-grow-1">
             <div class="card-body">
-                <div class="position-relative d-flex justify-content-center">
-                    <svg height="80" width="80">
-                        <circle cx="40" cy="40" r="30" stroke="black" stroke-width="3" fill="transparent" />
-                    </svg>
-                </div>
+                <figure class="position-relative d-flex justify-content-center">
+                    <img src="../../../../../assets//svg/total-leave-bg.svg" alt="">
+                    <span class="position-absolute top-50 start-50 translate-middle fs-4 ps-2 pt-2 text-primary"> 08
+                    </span>
+                </figure>
                 <div class="card-title m-0 text-center fs-4">Total Leave Request</div>
             </div>
         </div>
@@ -46,40 +52,79 @@
         <!-- Total Work Form Hoem Card  -->
         <div class="card mt-4 flex-grow-1">
             <div class="card-body">
-                <div class="position-relative d-flex justify-content-center">
-                    <svg height="80" width="80">
-                        <circle cx="40" cy="40" r="30" stroke="black" stroke-width="3" fill="transparent" />
-                    </svg>
-                </div>
+                <figure class="position-relative d-flex justify-content-center">
+                    <img src="../../../../../assets/svg/total-wfh-bg.svg" alt="">
+                    <span class="position-absolute top-50 start-50 translate-middle fs-4 ps-2 pt-2 text-danger"> 06
+                    </span>
+                </figure>
                 <div class="card-title m-0 text-center fs-4">Total WFH Request</div>
             </div>
         </div>
     </div>
-    <div class="col-12 col-sm-6 col-lg-3">
+    <div class="col-12 col-sm-6 col-xl-3">
 
-        <!-- List of Holidays Card  -->
+        <!-- List of Holidays Card start -->
         <div class="card h-100">
-            <div class="card-body">
+            <div class="card-body" *ngIf="userRole == 'Intern'">
                 <div class="card-title fs-4">List of Holidays</div>
-                <ul class="list-unstyled">
-                    <li class="holiday d-flex justify-content-between mb-3">
-                        <div class="card-text text-muted"> New Year </div> <span
-                            class="badge rounded-pill text-danger bg-danger bg-opacity-10 px-4 py-2"> 1 JAN </span>
+                <ul class="list-unstyled mt-4">
+                    <li class="holiday d-flex justify-content-between mb-4 pb-3 border-bottom">
+                        <div class="card-text text-muted text-nowrap"> New Year </div> <span
+                            class="badge rounded-pill text-success bg-success bg-opacity-10 px-4 py-2 holiday-date-size">
+                            1 JAN </span>
                     </li>
-                    <li class="holiday d-flex justify-content-between mb-3">
-                        <div class="card-text text-muted"> Uttarayan </div> <span
-                            class="badge rounded-pill text-danger bg-danger bg-opacity-10 px-4 py-2"> 1 JAN </span>
+                    <li class="holiday d-flex justify-content-between mb-4 pb-3 border-bottom">
+                        <div class="card-text text-muted text-nowrap"> Uttarayan </div> <span
+                            class="badge rounded-pill text-warning bg-warning bg-opacity-10 px-4 py-2 holiday-date-size">
+                            1 JAN </span>
                     </li>
-                    <li class="holiday d-flex justify-content-between mb-3">
-                        <div class="card-text text-muted"> Republic Day </div> <span
-                            class="badge rounded-pill text-danger bg-danger bg-opacity-10 px-4 py-2"> 1 JAN </span>
+                    <li class="holiday d-flex justify-content-between mb-4 pb-3 border-bottom">
+                        <div class="card-text text-muted text-nowrap"> Republic Day </div> <span
+                            class="badge rounded-pill text-success bg-success bg-opacity-10 px-4 py-2 holiday-date-size">
+                            1 JAN </span>
                     </li>
-                    <li class="holiday d-flex justify-content-between mb-3">
-                        <div class="card-text text-muted"> Holi </div> <span
-                            class="badge rounded-pill text-danger bg-danger bg-opacity-10 px-4 py-2"> 1 JAN </span>
+                    <li class="holiday d-flex justify-content-between mb-4 pb-3">
+                        <div class="card-text text-muted text-nowrap"> Holi </div> <span
+                            class="badge rounded-pill text-warning bg-warning bg-opacity-10 px-4 py-2 holiday-date-size"> 1 JAN </span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- List of Holidays Card end -->
+              <!-- Intern leave card start  -->
+              <div class="card-body" *ngIf="userRole == 'Mentor'">
+                  <div class="card-title fw-bold">Intern who has more leaves requests</div>
+                <ul class="p-0 mt-4">
+                    <li class="d-flex justify-content-between pb-2 mb-4">
+                        <div class="text-muted d-flex align-items-center">Oaken Hans</div>
+                        <div class="border border-primary rounded-circle ">
+                            <small class="m-1 d-flex align-items-center justify-content-center rounded-circle p-1 badge-small bg-primary bg-opacity-10 text-primary">10</small>
+                        </div>
+                    </li>
+                    <li class="d-flex justify-content-between pb-2 mb-4">
+                        <div class="text-muted d-flex align-items-center">Sven Snowgies</div>
+                        <div class="border border-primary rounded-circle ">
+                            <small class="m-1 d-flex align-items-center justify-content-center rounded-circle p-1 badge-small bg-primary bg-opacity-10 text-primary">08</small>
+                        </div>
+                    </li>
+                    <li class="d-flex justify-content-between pb-2 mb-4">
+                        <div class="text-muted d-flex align-items-center">Sven Snowgies</div>
+                        <div class="border border-primary rounded-circle ">
+                            <small class="m-1 d-flex align-items-center justify-content-center rounded-circle p-1 badge-small bg-primary bg-opacity-10 text-primary">06</small>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="card-title fw-bold">Intern who has less leave requests</div>
+                <ul class="p-0 mt-4">
+                    <li class="d-flex justify-content-between pb-2 mb-4">
+                        <div class="text-muted  d-flex align-items-center">Elsa Frost</div>
+                        <div class="border border-primary rounded-circle ">
+                            <small class="m-1 d-flex align-items-center justify-content-center rounded-circle p-1 badge-small bg-primary bg-opacity-10 text-primary">02</small>
+                        </div>
                     </li>
                 </ul>
             </div>
+            <!-- Intern leave card end  -->
         </div>
     </div>
 </div>

@@ -1,1 +1,6 @@
-<app-leave-status-presentation [internLeaveApplication]="internLeaveStatus$ | async"></app-leave-status-presentation>
+<app-leave-status-presentation
+    [leaveData]="internLeaveStatus$ | async"
+    [pageTitle]="this.pageTitle"
+    (leaveGrant)="leaveGrant($event)"
+    (revokeLeaveRequestData)="revokeLeaveRequestData($event)"
+></app-leave-status-presentation>

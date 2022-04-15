@@ -1,0 +1,27 @@
+.toast-container {
+  width: 250px;
+
+  .toast {
+    background-color: $white;
+    color: $danger;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    border: 1px solid transparent;
+    border-left-width: 5px;
+
+    &-error {
+      border-color: $danger;
+      background-image: none;
+    }
+
+    &-success {
+      border-color: $success;
+      color: $success;
+      background-image: none;
+    }
+
+    &-close-button {
+      color: $gray;
+    }
+  }
+}

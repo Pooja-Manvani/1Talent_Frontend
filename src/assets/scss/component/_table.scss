@@ -8,6 +8,10 @@
   
   }
   &.table-leave {
+    thead {
+      z-index: 10;
+      background-color: $content-wrapper-bg;
+    }
     tr {
       th {
         background: transparent;
@@ -33,5 +37,12 @@
 
       }
     }
+  }
+}
+
+@each $clr,$clr-val in $leave-status {
+  .#{$clr}-color{
+      background-color: rgba($clr-val, 0.1);
+      color: $clr-val;
   }
 }

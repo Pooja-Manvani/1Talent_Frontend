@@ -1,41 +1,11 @@
-<div class="content-wrapper h-100">
+<div class="content-wrapper h-100 d-flex flex-column">
   <!-- Leave Status Table Heading  -->
-  <div class="app-title mb-3">
-    <h1>Leave Status</h1>
+  <div>
+    <h1 class="page-title mb-3">{{ pageTitle }}</h1>
   </div>
 
-  <!-- Start: Leave Status Table  -->
-  <table class="table table-leave">
-    <thead>
-      <tr>
-        <th scope="col">Application Date</th>
-        <th scope="col">Type</th>
-        <th scope="col">No. of Days</th>
-        <th scope="col">Leaves Dates</th>
-        <th scope="col">Description</th>
-        <th scope="col">Status</th>
-        <th scope="col">Revoke</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr
-        class="align-middle"
-        *ngFor="let application of internLeaveApplication"
-      >
-        <td>{{ application.appliedDate }}</td>
-        <td>{{ application.applicationTypeName }}</td>
-        <td>{{ application.noOfDays }}</td>
-        <td>{{ application.leaveDates }}</td>
-        <td>{{ application.description }}</td>
-        <td [class]="leaveStatus[application.applicationStatus - 1].toLowerCase() + '-color'">
-          {{ leaveStatus[application.applicationStatus - 1] }}
-        </td>
-        <td>
-          <button class="btn btn-outline-primary w-100">Revoke</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <!-- End: Leave Status Table  -->
+  <!-- Leave Status Table  -->
+  <app-leave-table [leavesList]="leaveData" (buttonClick)="onButtonClick($event)"
+    (revokeLeaveRequest)="revokeLeaveRequest($event)" class="flex-grow-1 overflow-hidden">
+  </app-leave-table>
 </div>
