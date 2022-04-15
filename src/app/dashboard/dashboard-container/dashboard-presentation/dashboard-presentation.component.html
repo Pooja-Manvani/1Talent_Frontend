@@ -7,9 +7,11 @@
     <div class="table-head d-flex justify-content-between py-4">
         <h3 *ngIf="userRole === 'Intern'" class="fs-5">My Leaves</h3>
         <h3 *ngIf="userRole === 'Mentor'" class="fs-5">Current Leave Requests </h3>
-        <button *ngIf="userRole === 'Intern'" class="btn btn-primary py-2" routerLink="../apply-leave"> APPLY LEAVE </button>
-        <a *ngIf="userRole === 'Mentor'"  routerLink="../leave-requests">View All</a>
+        <button *ngIf="userRole === 'Intern'" class="btn btn-primary py-2" routerLink="../apply-leave"> APPLY LEAVE
+        </button>
+        <a *ngIf="userRole === 'Mentor'" routerLink="../leave-requests">View All</a>
     </div>
     <!-- Intern Leave Table  -->
-    <app-leave-table [leavesList]="internLeaveData" class="dashboard-leave-table flex-grow-1 overflow-hidden"></app-leave-table>
+    <app-leave-table-container [isDashboard]="true"></app-leave-table-container>
+    <!-- <app-leave-table-presentation [leavesList]="internLeaveData" class="dashboard-leave-table flex-grow-1 overflow-hidden"></app-leave-table-presentation> -->
 </div>

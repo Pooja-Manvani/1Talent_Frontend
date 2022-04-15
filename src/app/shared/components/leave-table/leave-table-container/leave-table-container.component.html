@@ -1,0 +1,4 @@
+<!-- Leave Status Table  -->
+<app-leave-table-presentation [leavesList]="leavesList$ | async" (buttonClick)="leaveGrant($event)"
+(revokeLeaveRequest)="revokeLeaveRequestData($event)" class="flex-grow-1 overflow-hidden">
+</app-leave-table-presentation>

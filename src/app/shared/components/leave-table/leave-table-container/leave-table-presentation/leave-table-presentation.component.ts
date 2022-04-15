@@ -6,23 +6,25 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 import { LeaveApplication } from 'src/app/leave-status/models/leave-status.models';
 import { LeaveStatusService } from 'src/app/leave-status/services/leave-status.service';
 import { leaveStatus } from 'src/app/shared/leave-status';
-import { LeaveGrant } from '../../models/leave-grants.model';
-import { LeaveTablePresenterService } from './leaveTablePresenter/leave-table-presenter.service';
+import { LeaveGrant } from 'src/app/shared/models/leave-grants.model';
+import { LeaveTablePresenterService } from '../leave-table-presenter/leave-table-presenter.service';
 
 @Component({
-  selector: 'app-leave-table',
-  templateUrl: './leave-table.component.html',
+  selector: 'app-leave-table-presentation',
+  templateUrl: './leave-table-presentation.component.html',
   viewProviders: [LeaveTablePresenterService],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LeaveTableComponent implements OnInit {
+export class LeaveTablePresentationComponent implements OnInit {
 
-  @Input() public set leavesList(value: LeaveApplication[]) {
-    this._leavesList = value;
+  @Input() public set leavesList(value: LeaveApplication[] | null) {
+    if (value) {
+      this._leavesList = value;
+    }
   }
 
-  @Output() buttonClick: EventEmitter<LeaveGrant>;
-  @Output() revokeLeaveRequest: EventEmitter<LeaveGrant>;
+  @Output() public buttonClick: EventEmitter<LeaveGrant>;
+  @Output() public revokeLeaveRequest: EventEmitter<LeaveGrant>;
 
   public leaveStatus = leaveStatus;
   public userRole: string | null;

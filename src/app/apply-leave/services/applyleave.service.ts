@@ -16,7 +16,8 @@ export class ApplyleaveService {
 
   // Post call for Leave Request
   public postLeaveRequest(data: ApplyLeave, userName: string): Observable<ApplyLeave> {
-    return this._http.post<ApplyLeave>(`${this.apiLink}${APPLY_LEAVE}/${userName}`, data);
+    data.userName = userName;
+    return this._http.post<ApplyLeave>(`${this.apiLink}${APPLY_LEAVE}`, data);
   }
 
   //get User

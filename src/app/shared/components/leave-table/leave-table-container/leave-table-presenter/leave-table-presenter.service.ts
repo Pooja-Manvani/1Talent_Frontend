@@ -9,8 +9,8 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Subject } from 'rxjs/internal/Subject';
 import { LeaveApplication } from 'src/app/leave-status/models/leave-status.models';
 import { LeaveGrant } from 'src/app/shared/models/leave-grants.model';
-import { ConfirmationPopupComponent } from '../../confirmation-popup/confirmation-popup.component';
-import { ViewLeaveRequestPresentationComponent } from '../view-leave-request/view-leave-request-presentation/view-leave-request-presentation.component';
+import { ConfirmationPopupComponent } from '../../../confirmation-popup/confirmation-popup.component';
+import { ViewLeaveRequestPresentationComponent } from '../../view-leave-request/view-leave-request-presentation/view-leave-request-presentation.component';
 
 @Injectable()
 export class LeaveTablePresenterService {

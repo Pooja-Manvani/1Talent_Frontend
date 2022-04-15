@@ -20,7 +20,14 @@ import { AuthService } from './core/services/auth.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule
+    CoreModule,
+    ToastrModule.forRoot({
+      toastClass : "toast toast-bootstrap-compatibility-fix",
+      positionClass: "toast-top-right",
+      closeButton: true,
+      timeOut: 4000,
+      preventDuplicates: true,
+    })
   ],
   providers: [
     {

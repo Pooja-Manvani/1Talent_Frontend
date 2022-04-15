@@ -44,21 +44,21 @@ export class LeaveStatusPresentationComponent {
     return !(status === 'Accepted' || status === 'Pending');
   }
 
-  /**
-   * @author Jigar Bhanushali
-   * @description This function emits the leave grant.
-   * @param leaveGrant 
-   */
-  public onButtonClick(leaveGrant: LeaveGrant) {
-    this.leaveGrant.emit(leaveGrant);
-  }
+  // /**
+  //  * @author Jigar Bhanushali
+  //  * @description This function emits the leave grant.
+  //  * @param leaveGrant 
+  //  */
+  // public onButtonClick(leaveGrant: LeaveGrant) {
+  //   this.leaveGrant.emit(leaveGrant);
+  // }
 
-  /**
-   * @author Himani Barot
-   * @description This function emits the revoked leave request data.
-   * @param data 
-   */
-  public revokeLeaveRequest(data: LeaveGrant) {
-    this.revokeLeaveRequestData.emit(data);
-  }
+  // /**
+  //  * @author Himani Barot
+  //  * @description This function emits the revoked leave request data.
+  //  * @param data 
+  //  */
+  // public revokeLeaveRequest(data: LeaveGrant) {
+  //   this.revokeLeaveRequestData.emit(data);
+  // }
 }
