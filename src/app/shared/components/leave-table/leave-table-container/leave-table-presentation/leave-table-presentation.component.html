@@ -1,5 +1,5 @@
 <!-- Start: Leave Table  -->
-<div class="position-relative overflow-auto h-100">
+<div class="position-relative overflow-auto p-1 h-100">
     <table class="table table-leave">
         <thead class="position-sticky top-0 opacity-100">
           <tr>
@@ -15,7 +15,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="align-middle" [ngClass]="{'cursor-pointer': userRole !== 'Intern'}"*ngFor="let application of leavesList" (click)="showOverlay(application)">
+          <tr class="align-middle shadow-sm" [ngClass]="{'cursor-pointer': userRole !== 'Intern'}"*ngFor="let application of leavesList" (click)="showOverlay(application)">
             <td *ngIf="userRole === 'Mentor'" scope="col">{{ application.internName }}</td>
             <td *ngIf="userRole === 'Intern'">{{ application.appliedDate }}</td>
             <td>{{ application.applicationTypeName }}</td>
